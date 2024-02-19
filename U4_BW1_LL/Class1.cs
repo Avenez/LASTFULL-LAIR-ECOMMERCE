@@ -29,8 +29,10 @@ namespace U4_BW1_LL
             }
         }
 
-
-
+        public string GetConnectionString()
+        {
+            return connectioString;
+        }
 
     }
 }
