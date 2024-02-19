@@ -33,7 +33,6 @@ namespace U4_BW1_LL
             if (Request.Cookies["CART_COOKIE"] == null)
             {
                 //Se non esiste creo il cookie della cart al login
-
                 // creo un arraylist e il cookie
                 ArrayList cart = new ArrayList();
                 HttpCookie cartCookie = new HttpCookie("CART_COOKIE");
@@ -54,8 +53,8 @@ namespace U4_BW1_LL
         }
 
 
-        protected void CheckAdmin(string user, string password) {
-            bool admin;
+        protected bool CheckAdmin(string user, string password) {
+            bool admin = false;
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDB"].ConnectionString.ToString();
             SqlConnection conn = new SqlConnection(connectionString);
 
@@ -64,7 +63,14 @@ namespace U4_BW1_LL
             conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = $"SELECT * FROM Utenti ";
+                cmd.CommandText = $"SELECT * FROM Utenti WHERE Username = {user} AND Password = {password}";
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    admin = reader.GetBoolean(3);
+                    Response.Write("Utente Admin Trovato");
+                }
             }
             catch  (Exception ex)
             {
@@ -75,13 +81,6 @@ namespace U4_BW1_LL
             {
             conn.Close();
             }
-
-
-
-
-
-
-
 
             return admin;
         }
