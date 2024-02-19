@@ -8,6 +8,7 @@ namespace U4_BW1_LL
 {
     public partial class _Default : Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();

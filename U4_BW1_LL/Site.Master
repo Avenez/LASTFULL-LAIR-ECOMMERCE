@@ -19,7 +19,7 @@
 
 </head>
 <body>
-    <form runat="server" style="background-color: rgb(118,5,67)">
+    <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -43,7 +43,7 @@
             <div class="container justify-content-between">
                 <div class="collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" style="color: rgba(236,19,149,255)" runat="server" href="~/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link sexyPink" runat="server" href="~/">Home</a></li>
                     </ul>
                 </div>
                 <div>
@@ -52,8 +52,9 @@
                     </a>
 
                 </div>
-                <div>
-                    <a class="nav-link" runat="server" href="~/"><i class="bi bi-person fs-4" style="color: rgba(236,19,149,255)"></i></a>
+                <div class="d-flex align-items-baseline">
+                    <a class="nav-link me-2" runat="server" href="~/"><i class="bi bi-cart2 fs-4 sexyPink"></i></a>
+                    <a class="nav-link" runat="server" href="~/"><i class="bi bi-person fs-4 sexyPink"></i></a>
                 </div>
 
             </div>

@@ -2,18 +2,21 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <main >
+    <main>
         <div class="container">
-            <div class="row row-cols-4">
+            <div class="row row-cols-4 gy-3">
                 <asp:Repeater ID="ProductsRepeater" runat="server">
                     <ItemTemplate>
                         <div class="col">
-                            <div class="card">
+                            <div class="card border border-0 rounded shadow">
                                 <img class="card-img-top" src="<%# Eval("ImgUrl") %>" alt="Card image cap" style="mix-blend-mode: normal">
-                                <div class="card-body" style="background-color: black; color: rgba(236,19,149,255)">
-                                    <h5 class="card-title"><%# Eval("Nome") %></h5>
-                                    <p class="card-text"><%# Eval("Prezzo", "{0:c2}")%></p>
-                                    <a href="#" class="btn btn-primary">Dettaglio</a>
+                                <div class="card-body sexyPink rounded-bottom" style="background-color: black; height: 100px">
+                                    <h5 class="card-title text-truncate"><%# Eval("Nome") %></h5>
+                                    <p class="card-text font-monospace"><%# Eval("Prezzo", "{0:c2}")%></p>
+                                   <!-- <div class="d-flex align-items-center">
+                                        <a href="#" class="btn sexyPinkBg me-2">Acquista</a>
+                                        <input type="number" id="quantity" name="quantity" value="0" min="1" max="<%# Eval("Qta") %>" step="1" class="quantityInput">
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
