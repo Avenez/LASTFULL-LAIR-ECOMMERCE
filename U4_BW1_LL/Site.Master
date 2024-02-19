@@ -43,18 +43,17 @@
             <div class="container justify-content-between">
                 <div class="collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link sexyPink" runat="server" href="~/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/" style="color: #ed0b91">Home</a></li>
                     </ul>
                 </div>
                 <div>
                     <a class="navbar-brand" runat="server" href="~/">
                         <img src=".\assets\imgs\Lustlogo.png" style="width: 180px" alt="LustLogo" />
                     </a>
-
                 </div>
                 <div class="d-flex align-items-baseline">
-                    <a class="nav-link me-2" runat="server" href="~/"><i class="bi bi-cart2 fs-4 sexyPink"></i></a>
-                    <a class="nav-link" runat="server" href="~/"><i class="bi bi-person fs-4 sexyPink"></i></a>
+                    <a class="nav-link me-2" runat="server" href="~/"><i class="bi bi-cart2 fs-4" style="color: #ed0b91"></i></a>
+                    <a class="nav-link" runat="server" href="~/"><i class="bi bi-person fs-4" style="color: #ed0b91"></i></a>
                 </div>
 
             </div>

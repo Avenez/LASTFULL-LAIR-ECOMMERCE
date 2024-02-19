@@ -25,17 +25,23 @@ textarea {
 }
 
 .sexyPink {
-    color: rgba(236,19,149,255);
+    color: #5C0F39;
 }
 
 .sexyPink2 {
     color: #FFACD2;
 }
-
+.sexyPinkBg {
+    background-color: #5C0F39;
+    color: #FFACD2;
+}
+.sexyCardBg {
+    background-color: #FFACD2;
+}
 .quantityInput {
     width: 50px;
     border-radius: 5px;
-    background-color: rgb(246, 92, 184);
+    background-color: #f565a7;
     border: none;
     padding-inline-start: 5px;
 }
