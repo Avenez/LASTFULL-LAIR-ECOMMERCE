@@ -13,6 +13,7 @@
                                 <div class="card-body sexyPink rounded-bottom" style="background-color: black; height: 100px">
                                     <h5 class="card-title text-truncate"><%# Eval("Nome") %></h5>
                                     <p class="card-text font-monospace"><%# Eval("Prezzo", "{0:c2}")%></p>
+                                    <a href="Dettagli.aspx?IDProdotto=<%# Eval("IDProdotto") %>"" class="btn btn-primary">Dettaglio</a>
                                    <!-- <div class="d-flex align-items-center">
                                         <a href="#" class="btn sexyPinkBg me-2">Acquista</a>
                                         <input type="number" id="quantity" name="quantity" value="0" min="1" max="<%# Eval("Qta") %>" step="1" class="quantityInput">
