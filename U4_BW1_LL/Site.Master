@@ -48,7 +48,7 @@
                 </div>
                 <div>
                     <a class="navbar-brand" runat="server" href="~/">
-                        <img src=".\assets\Lustlogo.png" style="width: 180px" alt="LustLogo" />
+                        <img src=".\assets\imgs\Lustlogo.png" style="width: 180px" alt="LustLogo" />
                     </a>
 
                 </div>

@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: rgb(92 15 57);
+    background-color: #5C0F39;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -28,9 +28,8 @@ textarea {
     color: rgba(236,19,149,255);
 }
 
-.sexyPinkBg {
-    background-color: rgba(236,19,149,255);
-    color: black;
+.sexyPink2 {
+    color: #FFACD2;
 }
 
 .quantityInput {

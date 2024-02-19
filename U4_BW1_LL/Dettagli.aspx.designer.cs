@@ -33,15 +33,6 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.WebControls.Label lblNomeProdotto;
 
         /// <summary>
-        /// Controllo lblPrezzoProdotto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPrezzoProdotto;
-
-        /// <summary>
         /// Controllo lblDescrizioneProdotto.
         /// </summary>
         /// <remarks>
@@ -51,12 +42,12 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.WebControls.Label lblDescrizioneProdotto;
 
         /// <summary>
-        /// Controllo btnTornaIndietro.
+        /// Controllo lblPrezzoProdotto.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTornaIndietro;
+        protected global::System.Web.UI.WebControls.Label lblPrezzoProdotto;
     }
 }

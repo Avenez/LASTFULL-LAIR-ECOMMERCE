@@ -103,9 +103,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="assets\LustLogo.png" />
-    <Content Include="assets\LustLogo2.jpg" />
-    <Content Include="assets\LustLogoOpen.jpg" />
+    <Content Include="assets\imgs\LustLogo.png" />
+    <Content Include="assets\imgs\LustLogo2.jpg" />
+    <Content Include="assets\imgs\LustLogoOpen.jpg" />
+    <Content Include="assets\prodImgs\anello-fallico-ritardante-di-calexotics.png" />
+    <Content Include="assets\prodImgs\babydoll-amanta-obsessive-con-perizoma.png" />
+    <Content Include="assets\prodImgs\bavaglio-bocca-saffron-ball-gag-di-sportsheets.png" />
+    <Content Include="assets\prodImgs\corona-argento-con-pene-in-plastica.png" />
+    <Content Include="assets\prodImgs\dildo-indossabile-vaginale-e-anale-strap-on-.png" />
+    <Content Include="assets\prodImgs\diploma-con-titolo-sposini-porcellini.png" />
+    <Content Include="assets\prodImgs\fallo-realistico-doppio-rapture-u-shaped.png" />
+    <Content Include="assets\prodImgs\frusta-satin-flogger-50-sfumature-di-grigio-in-ecopelle.png" />
+    <Content Include="assets\prodImgs\gioco-sexy-fuckme-tempo-di-scopare-di-tease-please-rendera-il-vostro-sesso-sensuale-e-trasgressivo.png" />
+    <Content Include="assets\prodImgs\manette-rivestite-in-pelo-colorato.png" />
+    <Content Include="assets\prodImgs\massaggiatore-flessibile-pretty-little-wands-di-calexotics.png" />
+    <Content Include="assets\prodImgs\masturbatore-a-forma-di-bocca-di-pipedream.png" />
+    <Content Include="assets\prodImgs\plug-anale-beads-di-you-2-toys.png" />
+    <Content Include="assets\prodImgs\plug-anale-vibrante-a-sfere-per-uomo-e-donna.png" />
+    <Content Include="assets\prodImgs\preservativo-lelo-hex-rispetto.png" />
+    <Content Include="assets\prodImgs\shadow-sparkle-collar-and-cuff-di-sm-set-collare-e-manette-bondage.png" />
+    <Content Include="assets\prodImgs\spanking-paddle-in-ecopelle-bound-to-you-di-50-sfumature-di-grigio-in-2-dimensioni.png" />
+    <Content Include="assets\prodImgs\stimolatore-vaginale-succhia-clitoride-clit-pump.png" />
+    <Content Include="assets\prodImgs\uovo-vibrante-miu-miu-di-nalone.png" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -125,6 +144,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Dettagli.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -212,6 +232,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dettagli.aspx.cs">
+      <DependentUpon>Dettagli.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dettagli.aspx.designer.cs">
+      <DependentUpon>Dettagli.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
