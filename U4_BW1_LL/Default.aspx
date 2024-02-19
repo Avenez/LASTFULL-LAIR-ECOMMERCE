@@ -13,7 +13,7 @@
                                 <div class="card-body" style="background-color: black; color: rgba(236,19,149,255)">
                                     <h5 class="card-title"><%# Eval("Nome") %></h5>
                                     <p class="card-text"><%# Eval("Prezzo", "{0:c2}")%></p>
-                                    <a href="Dettagli.aspx?productId=<%# Eval("IDProdotto") %>"" class="btn btn-primary">Dettaglio</a>
+                                    <a href="Dettagli.aspx?IDProdotto=<%# Eval("IDProdotto") %>"" class="btn btn-primary">Dettaglio</a>
                                 </div>
                             </div>
                         </div>
