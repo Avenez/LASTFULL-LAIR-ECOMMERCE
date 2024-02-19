@@ -38,9 +38,9 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark" style="background-color: #0A0A0A">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">Nome applicazione</a>
+                <a class="navbar-brand" runat="server" href="~/"> <img src=".\assets\LustLogo.png" style="width:160px" alt="LustLogo" />  </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
