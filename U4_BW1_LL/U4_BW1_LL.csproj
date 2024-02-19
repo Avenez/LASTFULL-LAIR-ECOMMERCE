@@ -105,6 +105,7 @@
     <Content Include="About.aspx" />
     <Content Include="assets\LustLogo.png" />
     <Content Include="assets\LustLogo2.jpg" />
+    <Content Include="assets\LustLogoOpen.jpg" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
