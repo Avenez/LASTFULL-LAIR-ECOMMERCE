@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Web;
-using System.Web.Script.Serialization;
-using System.Web.UI;
 
 namespace U4_BW1_LL
 {
@@ -15,8 +9,13 @@ namespace U4_BW1_LL
 
         }
 
+
+
+        /*
+         * 
         protected void Login_Click(object sender, EventArgs e)
         {
+            Response.Write("Login cliccato");
             bool Admin = CheckAdmin(UserName.Text, passWord.Text);
 
 
@@ -58,14 +57,16 @@ namespace U4_BW1_LL
 
         }
 
+        */
 
 
-
+        /* 
+         * 
         protected bool CheckAdmin(string user, string password)
         {
             bool admin = false;
 
-            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDB"].ConnectionString.ToString();
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
 
             try
             {
@@ -110,8 +111,10 @@ namespace U4_BW1_LL
 
             return admin;
         }
+        */
 
 
+        /*
         protected void RegistrationButton_Click(object sender, EventArgs e)
         {
 
@@ -187,46 +190,47 @@ namespace U4_BW1_LL
 
         }
 
+        */
 
-        protected bool CheckUsername(string user)
-        {
+        //protected bool CheckUsername(string user)
+        //{
 
-            bool validUsername = true;
+        //    bool validUsername = true;
 
-            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDB"].ConnectionString.ToString();
+        //    string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDB"].ConnectionString.ToString();
 
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "SELECT * FROM Utenti WHERE Username = @username";
-                    cmd.Parameters.AddWithValue("@username", user);
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(connectionString))
+        //        {
+        //            conn.Open();
+        //            SqlCommand cmd = new SqlCommand();
+        //            cmd.Connection = conn;
+        //            cmd.CommandText = "SELECT * FROM Utenti WHERE Username = @username";
+        //            cmd.Parameters.AddWithValue("@username", user);
 
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
+        //            using (SqlDataReader reader = cmd.ExecuteReader())
+        //            {
+        //                if (reader.Read())
+        //                {
 
-                            validUsername = false;
-                            conn.Close();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log dell'errore e messaggio all'utente
-                Response.Write("Errore durante la ricerca del nome.");
-                Response.Write(ex.Message);
+        //                    validUsername = false;
+        //                    conn.Close();
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log dell'errore e messaggio all'utente
+        //        Response.Write("Errore durante la ricerca del nome.");
+        //        Response.Write(ex.Message);
 
-            }
+        //    }
 
-            return validUsername;
+        //    return validUsername;
 
-        }
+        //}
     }
 }

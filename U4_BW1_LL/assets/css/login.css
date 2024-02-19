@@ -1,0 +1,15 @@
+﻿.navBarFluo {
+    background-color: #ed0b91;
+    color: black;
+    transition: 
+}
+
+.colorNotFluo {
+    background-color: black;
+    color: #ed0b91;
+    
+}
+
+#btnAccedi, #btnRegistrati {
+    cursor: pointer;
+}

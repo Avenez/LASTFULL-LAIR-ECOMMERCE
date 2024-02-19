@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="assets\css\login.css" />
     <Content Include="assets\imgs\LustLogo.png" />
     <Content Include="assets\imgs\LustLogo2.jpg" />
     <Content Include="assets\imgs\LustLogoOpen.jpg" />

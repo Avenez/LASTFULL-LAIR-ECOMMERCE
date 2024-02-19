@@ -45,3 +45,8 @@ textarea {
     border: none;
     padding-inline-start: 5px;
 }
+
+.navBarFluo {
+    background-color: #5C0F39 !important;
+    color:black !important;
+}
