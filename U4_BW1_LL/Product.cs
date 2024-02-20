@@ -15,10 +15,10 @@
         public int Id { get => id; }
 
         private double prezzo;
-        public double Prezzo { get => prezzo; }
+        public double Prezzo { get => prezzo; set => prezzo = value; }
 
         private int qta;
-        public int Qta { get => qta; }
+        public int Qta { get => qta; set => qta = value; }
 
         public Product(int id, string nome, string descrizione, string imgUrl, double prezzo, int qta)
         {

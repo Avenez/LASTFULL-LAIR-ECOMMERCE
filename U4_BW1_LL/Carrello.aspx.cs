@@ -7,12 +7,12 @@ namespace U4_BW1_LL
 {
     public partial class Carrello : System.Web.UI.Page
     {
+        List<Product> products = new List<Product>();
         protected void Page_Load(object sender, EventArgs e)
         {
             Dictionary<int, int> cartMap = (Dictionary<int, int>)Session["cart"];
             if (Session["cart"] != null && cartMap.Keys.Count > 0)
             {
-                List<Product> products = new List<Product>();
 
                 foreach (int id in cartMap.Keys)
                 {

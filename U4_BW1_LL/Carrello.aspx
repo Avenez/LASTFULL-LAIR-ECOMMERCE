@@ -27,7 +27,7 @@
     <div class="d-flex justify-content-between align-items-center mt-3">
         <div>
             <p id="totalPrice" class="sexyPink2 mb-0" runat="server"></p>
-            <asp:Button class="btn sexyBtn"  ID="ButtonAcquista" runat="server" Text="Acquista" />
+            <asp:Button class="btn sexyBtn" ID="ButtonAcquista" runat="server" Text="Acquista" />
         </div>
         <asp:Button CssClass="btn btn-danger" ID="RemoveAllBtn" runat="server" Text="Rimuovi tutto" />
     </div>
