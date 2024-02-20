@@ -82,6 +82,15 @@
                         </div>
                     </div>
 
+                    <%-- alert registrazione avvenuta --%>
+                    <div id="alertRegistrationSuccess" runat="server" class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="text-center colorNotFluo mt-5">
+                                <h5 id="registrationSuccessTxt" runat="server" class="maybeSexy fs-1"></h5>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>             
             </div>
         </main>
