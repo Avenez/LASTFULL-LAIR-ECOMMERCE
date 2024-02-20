@@ -10,6 +10,10 @@ namespace U4_BW1_LL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["IDProdotto"] == null)
+            {
+                Response.Redirect("Default.aspx");
+            }
             if (!IsPostBack)
             {
                 // Recupera l'ID del prodotto dalla query string
@@ -48,6 +52,10 @@ namespace U4_BW1_LL
                         lblDescrizioneProdotto.Text = reader["Descrizione"].ToString();
                         imgProdotto.ImageUrl = reader["ImgUrl"].ToString();
                         selectedQuantity.Attributes["max"] = reader["Qta"].ToString();
+                    }
+                    else
+                    {
+                        Response.Redirect("Default.aspx");
                     }
                 }
             }

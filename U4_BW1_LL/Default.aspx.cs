@@ -33,7 +33,5 @@ namespace U4_BW1_LL
             }
             finally { conn.Close(); }
         }
-
-
     }
 }
