@@ -51,31 +51,33 @@
 
                         <div id="divAccedi" class="colorNotFluo d-flex flex-column w-50 p-5 pb-3 border border-1 rounded-3 border-white position-relative">
                             <asp:Image ID="heartImg" runat="server" Width="50px" ImageUrl="~/assets/imgs/-1-kxn9tz.svg" CssClass="position-absolute end-0 top-0 m-3 " />
-                            <asp:Label ID="nome" runat="server"><p class="m-0 maybeSexy my-2 fs-3">Nome</p></asp:Label>
+                            <asp:Label ID="Label1" runat="server"><p class="m-0 maybeSexy my-2 fs-3">Nome</p></asp:Label>
                             <asp:TextBox CssClass="rounded rounded-2" ID="accediNome" runat="server"></asp:TextBox>
                             <asp:Label ID="Label2" runat="server"><p class="m-0 maybeSexy my-2 fs-3">Password</p> </asp:Label>
-                            <asp:TextBox ID="accediCognome" runat="server"></asp:TextBox>
-                            <div class="text-center mt-4 mb-0">
-                                <asp:Button ID="accediBtn" runat="server" Text="Cedi alla lussuria..." CssClass="maybeSexy colorNotFluo p-2 fs-3 rounded-2 heartbeat"  OnClick="accediBtn_Click"/>
+                            <asp:TextBox TextMode="Password" ID="accediPassword" runat="server"></asp:TextBox>
+                            <div class="d-flex justify-content-center mt-4 mb-0">
+                                <asp:Button ID="BtnPerAccedere" runat="server" Text="Cedi alla lussuria..." CssClass="maybeSexy colorNotFluo p-2 fs-3 rounded-2 heartbeat"  OnClick="accediBtn_Click"/>
+                                  <asp:Button ID="BtnPerRegistrarti" runat="server" Text="Concediti Al peccato Originale..." CssClass="maybeSexy colorNotFluo p-2 fs-3 rounded-2 heartbeat d-none"  OnClick="BtnPerRegistrarti_Click"/>
                             </div>
-                        </div>
-
-
-                        <div id="divRegistrati" class="colorNotFluo d-none d-flex flex-column w-50 p-5 pb-3 border border-1 rounded-3  border-white">
-                            <asp:Label ID="Label3" runat="server"><p class="m-0 maybeSexy my-2 fs-3">Nome</p></asp:Label>
-                            <asp:TextBox CssClass="rounded rounded-2" ID="TextBox3" runat="server"></asp:TextBox>
-                            <asp:Label ID="Label4" runat="server"><p class="m-0 maybeSexy my-2 fs-3">Password</p></asp:Label>
-                            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-                              <div class="text-center mt-3">
-                                <asp:Button ID="registratiBtn" runat="server" Text="Concediti Al peccato Originale..." CssClass="maybeSexy colorNotFluo p-2 fs-3 rounded-2 heartbeat" />
-                            </div>
-                        </div>                                                                        
+                        </div>                   
+                        
+                        
                     </div>
 
+                    <%-- se i campi input vengon lasciati vuoti --%>
                     <div id="alert" runat="server" class="row justify-content-center">
                         <div class="col-12">
                             <div class="text-center colorNotFluo mt-5">
                                 <h5 class="maybeSexy fs-1">Inserisci nome e cognome Birichino...</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <%-- se utente non trovato o se login avvenuto con successo --%>
+                    <div id="Div1" runat="server" class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="text-center colorNotFluo mt-5">
+                                <h5 id="notFound_OrSuccess" runat="server" class="maybeSexy fs-1"></h5>
                             </div>
                         </div>
                     </div>
@@ -88,11 +90,11 @@
     <script>
         var btnAccedi = document.getElementById("btnAccedi");
         var btnRegistrati = document.getElementById("btnRegistrati");
-        var formLogin = document.getElementById("formLogin");
         var divAccedi = document.getElementById("divAccedi");
-        var divRegistrati = document.getElementById("divRegistrati");
         var registerTxt = document.getElementById("registerTxt");
         var accediTxt = document.getElementById("accediTxt");
+        var BtnPerAccedere = document.getElementById("BtnPerAccedere");
+        var BtnPerRegistrarti = document.getElementById("BtnPerRegistrarti");
 
         btnAccedi.addEventListener("click", function () {
 
@@ -104,13 +106,16 @@
             }
 
             divAccedi.classList.add("d-flex");
-            divAccedi.classList.remove("d-none");
-            divRegistrati.classList.add("d-none");
-            divRegistrati.classList.remove("d-flex");
+            divAccedi.classList.remove("d-none");       
             accediTxt.classList.add("d-block");
             accediTxt.classList.remove("d-none");
             registerTxt.classList.add("d-none");
             registerTxt.classList.remove("d-block"); 
+           // btnAccedi.classList.add("d-block"); 
+            BtnPerAccedere.classList.remove("d-none");
+            BtnPerAccedere.classList.add("d-flex");
+            BtnPerRegistrarti.classList.add("d-none");
+            BtnPerRegistrarti.classList.remove("d-flex");
 
         });
 
@@ -123,14 +128,16 @@
                 btnAccedi.classList.add("colorNotFluo");
             }
 
-            divAccedi.classList.add("d-none");
-            divAccedi.classList.remove("d-flex");
-            divRegistrati.classList.remove("d-none");
-            divRegistrati.classList.add("d-flex");
+           
             accediTxt.classList.add("d-none");
             accediTxt.classList.remove("d-block");
             registerTxt.classList.add("d-block");
             registerTxt.classList.remove("d-none");
+            BtnPerRegistrarti.classList.remove("d-none");
+            BtnPerRegistrarti.classList.add("d-flex");
+            BtnPerAccedere.classList.add("d-none");
+            BtnPerAccedere.classList.remove("d-flex");
+            
         });
 
         heartImg.addEventListener("load", () => {
