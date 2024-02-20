@@ -89,3 +89,17 @@
         opacity: 1;
     }
 }
+
+.sexyBtn {
+    background-color: #ed0b91;
+    color: black;
+}
+
+    .sexyBtn:hover {
+        background-color: black;
+        color: #ed0b91;
+    }
+
+.sexyAlert {
+    background-color: #FFACD2; 
+}

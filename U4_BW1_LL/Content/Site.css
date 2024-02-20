@@ -63,3 +63,15 @@ textarea {
     color: #EC008C;
 }
 
+.navSexyLink {
+    color: #ed0b91;
+}
+
+.sexyZoom {
+    transform: scale(1);
+    transition: all ease 1s;
+}
+
+.sexyZoom:hover {
+    transform: scale(1.1);
+}

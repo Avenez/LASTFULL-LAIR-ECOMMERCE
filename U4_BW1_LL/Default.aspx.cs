@@ -11,30 +11,39 @@ namespace U4_BW1_LL
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
-            SqlConnection conn = new SqlConnection(connectionString);
-
-            try
+            if (IsPostBack && Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
             {
-                conn.Open();
-                string query = "SELECT * FROM Prodotti";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-
-                ProductsRepeater.DataSource = dt;
-                ProductsRepeater.DataBind();
+                Response.Redirect("Login.aspx");
             }
-            catch (Exception ex)
+
+            if (Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
             {
-                Response.Write(ex.Message);
+                Response.Redirect("Login.aspx");
             }
-            finally { conn.Close(); }
+            else
+            {
+                string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+                SqlConnection conn = new SqlConnection(connectionString);
 
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT * FROM Prodotti";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
 
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
 
+                    ProductsRepeater.DataSource = dt;
+                    ProductsRepeater.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(ex.Message);
+                }
+                finally { conn.Close(); }
+            }
         }
     }
 }

@@ -12,8 +12,12 @@ namespace U4_BW1_LL
         protected void Page_Load(object sender, EventArgs e)
         {
             alert.Visible = false;
-            notFound_OrSuccess.Visible = false;
+            alertNot_foundOrSuccess.Visible = false;
             alertRegistrationSuccess.Visible = false;
+            if (Request.Cookies["LOGIN_COOKIEUTENTE"] != null)
+            {
+                Response.Redirect("Default.aspx");
+            }
         }
 
         protected void accediBtn_Click(object sender, EventArgs e)
@@ -107,14 +111,14 @@ namespace U4_BW1_LL
 
                     cmd.ExecuteNonQuery();
                     alertRegistrationSuccess.Visible = true;
-                    registrationSuccessTxt.InnerText = "Registrazione avvenuta con successo Baby...";
+                    registrationSuccessTxt.InnerText = "Registrazione avvenuta con successo. Benvenuto nella tana del piacere!";
                     InjectSetTimeout("registrationSuccessTxt");
                     MakeFieldsEmpty();
                 }
                 catch (SqlException)
                 {
                     alertRegistrationSuccess.Visible = true;
-                    registrationSuccessTxt.InnerText = "Il nome è gia presente, inseriscine uno diverso Tesoruccio...";
+                    registrationSuccessTxt.InnerText = "Nickname già in uso.";
                     MakeFieldsEmpty();
                     InjectSetTimeout("registrationSuccessTxt");
                 }
@@ -153,8 +157,8 @@ namespace U4_BW1_LL
 
         protected void UtenteNonTrovato(string nome)
         {
-            notFound_OrSuccess.Visible = true;
-            notFound_OrSuccess.InnerText = $"Utente {nome} non trovato. Reinserisci Nome e Password Tesoro...";
+            alertNot_foundOrSuccess.Visible = true;
+            notFound_OrSuccess.InnerText = $"Dati inseriti non corretti. Riprovare.";
             ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", "setTimeout(function() { document.getElementById('alertNot_foundOrSuccess').style.display = 'none'; }, 3000);", true);
         }
     }
