@@ -11,142 +11,106 @@ namespace U4_BW1_LL
 {
 
 
-    public partial class Login
+    public partial class Backoffice
     {
 
         /// <summary>
-        /// Controllo formLogin.
+        /// Controllo Button1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm formLogin;
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// Controllo btnAccedi.
+        /// Controllo SearchType.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btnAccedi;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect SearchType;
 
         /// <summary>
-        /// Controllo btnRegistrati.
+        /// Controllo SearchKey.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btnRegistrati;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText SearchKey;
 
         /// <summary>
-        /// Controllo heartImg.
+        /// Controllo Button2.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image heartImg;
+        protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
-        /// Controllo nome.
+        /// Controllo FormName.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nome;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText FormName;
 
         /// <summary>
-        /// Controllo accediNome.
+        /// Controllo FormDescrizione.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox accediNome;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText FormDescrizione;
 
         /// <summary>
-        /// Controllo Label2.
+        /// Controllo FormImg.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText FormImg;
 
         /// <summary>
-        /// Controllo accediCognome.
+        /// Controllo FormPrezzo.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox accediCognome;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText FormPrezzo;
 
         /// <summary>
-        /// Controllo accediBtn.
+        /// Controllo FormQta.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button accediBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl FormQta;
 
         /// <summary>
-        /// Controllo Label3.
+        /// Controllo SubmitChageButton.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.HtmlControls.HtmlButton SubmitChageButton;
 
         /// <summary>
-        /// Controllo TextBox3.
+        /// Controllo BackOfficeProductsRepaeter.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
-
-        /// <summary>
-        /// Controllo Label4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
-
-        /// <summary>
-        /// Controllo TextBox4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
-
-        /// <summary>
-        /// Controllo registratiBtn.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button registratiBtn;
-
-        /// <summary>
-        /// Controllo alert.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert;
+        protected global::System.Web.UI.WebControls.Repeater BackOfficeProductsRepaeter;
     }
 }

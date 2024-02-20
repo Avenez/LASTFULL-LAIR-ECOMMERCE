@@ -127,6 +127,7 @@
     <Content Include="assets\prodImgs\spanking-paddle-in-ecopelle-bound-to-you-di-50-sfumature-di-grigio-in-2-dimensioni.png" />
     <Content Include="assets\prodImgs\stimolatore-vaginale-succhia-clitoride-clit-pump.png" />
     <Content Include="assets\prodImgs\uovo-vibrante-miu-miu-di-nalone.png" />
+    <Content Include="Backoffice.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -177,7 +178,6 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Login.aspx" />
     <Content Include="Oraghon Script.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -226,6 +226,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Backoffice.aspx.cs">
+      <DependentUpon>Backoffice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Backoffice.aspx.designer.cs">
+      <DependentUpon>Backoffice.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -265,13 +272,6 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

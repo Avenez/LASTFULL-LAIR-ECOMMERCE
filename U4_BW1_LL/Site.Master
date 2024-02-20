@@ -44,6 +44,7 @@
                 <div class="collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/" style="color: #ed0b91">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Backoffice" style="color: #ed0b91">Backoffice</a></li>
                     </ul>
                 </div>
                 <div>
