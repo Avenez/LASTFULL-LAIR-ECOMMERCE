@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 
 namespace U4_BW1_LL
 {
@@ -6,13 +7,31 @@ namespace U4_BW1_LL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            alert.Visible = false;
+        }
+
+        protected void accediBtn_Click(object sender, EventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(accediNome.Text) || !string.IsNullOrEmpty(accediCognome.Text))
+            {
+                // accedi al DB e verifica se l'utente esiste
+                accediNome.Text = "";
+                accediCognome.Text = "";
+                Response.Write("Utente trovato");
+            }
+
+            else
+            {
+                alert.Visible = true;
+            }
 
         }
 
 
 
-        /*
-         * 
+
+
         protected void Login_Click(object sender, EventArgs e)
         {
             Response.Write("Login cliccato");
@@ -33,23 +52,25 @@ namespace U4_BW1_LL
 
 
                 // Se non trova un cookie relativo al carrelo lo crea
-                if (Request.Cookies["CART_COOKIE"] == null)
-                {
-                    //Se non esiste creo il cookie della cart al login
+                /*
+                    if (Request.Cookies["CART_COOKIE"] == null)
+                    {
+                        //Se non esiste creo il cookie della cart al login
 
-                    // creo un arraylist e il cookie
-                    ArrayList cart = new ArrayList();
-                    HttpCookie cartCookie = new HttpCookie("CART_COOKIE");
+                        // creo un arraylist e il cookie
+                        ArrayList cart = new ArrayList();
+                        HttpCookie cartCookie = new HttpCookie("CART_COOKIE");
 
-                    //creo un converter in json
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    string cartJson = serializer.Serialize(cart);
+                        //creo un converter in json
+                        JavaScriptSerializer serializer = new JavaScriptSerializer();
+                        string cartJson = serializer.Serialize(cart);
 
-                    //aggiungo il json al cookie
-                    cartCookie.Values["cart"] = cartJson;
-                    Response.Cookies.Add(cartCookie);
+                        //aggiungo il json al cookie
+                        cartCookie.Values["cart"] = cartJson;
+                        Response.Cookies.Add(cartCookie);
 
-                }
+                    }
+                */
 
                 //passo alla prima pagina
                 Response.Redirect("Default.aspx");
@@ -57,11 +78,10 @@ namespace U4_BW1_LL
 
         }
 
-        */
 
 
-        /* 
-         * 
+
+
         protected bool CheckAdmin(string user, string password)
         {
             bool admin = false;
@@ -111,10 +131,10 @@ namespace U4_BW1_LL
 
             return admin;
         }
-        */
 
 
-        /*
+
+
         protected void RegistrationButton_Click(object sender, EventArgs e)
         {
 
@@ -190,47 +210,47 @@ namespace U4_BW1_LL
 
         }
 
-        */
-
-        //protected bool CheckUsername(string user)
-        //{
-
-        //    bool validUsername = true;
-
-        //    string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDB"].ConnectionString.ToString();
-
-        //    try
-        //    {
-        //        using (SqlConnection conn = new SqlConnection(connectionString))
-        //        {
-        //            conn.Open();
-        //            SqlCommand cmd = new SqlCommand();
-        //            cmd.Connection = conn;
-        //            cmd.CommandText = "SELECT * FROM Utenti WHERE Username = @username";
-        //            cmd.Parameters.AddWithValue("@username", user);
 
 
-        //            using (SqlDataReader reader = cmd.ExecuteReader())
-        //            {
-        //                if (reader.Read())
-        //                {
+        protected bool CheckUsername(string user)
+        {
 
-        //                    validUsername = false;
-        //                    conn.Close();
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log dell'errore e messaggio all'utente
-        //        Response.Write("Errore durante la ricerca del nome.");
-        //        Response.Write(ex.Message);
+            bool validUsername = true;
 
-        //    }
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDB"].ConnectionString.ToString();
 
-        //    return validUsername;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT * FROM Utenti WHERE Username = @username";
+                    cmd.Parameters.AddWithValue("@username", user);
 
-        //}
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+
+                            validUsername = false;
+                            conn.Close();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log dell'errore e messaggio all'utente
+                Response.Write("Errore durante la ricerca del nome.");
+                Response.Write(ex.Message);
+
+            }
+
+            return validUsername;
+
+        }
     }
 }
