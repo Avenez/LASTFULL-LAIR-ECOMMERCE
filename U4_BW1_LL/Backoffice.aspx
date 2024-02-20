@@ -5,10 +5,11 @@
     <div class="container mt-5">
 
         <div class="row">
+            <h3 class="text-white" id="controllo" runat="server" ></h3>
             <div class="col">
                 <div class="input-group mb-3">
                     <asp:Button CssClass="btn btn-outline-light" ID="Button1" runat="server" Text="Cerca" OnClick="SearchButton_Click" />
-      
+
                     <select id="SearchType" runat="server" class="form-select">
                         <option selected>Choose...</option>
                         <option value="IDProdotto">Id</option>
@@ -16,14 +17,14 @@
                         <option value="Prezzo">Prezzo</option>
                     </select>
                     <input type="text" id="SearchKey" runat="server" class="form-control" placeholder="" aria-label="Example text with two button addons">
-                    <asp:Button CssClass="btn btn-outline-light" ID="Button2" runat="server" Text="All" OnClick="Page_Load" />
+                    <asp:Button CssClass="btn btn-outline-light" ID="Button2" runat="server" Text="All" OnClick="ButtonAll_Click" />
                 </div>
             </div>
         </div>
 
         <div class="row mb-5">
             <div class="Col">
-                <form>
+                <div>
                     <div class="row row-cols-3 text-white">
 
                         <div class="mb-3 col">
@@ -47,13 +48,20 @@
 
                         <div class="mb-3 col">
                             <label for="FormQta" class="form-label">Qta</label>
-                            <input type="number" class="form-control" id="FormQta" runat="server"/>
+                            <input type="number" class="form-control" id="FormQta" runat="server" />
+                        </div>
+
+                        <div class="mb-3 col">
+                            <label for="FormQta" class="form-label">ID</label>
+                            <h5 class="mt-2" id="FormId" runat="server"></h5>
                         </div>
                     </div>
 
-
-                    <button id="SubmitChageButton" runat="server"  class="btn btn-dark" onclick="SubmitChageButton_Click">Submit</button>
-                </form>
+                    <asp:Button CssClass="btn btn-outline-warning"  ID="ReturnButton" runat="server" Text="<" Visible="false" OnClick="ReturnButton_Click"/>
+                    <asp:Button class="btn btn-dark" ID="SubmitChageButton2" runat="server" Text="Invia Modifiche" OnClick="SubmitChageButton_Click" Visible="false" />
+                    <asp:Button id="DeleteButton" CssClass="btn btn-outline-danger" runat="server" Text="Elimina Prodotto" OnClick="DeleteButton_Click" Visible="false"/>
+                    <asp:Button ID="AddButton" CssClass="btn btn-outline-warning" runat="server" Text="Aggiungi Prodotto" OnClick="AddButton_Click" />
+                </div>
             </div>
         </div>
 
@@ -90,7 +98,7 @@
                         </div>
                         <div class="row ps-0 mb-3">
                             <div class="col-12 ps-0">
-                                <asp:Button CssClass="btn btn-outline-light w-100 ms-0" ID="modifyProduct" CommandArgument='<%#Eval("Nome") + "," + Eval("Descrizione") + "," + Eval("ImgUrl") + "," + Eval("Prezzo") + "," + Eval("Qta") %>  ' Text="Modifica Prodotto" runat="server" OnClick="modifyProduct_Click" />
+                                <asp:Button CssClass="btn btn-outline-light w-100 ms-0" ID="modifyProduct" CommandArgument='<%#Eval("Nome") + "*" + Eval("Descrizione") + "*" + Eval("ImgUrl") + "*" + Eval("Prezzo") + "*" + Eval("Qta") + "*" + Eval("IDProdotto") %>  ' Text="Modifica Prodotto" runat="server" OnClick="modifyProduct_Click" />
                             </div>
                         </div>
 

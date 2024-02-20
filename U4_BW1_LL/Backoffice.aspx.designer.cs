@@ -15,6 +15,15 @@ namespace U4_BW1_LL
     {
 
         /// <summary>
+        /// Controllo controllo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl controllo;
+
+        /// <summary>
         /// Controllo Button1.
         /// </summary>
         /// <remarks>
@@ -96,13 +105,49 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl FormQta;
 
         /// <summary>
-        /// Controllo SubmitChageButton.
+        /// Controllo FormId.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton SubmitChageButton;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FormId;
+
+        /// <summary>
+        /// Controllo ReturnButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ReturnButton;
+
+        /// <summary>
+        /// Controllo SubmitChageButton2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SubmitChageButton2;
+
+        /// <summary>
+        /// Controllo DeleteButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeleteButton;
+
+        /// <summary>
+        /// Controllo AddButton.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddButton;
 
         /// <summary>
         /// Controllo BackOfficeProductsRepaeter.
