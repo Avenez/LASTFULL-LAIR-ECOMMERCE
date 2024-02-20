@@ -22,7 +22,7 @@
                         <div>
 
                         </div>
-                        <asp:Button ID="ButtonAddToCart" runat="server" Text="Acquista" class="btn sexyPinkBg me-2" OnClick="AddToCart" />
+                        <asp:Button ID="ButtonAddToCart" runat="server" Text="Aggiungi" class="btn sexyPinkBg me-2" OnClick="AddToCart" />
                         <%--<input type="number" id="quantity" name="quantity" value="0" min="1" max="<%# Eval("Qta") %>" step="1" class="quantityInput">--%>
                         <asp:TextBox runat="server" TextMode="Number" ID="selectedQuantity" value="0" min="1" class="quantityInput" />
                     </div>

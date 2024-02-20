@@ -16,7 +16,7 @@ namespace U4_BW1_LL
 
                 foreach (int id in cartMap.Keys)
                 {
-                    Product prodotto = SelectProductById(id);
+                    Product prodotto = SelectProductById(id, cartMap[id]);
                     products.Add(prodotto);
                 }
 
@@ -30,7 +30,7 @@ namespace U4_BW1_LL
             }
         }
 
-        protected Product SelectProductById(int id)
+        protected Product SelectProductById(int id, int qta)
         {
             Product prodotto = null;
 
@@ -51,8 +51,8 @@ namespace U4_BW1_LL
                         rdr["Nome"].ToString(),
                         rdr["Descrizione"].ToString(),
                         rdr["ImgUrl"].ToString(),
-                        Convert.ToDouble(rdr["Prezzo"]),
-                        Convert.ToInt16(rdr["Qta"])
+                        Convert.ToDouble(rdr["Prezzo"]) * qta,
+                        qta
                         );
                 }
             }

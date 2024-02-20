@@ -35,9 +35,21 @@ textarea {
     background-color: #5C0F39;
     color: #FFACD2;
 }
+.sexyPinkBg2 {
+    background-color: #FFACD2;
+    color: #5C0F39;
+}
 .sexyCardBg {
     background-color: #FFACD2;
 }
+.sexyBtn {
+    background-color: #FFACD2;
+    color: #5C0F39;
+}
+    .sexyBtn:hover {
+        background-color: #5C0F39;
+        color: #FFACD2;
+    }
 .quantityInput {
     width: 50px;
     border-radius: 5px;

@@ -60,13 +60,13 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl totalPrice;
 
         /// <summary>
-        /// Controllo Button1.
+        /// Controllo ButtonAcquista.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button ButtonAcquista;
 
         /// <summary>
         /// Controllo RemoveAllBtn.

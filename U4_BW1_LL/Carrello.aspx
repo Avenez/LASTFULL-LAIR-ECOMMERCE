@@ -6,14 +6,15 @@
     <asp:Repeater ID="CartRepeater" runat="server">
         <ItemTemplate>
             <div class="col-12">
-                <div style="height: 100px" class="d-flex justify-content-between align-items-center border border-dark bg-info">
+                <div style="height: 100px" class="d-flex justify-content-between align-items-center border border-dark sexyCardBg rounded">
                     <div class="h-100 d-flex">
-                        <div class="h-100 p-2 me-3">
+                        <div class="d-flex justify-content-center h-100 p-2 me-3" style="width: 90px">
                             <img src='<%# Eval("ImgUrl") %>' class="h-100" alt='<%# Eval("Nome") %>'>
                         </div>
                         <div class="py-2">
                             <h5><%# Eval("Nome") %></h5>
-                            <p><%# Eval("Prezzo", "{0:c2}") %></p>
+                            <p class="mb-0"><%# Eval("Prezzo", "{0:c2}") %></p>
+                            <p>Qta: <%# Eval("Qta") %></p>
                         </div>
                     </div>
                     <div class="me-3">
@@ -25,8 +26,8 @@
     </asp:Repeater>
     <div class="d-flex justify-content-between align-items-center mt-3">
         <div>
-            <p id="totalPrice" class="mb-0" runat="server"></p>
-            <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Acquista" />
+            <p id="totalPrice" class="sexyPink2 mb-0" runat="server"></p>
+            <asp:Button class="btn sexyBtn"  ID="ButtonAcquista" runat="server" Text="Acquista" />
         </div>
         <asp:Button CssClass="btn btn-danger" ID="RemoveAllBtn" runat="server" Text="Rimuovi tutto" />
     </div>
