@@ -91,8 +91,9 @@ namespace U4_BW1_LL
 
         protected void BtnPerRegistrarti_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(accediNome.Text) || !string.IsNullOrEmpty(accediPassword.Text))
+            if (!string.IsNullOrEmpty(accediNome.Text) && !string.IsNullOrEmpty(accediPassword.Text))
             {
+
                 // inserisci il nuovo utente nel DB con admin false 
                 string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
                 SqlConnection conn = new SqlConnection(connectionString);
@@ -105,6 +106,17 @@ namespace U4_BW1_LL
                     cmd.Parameters.AddWithValue("@password", accediPassword.Text);
 
                     cmd.ExecuteNonQuery();
+                    alertRegistrationSuccess.Visible = true;
+                    registrationSuccessTxt.InnerText = "Registrazione avvenuta con successo Baby...";
+                    InjectSetTimeout("registrationSuccessTxt");
+                    MakeFieldsEmpty();
+                }
+                catch (SqlException)
+                {
+                    alertRegistrationSuccess.Visible = true;
+                    registrationSuccessTxt.InnerText = "Il nome è gia presente, inseriscine uno diverso Tesoruccio...";
+                    MakeFieldsEmpty();
+                    InjectSetTimeout("registrationSuccessTxt");
                 }
                 catch (Exception ex)
                 {
@@ -114,10 +126,6 @@ namespace U4_BW1_LL
                 finally
                 {
                     conn.Close();
-                    alertRegistrationSuccess.Visible = true;
-                    registrationSuccessTxt.InnerText = "Registrazione avvenuta con successo Baby...";
-                    InjectSetTimeout("registrationSuccessTxt");
-                    MakeFieldsEmpty();
                 }
             }
             else

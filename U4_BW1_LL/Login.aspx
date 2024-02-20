@@ -68,7 +68,7 @@
                     <div id="alert" runat="server" class="row justify-content-center">
                         <div class="col-12">
                             <div class="text-center colorNotFluo mt-5">
-                                <h5 class="maybeSexy fs-1">Inserisci nome e cognome Birichino...</h5>
+                                <h5 class="maybeSexy fs-1">Inserisci Nome e Password Birichino...</h5>
                             </div>
                         </div>
                     </div>
