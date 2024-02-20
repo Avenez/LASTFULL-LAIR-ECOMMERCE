@@ -97,7 +97,7 @@ textarea {
 
 .sexyZoom {
     transform: scale(1);
-    transition: all ease 1s;
+    transition: all ease 300ms;
 }
 
 .sexyZoom:hover {

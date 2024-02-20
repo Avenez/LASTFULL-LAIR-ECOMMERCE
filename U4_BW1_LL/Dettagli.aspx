@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main style="background-color: #FFACD2" class="p-5">
         <div class="container">
-            <div class="d-sm-inline-block d-lg-flex row-cols-sm-1 row-cols-lg-2" >
+            <div class="d-sm-inline-block d-lg-flex row-cols-sm-1 row-cols-lg-2">
                 <div class="me-5 h-100 col">
                     <asp:Image ID="imgProdotto" runat="server" CssClass="rounded img-fluid" />
                 </div>
@@ -12,10 +12,10 @@
                         <h2 class="h1 sexyPink">
                             <asp:Label ID="lblNomeProdotto" runat="server" /></h2>
 
-                                <div class="sexyPink" style="height: 350px;" >
-                                    <strong>Descrizione:</strong>
-                                    <p ID="lblDescrizioneProdotto" runat="server" class="sexyPink h-100 scrollPersonalize" style="overflow-x: clip; overflow-y:auto "> </p>
-                                </div>
+                        <div class="sexyPink" style="height: 350px;">
+                            <strong>Descrizione:</strong>
+                            <p id="lblDescrizioneProdotto" runat="server" class="sexyPink h-100 scrollPersonalize" style="overflow-x: clip; overflow-y: auto"></p>
+                        </div>
 
                     </div>
                     <div class="mt-2">
@@ -44,11 +44,8 @@
                     </div>
                 </div>
             </section>
-
-
       </div>
         
     </main>
 </asp:Content>
    
-</asp:Content>
