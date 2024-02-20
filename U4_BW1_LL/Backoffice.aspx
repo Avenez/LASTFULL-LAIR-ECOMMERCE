@@ -69,35 +69,35 @@
             <div class="col">
                 <asp:Repeater ID="BackOfficeProductsRepaeter" runat="server">
                     <ItemTemplate>
-                        <div class="row border border-2 rounded-3 mb-1  p-2 text-white ">
-                            <div class="col-1  border-2 border-end">
+                        <div class="row  mb-1  p-2 text-white row-cols-sm-3  ">
+                            <div class="col-2   border  border-2">
                                 <h3>ID:</h3>
                                 <h4 class="text-truncate"><%#Eval("IDProdotto") %></h4>
                             </div>
-                            <div class="col-2  border-2 border-end">
+                            <div class="col-10   border  border-2 ">
                                 <h3>Nome:</h3>
                                 <h4 class="text-truncate"><%#Eval("Nome") %></h4>
                             </div>
-                            <div class="col-4  border-2 border-end">
+                            <div class="col-6 border  border-2">
                                 <h3>Descrizione:</h3>
                                 <h4 class="text-truncate"><%#Eval("Descrizione") %></h4>
                             </div>
-                            <div class="col-2  border-2 border-end">
+                            <div class="col-6  border  border-2 ">
                                 <!--<img src="<%#Eval("imgurl") %>" alt="sextoy" /> -->
                                 <h3>ImgUrl:</h3>
                                 <h4 class="text-truncate"><%#Eval("ImgUrl") %></h4>
                             </div>
-                            <div class="col-2  border-2 border-end">
+                            <div class="col-6  border  border-2">
                                 <h3>Prezzo:</h3>
                                 <h4 class="text-truncate"><%#Eval("Prezzo", "{0:c2}") %></h4>
                             </div>
-                            <div class="col-1  ">
+                            <div class="col-6  border  border-2">
                                 <h3>Qta:</h3>
-                                <h4 class="text-truncate"><%#Eval("Qta") %></h4>
+                                <h4 class="text-truncate "><%#Eval("Qta") %></h4>
                             </div>
                         </div>
-                        <div class="row ps-0 mb-3">
-                            <div class="col-12 ps-0">
+                        <div class="row mb-3">
+                            <div class="col-12">
                                 <asp:Button CssClass="btn btn-outline-light w-100 ms-0" ID="modifyProduct" CommandArgument='<%#Eval("Nome") + "*" + Eval("Descrizione") + "*" + Eval("ImgUrl") + "*" + Eval("Prezzo") + "*" + Eval("Qta") + "*" + Eval("IDProdotto") %>  ' Text="Modifica Prodotto" runat="server" OnClick="modifyProduct_Click" />
                             </div>
                         </div>
