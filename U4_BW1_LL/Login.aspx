@@ -42,20 +42,20 @@
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="text-center colorNotFluo mb-3 colorNotFluo">
-                                <h5 id="accediTxt" class=" maybeSexy fs-1">Accedi </h5>
-                                <h5 id="registerTxt" class="d-none maybeSexy fs-1">Registrati </h5>
+                                <h5 id="accediTxt" class=" fs-1">Accedi </h5>
+                                <h5 id="registerTxt" class="d-none fs-1">Registrati </h5>
                             </div>
                         </div>
 
                         <div id="divAccedi" class="colorNotFluo d-flex flex-column w-50 p-5 pb-3 border border-1 rounded-3 border-white position-relative">
                             <asp:Image ID="heartImg" runat="server" Width="50px" ImageUrl="~/assets/imgs/-1-kxn9tz.svg" CssClass="position-absolute end-0 top-0 m-3 " />
-                            <asp:Label ID="Label1" runat="server"><p class="m-0 maybeSexy my-2 fs-3">Nome</p></asp:Label>
+                            <asp:Label ID="Label1" runat="server"><p class="m-0 my-2 fs-3">Nome</p></asp:Label>
                             <asp:TextBox CssClass="rounded rounded-2" ID="accediNome" runat="server"></asp:TextBox>
-                            <asp:Label ID="Label2" runat="server"><p class="m-0 maybeSexy my-2 fs-3">Password</p> </asp:Label>
+                            <asp:Label ID="Label2" runat="server"><p class="m-0 my-2 fs-3">Password</p> </asp:Label>
                             <asp:TextBox TextMode="Password" ID="accediPassword" runat="server"></asp:TextBox>
                             <div class="d-flex justify-content-center mt-4 mb-0">
-                                <asp:Button ID="BtnPerAccedere" runat="server" Text="Cedi alla lussuria..." CssClass="maybeSexy colorNotFluo p-2 fs-3 rounded-2 heartbeat"  OnClick="accediBtn_Click"/>
-                                  <asp:Button ID="BtnPerRegistrarti" runat="server" Text="Concediti Al peccato Originale..." CssClass="maybeSexy colorNotFluo p-2 fs-3 rounded-2 heartbeat d-none"  OnClick="BtnPerRegistrarti_Click"/>
+                                <asp:Button ID="BtnPerAccedere" runat="server" Text="Cedi alla lussuria..." CssClass="colorNotFluo p-2 fs-3 rounded-2 heartbeat"  OnClick="accediBtn_Click"/>
+                                  <asp:Button ID="BtnPerRegistrarti" runat="server" Text="Concediti Al peccato Originale..." CssClass="colorNotFluo p-2 fs-3 rounded-2 heartbeat d-none"  OnClick="BtnPerRegistrarti_Click"/>
                             </div>
                         </div>                   
                         
@@ -66,7 +66,7 @@
                     <div id="alert" runat="server" class="row justify-content-center">
                         <div class="col-12">
                             <div class="text-center colorNotFluo mt-5">
-                                <h5 class="maybeSexy fs-1">Inserisci Nome e Password Birichino...</h5>
+                                <h5 class="fs-1">Inserisci Nome e Password Birichino...</h5>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                     <div id="alertNot_foundOrSuccess" runat="server" class="row justify-content-center">
                         <div class="col-12">
                             <div class="text-center colorNotFluo mt-5">
-                                <h5 id="notFound_OrSuccess" runat="server" class="maybeSexy fs-1"></h5>
+                                <h5 id="notFound_OrSuccess" runat="server" class="fs-1"></h5>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                     <div id="alertRegistrationSuccess" runat="server" class="row justify-content-center">
                         <div class="col-12">
                             <div class="text-center colorNotFluo mt-5">
-                                <h5 id="registrationSuccessTxt" runat="server" class="maybeSexy fs-1"></h5>
+                                <h5 id="registrationSuccessTxt" runat="server" class="fs-1"></h5>
                             </div>
                         </div>
                     </div>

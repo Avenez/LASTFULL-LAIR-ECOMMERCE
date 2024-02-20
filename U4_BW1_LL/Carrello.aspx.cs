@@ -13,7 +13,6 @@ namespace U4_BW1_LL
             Dictionary<int, int> cartMap = (Dictionary<int, int>)Session["cart"];
             if (Session["cart"] != null && cartMap.Keys.Count > 0)
             {
-
                 foreach (int id in cartMap.Keys)
                 {
                     Product prodotto = SelectProductById(id, cartMap[id]);
@@ -63,6 +62,12 @@ namespace U4_BW1_LL
             finally { conn.Close(); }
 
             return prodotto;
+        }
+
+        protected void btnSvuotaCarrello_Click(object sender, EventArgs e)
+        {
+            Session["cart"] = null;
+            Response.Redirect("Carrello.aspx");
         }
     }
 }

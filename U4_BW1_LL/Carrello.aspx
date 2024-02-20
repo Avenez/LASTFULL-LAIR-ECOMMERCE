@@ -29,7 +29,7 @@
             <p id="totalPrice" class="sexyPink2 mb-0" runat="server"></p>
             <asp:Button class="btn sexyBtn" ID="ButtonAcquista" runat="server" Text="Acquista" />
         </div>
-        <asp:Button CssClass="btn btn-danger" ID="RemoveAllBtn" runat="server" Text="Rimuovi tutto" />
+        <asp:Button CssClass="btn btn-danger" ID="RemoveAllBtn" runat="server" Text="Rimuovi tutto" OnClick="btnSvuotaCarrello_Click"/>
     </div>
 </div>
 </asp:Content>

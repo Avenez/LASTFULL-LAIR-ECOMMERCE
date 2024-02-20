@@ -1,4 +1,4 @@
-﻿@font-face {
+﻿/*@font-face {
     font-family: 'SexyFont';
     src: url('../../Oraghon Script.ttf') format('truetype');
 }
@@ -6,7 +6,7 @@
 @font-face {
     font-family: 'MaybeSexy';
     src: url('../../Ronsley Script.ttf') format('truetype');
-}
+}*/
 
 .navBarFluo {
     background-color: #ed0b91;
@@ -24,13 +24,13 @@
     cursor: pointer;
 }
 
-.SeducentFont {
+/*.SeducentFont {
     font-family: 'SexyFont';
 }
 
 .maybeSexy {
     font-family: 'MaybeSexy';
-}
+}*/
 
 .btnFluoSexy {
     
