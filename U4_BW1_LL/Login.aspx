@@ -74,7 +74,7 @@
                     </div>
 
                     <%-- se utente non trovato o se login avvenuto con successo --%>
-                    <div id="Div1" runat="server" class="row justify-content-center">
+                    <div id="alertNot_foundOrSuccess" runat="server" class="row justify-content-center">
                         <div class="col-12">
                             <div class="text-center colorNotFluo mt-5">
                                 <h5 id="notFound_OrSuccess" runat="server" class="maybeSexy fs-1"></h5>

@@ -13,6 +13,7 @@ namespace U4_BW1_LL
         protected void Page_Load(object sender, EventArgs e)
         {
             alert.Visible = false;
+            notFound_OrSuccess.Visible = false;
         }
 
         protected void accediBtn_Click(object sender, EventArgs e)
@@ -82,10 +83,10 @@ namespace U4_BW1_LL
                     conn.Close();
                 }
             }
-
             else
             {
                 alert.Visible = true;
+                ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", "setTimeout(function() { document.getElementById('alert').style.display = 'none'; }, 3000);", true);
 
             }
 
@@ -100,12 +101,16 @@ namespace U4_BW1_LL
 
         protected void LoginSuccessful(string nome, string cognome)
         {
+            notFound_OrSuccess.Visible = true;
             notFound_OrSuccess.InnerText = $"Bentornato Mr.{nome} {cognome}...";
+            ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", "setTimeout(function() { document.getElementById('alertNot_foundOrSuccess').style.display = 'none'; }, 3000);", true);
         }
 
         protected void UtenteNonTrovato(string nome)
         {
-            notFound_OrSuccess.InnerText = $"Utente {nome} non trovato. Prova a inseirire di nuovo Nome e Password Tesoro...";
+            notFound_OrSuccess.Visible = true;
+            notFound_OrSuccess.InnerText = $"Utente {nome} non trovato. Reinserisci Nome e Password Tesoro...";
+            ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", "setTimeout(function() { document.getElementById('alertNot_foundOrSuccess').style.display = 'none'; }, 3000);", true);
         }
 
         protected void BtnPerRegistrarti_Click(object sender, EventArgs e)

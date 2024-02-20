@@ -114,13 +114,13 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert;
 
         /// <summary>
-        /// Controllo Div1.
+        /// Controllo alertNot_foundOrSuccess.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertNot_foundOrSuccess;
 
         /// <summary>
         /// Controllo notFound_OrSuccess.
