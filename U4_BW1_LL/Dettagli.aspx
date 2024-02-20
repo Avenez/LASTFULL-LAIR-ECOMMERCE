@@ -29,6 +29,20 @@
                     </div>
                 </div>
             </div>
-        </div>
+
+            <section runat="server" id="sectionalertAddTocart" class="mt-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-3 d-flex justify-content-center w-50 m-auto sexyPinkBg rounded-4">
+                            <h4 class="m-auto" runat="server" id="alertProdottoAggiunto">Prodotto Aggiunto al Carrello... Mascalzone...</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+      </div>
+        
     </main>
+   
 </asp:Content>

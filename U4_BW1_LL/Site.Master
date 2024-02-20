@@ -39,7 +39,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark" style="background-color: #0A0A0A">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark position-sticky top-0" style="background-color: #0A0A0A; z-index:999;">
             <div class="container justify-content-between">
                 <div class="collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
@@ -52,9 +52,12 @@
                         <img src=".\assets\imgs\Lustlogo.png" style="width: 180px" alt="LustLogo" />
                     </a>
                 </div>
+                
                 <div class="d-flex align-items-baseline">
+                    <h6 runat="server" id="Benvenuto" style="color:#ED0B91" class="me-3"> </h6>
                     <a class="nav-link me-2" runat="server" href="~/Carrello.aspx"><i class="bi bi-cart2 fs-4" style="color: #ed0b91"></i></a>
                     <a class="nav-link" runat="server" href="~/"><i class="bi bi-person fs-4" style="color: #ed0b91"></i></a>
+                     <a href="~/Login.aspx" class="nav-link ms-2 stileLink"> Log Out</a>
                 </div>
 
             </div>

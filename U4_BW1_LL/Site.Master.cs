@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace U4_BW1_LL
 {
@@ -11,6 +7,9 @@ namespace U4_BW1_LL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // come richiamo la sessione
+            Benvenuto.InnerHtml = $"Benvenuto {Request.Cookies["LOGIN_COOKIEUTENTE"]["Username"]}";
+
 
         }
     }

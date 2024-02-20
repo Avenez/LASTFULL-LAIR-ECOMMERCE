@@ -10,6 +10,8 @@ namespace U4_BW1_LL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            sectionalertAddTocart.Visible = false;
+
             if (Request.QueryString["IDProdotto"] == null)
             {
                 Response.Redirect("Default.aspx");
@@ -27,6 +29,7 @@ namespace U4_BW1_LL
                     }
                 }
             }
+
         }
 
         //Metodo che cerca il prodotto sul database tramite l'id e stampa a schermo i dettagli
@@ -101,7 +104,15 @@ namespace U4_BW1_LL
                 }
 
                 Session["cart"] = cartMap;
+                InjectSetTimeout("MainContent_sectionalertAddTocart");
+
             }
+        }
+
+        protected void InjectSetTimeout(string IdDiv)
+        {
+            sectionalertAddTocart.Visible = true;
+            ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", $"setTimeout(function() {{ document.getElementById('{IdDiv}').style.display = 'none'; }}, 3000);", true);
         }
     }
 }
