@@ -5,7 +5,7 @@
     <main>
         <div class="container">
             <h1 class="display-4 sexyPink2 mb-4">Hot Products</h1>
-            <div class="row row-cols-4 gy-3">
+            <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gy-3">
                 <asp:Repeater ID="ProductsRepeater" runat="server">
                     <ItemTemplate>
                         <div class="col">

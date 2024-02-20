@@ -58,6 +58,34 @@ textarea {
     padding-inline-start: 5px;
 }
 
+.navBarFluo {
+    background-color: #5C0F39 !important;
+    color:black !important;
+}
+
+.scrollPersonalize::-webkit-scrollbar {
+    width: 10px;
+}
+   
+
+/* Track */
+.scrollPersonalize::-webkit-scrollbar-track {
+    background: #FFACD2;
+}
+
+/* Handle */
+.scrollPersonalize::-webkit-scrollbar-thumb {
+    background: #5C0F39;
+}
+
+    /* Handle on hover */
+    .scrollPersonalize::-webkit-scrollbar-thumb:hover {
+        background: #D30F7D;
+    }
+
+.object-fit-cover {
+    object-fit:cover;
+}
 .stileLink {
     cursor: pointer;
     color: #EC008C;

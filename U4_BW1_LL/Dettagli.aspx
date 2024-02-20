@@ -3,29 +3,34 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main style="background-color: #FFACD2" class="p-5">
         <div class="container">
-            <div class="d-flex" style="height: 500px">
-                <div class="me-5 h-100" >
-                    <asp:Image ID="imgProdotto" runat="server" CssClass="h-100 rounded" />
+            <div class="d-sm-inline-block d-lg-flex row-cols-sm-1 row-cols-lg-2" >
+                <div class="me-5 h-100 col">
+                    <asp:Image ID="imgProdotto" runat="server" CssClass="rounded img-fluid" />
                 </div>
-                <div class="d-flex flex-column justify-content-between">
+                <div class="d-flex flex-column justify-content-between col">
                     <div>
                         <h2 class="h1 sexyPink">
                             <asp:Label ID="lblNomeProdotto" runat="server" /></h2>
-                        <p class="sexyPink"><strong>Descrizione:</strong>
-                            <asp:Label ID="lblDescrizioneProdotto" runat="server" class="sexyPink" /></p>
+
+                                <div class="sexyPink" style="height: 350px;" >
+                                    <strong>Descrizione:</strong>
+                                    <p ID="lblDescrizioneProdotto" runat="server" class="sexyPink h-100 scrollPersonalize" style="overflow-x: clip; overflow-y:auto "> </p>
+                                </div>
+
                     </div>
-                    <div>
+                    <div class="mt-2">
 
-                    <p class="sexyPink font-monospace mb-0"><strong>Prezzo (1pz):</strong>
-                        <asp:Label ID="lblPrezzoProdotto" runat="server" CssClass="sexyPink" /></p>
-                    <div class="d-flex align-items-center">
-                        <div>
-
+                        <p class="sexyPink font-monospace mb-0 mt-5">
+                            <strong>Prezzo (1pz):</strong>
+                            <asp:Label ID="lblPrezzoProdotto" runat="server" CssClass="sexyPink" />
+                        </p>
+                        <div class="d-flex align-items-center">
+                            <div>
+                            </div>
+                            <asp:Button ID="ButtonAddToCart" runat="server" Text="Aggiungi" class="btn btn-outline-dark sexyPinkBg me-2" OnClick="AddToCart" />
+                            <%--<input type="number" id="quantity" name="quantity" value="0" min="1" max="<%# Eval("Qta") %>" step="1" class="quantityInput">--%>
+                            <asp:TextBox runat="server" TextMode="Number" ID="selectedQuantity" value="0" min="1" class="quantityInput" />
                         </div>
-                        <asp:Button ID="ButtonAddToCart" runat="server" Text="Aggiungi" class="btn sexyPinkBg me-2" OnClick="AddToCart" />
-                        <%--<input type="number" id="quantity" name="quantity" value="0" min="1" max="<%# Eval("Qta") %>" step="1" class="quantityInput">--%>
-                        <asp:TextBox runat="server" TextMode="Number" ID="selectedQuantity" value="0" min="1" class="quantityInput" />
-                    </div>
                     </div>
                 </div>
             </div>
@@ -44,5 +49,6 @@
       </div>
         
     </main>
+</asp:Content>
    
 </asp:Content>

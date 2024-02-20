@@ -52,7 +52,7 @@ namespace U4_BW1_LL
                     {
                         lblNomeProdotto.Text = reader["Nome"].ToString();
                         lblPrezzoProdotto.Text = string.Format("{0:C}", reader["Prezzo"]);
-                        lblDescrizioneProdotto.Text = reader["Descrizione"].ToString();
+                        lblDescrizioneProdotto.InnerText = reader["Descrizione"].ToString();
                         imgProdotto.ImageUrl = reader["ImgUrl"].ToString();
                         selectedQuantity.Attributes["max"] = reader["Qta"].ToString();
                     }
