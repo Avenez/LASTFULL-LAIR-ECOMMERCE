@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace U4_BW1_LL
 {
@@ -23,6 +25,7 @@ namespace U4_BW1_LL
             }
         }
 
+        //Metodo che cerca il prodotto sul database tramite l'id e stampa a schermo i dettagli
         private void CaricaDettagliProdotto(int IDProdotto)
         {
 
@@ -44,6 +47,7 @@ namespace U4_BW1_LL
                         lblPrezzoProdotto.Text = string.Format("{0:C}", reader["Prezzo"]);
                         lblDescrizioneProdotto.Text = reader["Descrizione"].ToString();
                         imgProdotto.ImageUrl = reader["ImgUrl"].ToString();
+                        selectedQuantity.Attributes["max"] = reader["Qta"].ToString();
                     }
                 }
             }
@@ -58,6 +62,38 @@ namespace U4_BW1_LL
         {
             // Reindirizza alla pagina principale
             Response.Redirect("Default.aspx");
+        }
+
+        //Metodo che aggiunge il prodotto al carrello con la quantità richiesta
+        protected void AddToCart(object sender, EventArgs e)
+        {
+            int idProduct = int.Parse(Request.QueryString["IDProdotto"]);
+            int quantity = int.Parse(selectedQuantity.Text);
+
+            //Se la quantità è 0 non accade nulla
+            if (quantity > 0)
+            {
+                //Se la sessione non esiste, ne crea una
+                if (Session["cart"] == null)
+                {
+                    Session["cart"] = new Dictionary<int, int>();
+                }
+
+                //Usiamo il dictionary che ci permette di mappare idProdotto e quantità
+                Dictionary<int, int> cartMap = (Dictionary<int, int>)Session["cart"];
+
+                //Se il prodotto non è presente nel dictionary, lo aggiunge, altrimenti aggiorna la quantità
+                if (!cartMap.Keys.Contains(idProduct))
+                {
+                    cartMap.Add(idProduct, quantity);
+                }
+                else if (cartMap.Keys.Count > 0 && cartMap.Keys.Contains(idProduct))
+                {
+                    cartMap[idProduct] += quantity;
+                }
+
+                Session["cart"] = cartMap;
+            }
         }
     }
 }

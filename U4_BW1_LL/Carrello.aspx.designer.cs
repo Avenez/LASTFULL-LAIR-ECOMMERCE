@@ -11,61 +11,70 @@ namespace U4_BW1_LL
 {
 
 
-    public partial class Dettagli
+    public partial class Carrello
     {
 
         /// <summary>
-        /// Controllo imgProdotto.
+        /// Controllo emptyCart.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgProdotto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl emptyCart;
 
         /// <summary>
-        /// Controllo lblNomeProdotto.
+        /// Controllo boh.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNomeProdotto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl boh;
 
         /// <summary>
-        /// Controllo lblDescrizioneProdotto.
+        /// Controllo cartRow.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDescrizioneProdotto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cartRow;
 
         /// <summary>
-        /// Controllo lblPrezzoProdotto.
+        /// Controllo CartRepeater.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPrezzoProdotto;
+        protected global::System.Web.UI.WebControls.Repeater CartRepeater;
 
         /// <summary>
-        /// Controllo ButtonAddToCart.
+        /// Controllo totalPrice.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonAddToCart;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl totalPrice;
 
         /// <summary>
-        /// Controllo selectedQuantity.
+        /// Controllo Button1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox selectedQuantity;
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// Controllo RemoveAllBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RemoveAllBtn;
     }
 }
