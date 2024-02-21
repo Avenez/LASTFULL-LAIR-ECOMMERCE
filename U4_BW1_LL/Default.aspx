@@ -10,9 +10,9 @@
                     <ItemTemplate>
                         <div class="col">
                             <a href="Dettagli.aspx?IDProdotto=<%# Eval("IDProdotto")  %>" class="text-decoration-none">
-                                <div class="card sexyCardBg bg-opacity-25 border border-0 rounded shadow">
+                                <div class="card sexyCardBg bg-opacity-25 border border-0 rounded shadow sexyZoom">
                                     <div class="d-flex justify-content-around overflow-hidden">
-                                        <img class="card-img-top sexyZoom" src="<%# Eval("ImgUrl") %>" alt="Card image cap" style="height: 350px; width: auto">
+                                        <img class="card-img-top" src="<%# Eval("ImgUrl") %>" alt="Card image cap" style="height: 350px; width: auto">
                                     </div>
                                     <div class="card-body sexyPink2 rounded-bottom" style="background-color: black; height: 100px">
                                         <h5 class="card-title text-truncate"><%# Eval("Nome") %></h5>
