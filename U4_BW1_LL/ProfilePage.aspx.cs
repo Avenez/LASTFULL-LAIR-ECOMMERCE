@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web.UI.WebControls;
 
 namespace U4_BW1_LL
 {
@@ -18,6 +20,7 @@ namespace U4_BW1_LL
             divInsertNomePassword.Visible = false;
             alertInserisciDati.Visible = false;
             divFinaleCambioNome.Visible = false;
+            riepilogoOrdini.Visible = false;
 
             if (Request.Cookies["LOGIN_COOKIEUTENTE"] != null)
             {
@@ -228,6 +231,138 @@ namespace U4_BW1_LL
             ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", $"setTimeout(function() {{ document.getElementById('{IdDiv}').style.display = 'none'; }}, 3000);", true);
         }
 
+        protected void ShowOrders(object sender, EventArgs e)
+        {
+            infoAlCaricamento.Visible = false;
+            riepilogoOrdini.Visible = true;
+            List<Order> orders = SelectOrdersById();
+
+            if (orders.Count > 0)
+            {
+                foreach (Order order in orders)
+                {
+                    List<OrderDetails> orderDetails = new List<OrderDetails>();
+                    orderDetails = SelectOrderDetails(order.Id);
+
+                    foreach (OrderDetails orderDetail in orderDetails)
+                    {
+                        string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+                        SqlConnection conn = new SqlConnection(connectionString);
+
+                        try
+                        {
+                            conn.Open();
+                            string query = "SELECT * FROM Prodotti WHERE IDProdotto = '" + orderDetail.Id + "'";
+
+                            SqlCommand cmd = new SqlCommand(query, conn);
+
+                            SqlDataReader reader = cmd.ExecuteReader();
+
+                            if (reader.Read())
+                            {
+                                orderDetail.ImgUrl = reader["ImgUrl"].ToString();
+                                orderDetail.Name = reader["Nome"].ToString();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Response.Write(ex.Message);
+                        }
+                        finally { conn.Close(); }
+                    }
+
+                    order.SetOrderDetails(orderDetails);
+                }
+
+                OrderRepeater.DataSource = orders;
+                OrderRepeater.DataBind();
+            }
+            else
+            {
+                noOrder.Attributes.Remove("style");
+            }
+        }
+
+
+
+        protected List<Order> SelectOrdersById()
+        {
+            List<Order> orders = new List<Order>();
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+                string query = "SELECT * FROM Ordini WHERE IDUtente = '" + Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"] + "'";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Order order = new Order(Convert.ToInt16(reader["IDOrdine"]), Convert.ToDouble(reader["PrezzoTotale"]), Convert.ToDateTime(reader["DataOrdine"]));
+                    orders.Add(order);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally { conn.Close(); }
+
+            return orders;
+        }
+
+        protected List<OrderDetails> SelectOrderDetails(int orderId)
+        {
+            List<OrderDetails> orders = new List<OrderDetails>();
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
+                conn.Open();
+                string query = "SELECT * FROM DettagliOrdine WHERE IDOrdine = '" + orderId + "'";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    OrderDetails order = new OrderDetails(Convert.ToInt16(reader["IDProdotto"]), Convert.ToInt16(reader["Qta"]), Convert.ToDouble(reader["PrezzoQta"]));
+                    orders.Add(order);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+            finally { conn.Close(); }
+
+            return orders;
+        }
+
+        protected void rptOrdini_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            // Controlla se l'elemento è un elemento dati
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                // Ottieni l'ordine corrente dall'elemento dati
+                Order order = (Order)e.Item.DataItem;
+
+                // Trova il repeater interno per i dettagli dell'ordine
+                Repeater orderDetailsRepeater = (Repeater)e.Item.FindControl("OrderDetailsRepeater");
+
+                // Associa la lista di dettagli dell'ordine al repeater interno
+                orderDetailsRepeater.DataSource = order.GetOrderDetails();
+                orderDetailsRepeater.DataBind();
+            }
+        }
 
     }
 }

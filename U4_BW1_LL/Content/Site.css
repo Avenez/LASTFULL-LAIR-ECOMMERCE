@@ -8,6 +8,8 @@
 
 body {
     background-color: #5C0F39;
+    width: 100dvw;
+    overflow-x: hidden;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -115,7 +117,6 @@ border-radius: 10px;
 width:300px;
 height:300px;
 }
-
 .fotoDimensions {
     width:300px;
     height:300px;
@@ -133,3 +134,28 @@ height:300px;
 .sexyBorderTop {
     border-top: 2px solid #FFACD2;
 }
+.sexyBorderBottom {
+    border-bottom: 1px solid #FFACD2;
+}
+.sexyBorderRight {
+    border-right: 1px solid #FFACD2;
+}
+.sexyBorder {
+    border: 1px solid #FFACD2;
+}
+.siteMinHeight2 {
+    min-height: calc(100vh - 200px);
+}
+.sexyStickyCol {
+    position: sticky;
+    top: 111px;
+}
+.settingsLink {
+    color: #FFACD2;
+    border: 2px solid #FFACD2;
+}
+    .settingsLink:hover {
+        color: #FFACD2;
+        border: 2px solid #FFACD2;
+        background-color: #ffacd25c;
+    }

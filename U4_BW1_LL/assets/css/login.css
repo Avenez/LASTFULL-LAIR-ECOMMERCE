@@ -32,10 +32,6 @@
     font-family: 'MaybeSexy';
 }*/
 
-.btnFluoSexy {
-    
-}
-
 .heartbeat:hover {
     animation: heartbeat 1.5s ease-in-out infinite both;
 }

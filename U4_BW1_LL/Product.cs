@@ -20,6 +20,13 @@
         private int qta;
         public int Qta { get => qta; set => qta = value; }
 
+        public Product(int id, int qta, double prezzo)
+        {
+            this.id = id;
+            this.qta = qta;
+            this.prezzo = prezzo;
+        }
+
         public Product(int id, string nome, string descrizione, string imgUrl, double prezzo, int qta)
         {
             this.id = id;

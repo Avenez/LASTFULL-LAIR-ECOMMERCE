@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Carrello.aspx.cs" Inherits="U4_BW1_LL.Carrello" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   <h3 class="display-4 sexyPink2" style="display: none" runat="server" id="emptyCart">Il carrello è vuoto.</h3>
+    <div class="text-center py-2" style="display: none" runat="server" id="emptyCart">
+        <p class="display-6 sexyPink2">Il carrello è vuoto.</p>
+    </div>
    <h3 class="display-4 sexyPink2" runat="server" id="boh"></h3>
    <div id="cartRow" style="display: none" class="row" runat="server">
     <asp:Repeater ID="CartRepeater" runat="server">
@@ -18,8 +20,7 @@
                                 <asp:Button CssClass="btn btn-dark h-25 p-1 me-2" ID="ButtonSum" runat="server" Text=" - " CommandArgument='<%# "Sub" + "*" + Eval("Id") %> ' OnClick="ButtonChange_Click" style="height:40px; width:30px" />
                                  <p class="mb-0"> Qta: <%# Eval("Qta") %></p> 
                                 <asp:Button CssClass="btn btn-dark h-25 p-1 ms-2" ID="ButtonSub" runat="server" Text=" + " CommandArgument='<%# "Sum" + "*" +  Eval("Id") %> ' OnClick="ButtonChange_Click" style="height:40px; width:30px"/>
-                            </div>
-                           
+                            </div>                          
                         </div>
                     </div>
                     <div class="me-3">

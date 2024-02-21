@@ -102,6 +102,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\profile.css" />
     <Content Include="assets\imgs\-1-kxn9tz.svg" />
     <Content Include="About.aspx" />
     <Content Include="assets\css\login.css" />
@@ -246,6 +247,7 @@
     <Compile Include="Carrello.aspx.designer.cs">
       <DependentUpon>Carrello.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Order.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -253,6 +255,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="OrderDetails.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
