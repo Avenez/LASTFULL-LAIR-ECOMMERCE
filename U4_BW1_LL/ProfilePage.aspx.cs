@@ -10,9 +10,14 @@ namespace U4_BW1_LL
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            inputConfermaPassword.Visible = false;
-            inputinserisciNomeEPassword.Visible = false;
-            scegliCosaCambiare.Visible = false;
+
+            messaggio_Errore.Visible = false;
+            sceglicosaCambiare.Visible = false;
+            divCambiaURL.Visible = false;
+            buttonApriModale.Visible = false;
+            divInsertNomePassword.Visible = false;
+            alertInserisciDati.Visible = false;
+            divFinaleCambioNome.Visible = false;
 
             if (Request.Cookies["LOGIN_COOKIEUTENTE"] != null)
             {
@@ -43,7 +48,7 @@ namespace U4_BW1_LL
             try
             {
                 conn.Open();
-                query = $"SELECT immagineprofilo from utenti where IDUtente = {idutente} ";
+                query = $"SELECT ImmagineProfilo FROM Utenti WHERE IDUtente = {idutente} ";
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
@@ -51,22 +56,11 @@ namespace U4_BW1_LL
                 cmd.CommandText = query;
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                if (reader.Read())
                 {
-                    if (reader.HasRows)
-                    {
-                        reader.GetString(0);
-                        ImmagineProfilo.ImageUrl = reader.GetString(0);
-                        nomeProfilo.InnerText = name;
-                    }
-                    else
-                    {
-                        ImmagineProfilo.ImageUrl = "https://www.w3schools.com/howto/img_avatar.png";
-                    }
+                    ImmagineProfilo.ImageUrl = reader.GetString(0);
+                    nomeProfilo.InnerText = name;
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -87,36 +81,151 @@ namespace U4_BW1_LL
         protected void SettingsClick(object sender, EventArgs e)
         {
             infoAlCaricamento.Visible = false;
-            inputConfermaPassword.Visible = false;
-            inputinserisciNomeEPassword.Visible = false;
-            scegliCosaCambiare.Visible = true;
+            sceglicosaCambiare.Visible = true;
         }
 
         protected void Cambia_ImmagineProfilo(object sender, EventArgs e)
         {
-            inputinserisciNomeEPassword.Visible = true;
-            scegliCosaCambiare.Visible = false;
+            divCambiaURL.Visible = true;
+            buttonApriModale.Visible = true;
 
-            checkIfNomeEPasswordmatchano();
+            string IdUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"];
+
+            if (string.IsNullOrEmpty(TextBoxURLImmagine.Text) || !TextBoxURLImmagine.Text.StartsWith("https://"))
+            {
+                messaggio_Errore.Visible = true;
+                urlNonValido.InnerText = "Inserisci un URL valido";
+                InjectSetTimeout("MainContent_messaggio_Errore");
+            }
+            else
+            {
+                string nuovoURL = TextBoxURLImmagine.Text;
+
+                string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+                SqlConnection conn = new SqlConnection(connectionString);
+
+                string query;
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+
+                    query = $"UPDATE Utenti SET Immagineprofilo = '{nuovoURL}' WHERE IDUtente = '{IdUtente}'";
+
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                    Response.Redirect("ProfilePage.aspx");
+
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("Errore ");
+                    Response.Write(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
         }
 
-
-        protected void checkIfNomeEPasswordmatchano()
+        protected void makeDivChangeImgVisible_Click(object sender, EventArgs e)
         {
-            string nomeUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["Username"];
-            string passwordUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["Password"];
+            infoAlCaricamento.Visible = true;
+            divCambiaURL.Visible = true;
+            buttonApriModale.Visible = true;
+        }
 
-            if (string.IsNullOrEmpty(TextBoxNome.Text) || string.IsNullOrEmpty(TextBoxPassword.Text))
+        protected void btnconfermaNomePassword_Click(object sender, EventArgs e)
+        {
+            divInsertNomePassword.Visible = true;
+
+            if (string.IsNullOrEmpty(textBoxVecchioNomeUtente.Text) || string.IsNullOrEmpty(textBoxPassword.Text))
             {
-                // alert hai lasciato dei campi vuoti
-            }
-            else if (nomeUtente.ToLower() == TextBoxNome.Text.ToLower() && passwordUtente.ToLower() == TextBoxPassword.Text.ToLower())
-            {
-                // puoi cambiare immagine del profilo 
-                inputinserisciNomeEPassword.Visible = false;
-                divCambiaURL.Visible = true;
+
+                alertInserisciDati.Visible = true;
+                feedbackalert.InnerText = "inserisci un nome e una password valide.";
+                InjectSetTimeout("MainContent_alertInserisciDati");
             }
 
+            else
+            {
+                string vecchioNomeUtente = textBoxVecchioNomeUtente.Text;
+                string password = textBoxPassword.Text;
+
+                string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+                SqlConnection conn = new SqlConnection(connectionString);
+
+                string query;
+                try
+                {
+
+                    string IdUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"];
+
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+
+                    query = $"SELECT username , password FROM Utenti WHERE IDUtente = '{IdUtente}' ";
+                    cmd.CommandText = query;
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        string nomeEstrattoDB = reader.GetString(0);
+                        string passwordEstrattaDB = reader.GetString(1);
+
+                        if (vecchioNomeUtente == nomeEstrattoDB && password == passwordEstrattaDB)
+                        {
+                            divInsertNomePassword.Visible = false;
+                            divFinaleCambioNome.Visible = true;
+
+                        }
+                        else if (vecchioNomeUtente != nomeEstrattoDB || password != passwordEstrattaDB)
+                        {
+                            alertInserisciDati.Visible = true;
+                            feedbackalert.InnerText = "nome o password non coincidono. Riprova";
+                            InjectSetTimeout("MainContent_alertInserisciDati");
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("Errore ");
+                    Response.Write(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+        }
+
+        protected void FinalNameChange_click(object sender, EventArgs e)
+        {
+            divFinaleCambioNome.Visible = true;
+            string nuovoNome = TxtNuovoNome.Text;
+
+
+            if (string.IsNullOrEmpty(nuovoNome))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "showAlert", $"window.alert('inserisci un nuovo nome utente');", true);
+            }
+            else
+            {
+                Response.Write("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            }
+        }
+
+        protected void makeDivChangeNomeVisible(object sender, EventArgs e)
+        {
+            divInsertNomePassword.Visible = true;
+        }
+        protected void InjectSetTimeout(string IdDiv)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", $"setTimeout(function() {{ document.getElementById('{IdDiv}').style.display = 'none'; }}, 3000);", true);
         }
 
 
