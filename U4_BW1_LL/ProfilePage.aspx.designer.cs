@@ -114,13 +114,13 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// Controllo TextBox2.
+        /// Controllo TextBoxNome.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxNome;
 
         /// <summary>
         /// Controllo Label3.
@@ -132,13 +132,13 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// Controllo TextBox3.
+        /// Controllo TextBoxPassword.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxPassword;
 
         /// <summary>
         /// Controllo scegliCosaCambiare.
@@ -148,5 +148,32 @@ namespace U4_BW1_LL
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl scegliCosaCambiare;
+
+        /// <summary>
+        /// Controllo divCambiaURL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCambiaURL;
+
+        /// <summary>
+        /// Controllo Label4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
+
+        /// <summary>
+        /// Controllo TextBoxURLImmagine.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxURLImmagine;
     }
 }

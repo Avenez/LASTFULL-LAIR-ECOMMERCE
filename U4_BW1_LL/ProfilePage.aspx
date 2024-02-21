@@ -32,19 +32,26 @@
                     </div>
 
                     <%-- div dove cotrolla vecchio nome e se corrisposnde inserisci nuovo nome --%>
-                    <div  id="inputinserisciNomeEPassword" runat="server" class="d-flex flex-column">
-                        <asp:Label ID="Label2" runat="server" Text="Label">Inserisci nome:</asp:Label>
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                        <asp:Label ID="Label3" runat="server" Text="Label">Inserisci Password:</asp:Label>
-                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                    <div  id="inputinserisciNomeEPassword" runat="server" class="d-flex flex-column vh-100 justify-content-center align-items-center">
+                        <div class="d-flex flex-column w-50">
+                            <asp:Label ID="Label2" runat="server" Text="Label">Inserisci nome:</asp:Label>
+                            <asp:TextBox ID="TextBoxNome" runat="server"></asp:TextBox>
+                            <asp:Label ID="Label3" runat="server" Text="Label">Inserisci Password:</asp:Label>
+                            <asp:TextBox ID="TextBoxPassword" runat="server"></asp:TextBox>
+                        </div>
+                        
                     </div>
 
-
-                    <div class="vh-100 d-flex justify-content-center align-items-center gap-3 flex-column" id="scegliCosaCambiare" runat="server">
-                        <div> <button runat="server" class="btn btn-outline-warning fs-3" onclick="Cambia_ImmagineProfilo">Cambia Immagine di profilo</button></div>
-                        <div> <button runat="server" class="btn btn-outline-warning fs-3">Cambia nome utente </button></div>
+                    <%-- scegli se cambiare immagineprofilo o nome utente --%>
+                    <div id="scegliCosaCambiare" class="vh-100 d-flex justify-content-center align-items-center gap-3 flex-column"  runat="server">                     
+                            <asp:Button CssClass="btn btn-outline-warning fs-3" OnClick="Cambia_ImmagineProfilo" Text="Cambia Immagine di profilo" runat="server" />
+                            <asp:Button Text="Cambia nome utente" runat="server" class="btn btn-outline-warning fs-3" />                                            
                     </div>
 
+                    <div runat="server" id="divCambiaURL">
+                        <asp:Label ID="Label4" runat="server" Text="Label">Inserisci URL nuova immagine:</asp:Label>
+                        <asp:TextBox ID="TextBoxURLImmagine" runat="server"></asp:TextBox>
+                    </div>
                     
 
                 </div>
