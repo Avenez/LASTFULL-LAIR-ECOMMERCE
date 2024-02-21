@@ -19,8 +19,9 @@
 
                     </div>
                     <div class="mt-2">
+                        
 
-                        <p class="sexyPink font-monospace mb-0 mt-5">
+                        <p class="sexyPink font-monospace mb-0">
                             <strong>Prezzo (1pz):</strong>
                             <asp:Label ID="lblPrezzoProdotto" runat="server" CssClass="sexyPink" />
                         </p>
@@ -29,23 +30,17 @@
                             </div>
                             <asp:Button ID="ButtonAddToCart" runat="server" Text="Aggiungi" class="btn btn-outline-dark sexyPinkBg me-2" OnClick="AddToCart" />
                             <%--<input type="number" id="quantity" name="quantity" value="0" min="1" max="<%# Eval("Qta") %>" step="1" class="quantityInput">--%>
-                            <asp:TextBox runat="server" TextMode="Number" ID="selectedQuantity" value="0" min="1" class="quantityInput" />
+                            <asp:TextBox runat="server" TextMode="Number" ID="selectedQuantity" value="0" min="1" class="quantityInput me-5" />
+                            <div runat="server" id="sectionalertAddTocart">
+                                <div class="rounded px-2 py-1" style="background-color: #f565a7">
+                                    <p class="m-auto" runat="server" id="alertProdottoAggiunto">Aggiunto al carrello</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <section runat="server" id="sectionalertAddTocart" class="mt-4">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="p-3 d-flex justify-content-center w-50 m-auto sexyPinkBg rounded-4">
-                            <h4 class="m-auto" runat="server" id="alertProdottoAggiunto">Prodotto Aggiunto al Carrello... Mascalzone...</h4>
-                        </div>
-                    </div>
-                </div>
-            </section>
-      </div>
-        
     </main>
 </asp:Content>
-   
