@@ -10,6 +10,8 @@ namespace U4_BW1_LL
     public partial class Carrello : System.Web.UI.Page
     {
         List<Product> products = new List<Product>();
+
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             Dictionary<int, int> cartMap = (Dictionary<int, int>)Session["cart"];
@@ -126,5 +128,47 @@ namespace U4_BW1_LL
 
         }
 
+        protected void ButtonAcquista_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ButtonChange_Click(object sender, EventArgs e)
+        {
+            Dictionary<int, int> cartMap = (Dictionary<int, int>)Session["cart"];
+
+            Button buttonChange = sender as Button;
+
+            string commandArgument = buttonChange.CommandArgument;
+            string[] parametri = commandArgument.Split('*');
+
+            string command = parametri[0];
+            int idProdotto = int.Parse(parametri[1]);
+
+            for (int i = products.Count - 1; i >= 0; i--)
+            {
+                var item = products[i];
+                if (item.Id == idProdotto)
+                {
+                    if (command == "Sum")
+                    {
+                        cartMap[idProdotto] += 1;
+                        Response.Write("Feed plus");
+                    }
+                    else
+                    {
+                        cartMap[idProdotto] -= 1;
+                        if (cartMap[idProdotto] == 0)
+                        {
+                            cartMap.Remove(idProdotto);
+                        }
+                        Response.Write("Feed minus");
+                    
+                }
+                }
+            }
+
+            Response.Redirect("Carrello");
+        }
     }
 }
