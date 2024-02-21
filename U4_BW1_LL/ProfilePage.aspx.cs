@@ -6,6 +6,8 @@ namespace U4_BW1_LL
 {
     public partial class ProfilePage : System.Web.UI.Page
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             inputConfermaPassword.Visible = false;
@@ -92,7 +94,31 @@ namespace U4_BW1_LL
 
         protected void Cambia_ImmagineProfilo(object sender, EventArgs e)
         {
+            inputinserisciNomeEPassword.Visible = true;
+            scegliCosaCambiare.Visible = false;
+
+            checkIfNomeEPasswordmatchano();
+        }
+
+
+        protected void checkIfNomeEPasswordmatchano()
+        {
+            string nomeUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["Username"];
+            string passwordUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["Password"];
+
+            if (string.IsNullOrEmpty(TextBoxNome.Text) || string.IsNullOrEmpty(TextBoxPassword.Text))
+            {
+                // alert hai lasciato dei campi vuoti
+            }
+            else if (nomeUtente.ToLower() == TextBoxNome.Text.ToLower() && passwordUtente.ToLower() == TextBoxPassword.Text.ToLower())
+            {
+                // puoi cambiare immagine del profilo 
+                inputinserisciNomeEPassword.Visible = false;
+                divCambiaURL.Visible = true;
+            }
 
         }
+
+
     }
 }
