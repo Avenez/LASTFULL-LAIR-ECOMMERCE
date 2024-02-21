@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Carrello.aspx.cs" Inherits="U4_BW1_LL.Carrello" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Carrello.aspx.cs" Inherits="U4_BW1_LL.Carrello" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
    <h3 class="display-4 sexyPink2" style="display: none" runat="server" id="emptyCart">Il carrello è vuoto.</h3>
    <h3 class="display-4 sexyPink2" runat="server" id="boh"></h3>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="me-3">
-                        <asp:Button class="btn btn-danger" ID="ButtonRemove" runat="server" Text="Rimuovi" />
+                        <asp:Button class="btn btn-danger" ID="ButtonRemove" runat="server" Text="Rimuovi" CommandArgument='<%#Eval("Id") %>' OnClick='ButtonRemove_Click' />
                     </div>
                 </div>
             </div>

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace U4_BW1_LL
 {
@@ -26,6 +28,25 @@ namespace U4_BW1_LL
             else
             {
                 emptyCart.Attributes.Remove("style");
+            }
+
+            if (IsPostBack)
+            {
+                // Registra il pulsante "btnEsempio" per la convalida degli eventi
+                RegisterPostBackControl();
+            }
+        }
+
+
+        private void RegisterPostBackControl()
+        {
+            foreach (RepeaterItem item in CartRepeater.Items)
+            {
+                Button removeButton = (Button)item.FindControl("ButtonRemove");
+                if (removeButton != null)
+                {
+                    ScriptManager.GetCurrent(this).RegisterPostBackControl(removeButton);
+                }
             }
         }
 
@@ -69,5 +90,41 @@ namespace U4_BW1_LL
             Session["cart"] = null;
             Response.Redirect("Carrello.aspx");
         }
+
+        protected void ButtonRemove_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+            // Creiamo una nuova lista per memorizzare gli elementi da rimuovere
+            List<Product> itemsToRemove = new List<Product>();
+
+            // Iteriamo sulla lista dei prodotti
+            foreach (var item in products)
+            {
+                if (item.Id.ToString() == button.CommandArgument)
+                {
+                    // Aggiungiamo l'elemento da rimuovere alla lista apposita
+                    itemsToRemove.Add(item);
+                }
+            }
+
+            // Rimuoviamo gli elementi dalla lista dei prodotti
+            foreach (var itemToRemove in itemsToRemove)
+            {
+                products.Remove(itemToRemove);
+            }
+
+            //---------------------------------------------------------------------
+
+            Dictionary<int, int> cartMap = (Dictionary<int, int>)Session["cart"];
+
+            int key = int.Parse(button.CommandArgument);
+
+            cartMap.Remove(key);
+
+            Response.Redirect("Carrello");
+
+        }
+
     }
 }
