@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ProfilePage.aspx.cs" Inherits="U4_BW1_LL.ProfilePage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <main class="smaller-main text-light">
+    <main class="text-light">
         <div class="container">
             <div class="row">
                 <%-- aside con riepilogo ordini settings e backoff --%>
@@ -16,44 +16,67 @@
                 <div class="col-8">
 
                     <%-- div mostrato al caricamento della pagina con nome immagine dell utente  --%>
-                    <div id="infoAlCaricamento" runat="server"  class="d-flex justify-content-center align-items-center flex-column vh-100 d-block">
+                    <div id="infoAlCaricamento" runat="server" class="d-flex justify-content-center align-items-center flex-column vh-100 d-block">
 
-                        <asp:Image ID="ImmagineProfilo" runat="server" CssClass="fotoDimensions"/>
+                        <asp:Image ID="ImmagineProfilo" runat="server" CssClass="fotoDimensions" />
                         <div class="mt-3">
                             <h3 runat="server" id="nomeProfilo" class="fw-normal"></h3>
-                        </div>                                             
-                    </div>
-
-                    <%-- div dove inserire password per conferma  --%>
-                    <div  id="inputConfermaPassword" runat="server" class="d-flex flex-column">
-                        <asp:Label ID="Label1" runat="server" Text="Label">Inserisci Password:</asp:Label>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                        
-                    </div>
-
-                    <%-- div dove cotrolla vecchio nome e se corrisposnde inserisci nuovo nome --%>
-                    <div  id="inputinserisciNomeEPassword" runat="server" class="d-flex flex-column vh-100 justify-content-center align-items-center">
-                        <div class="d-flex flex-column w-50">
-                            <asp:Label ID="Label2" runat="server" Text="Label">Inserisci nome:</asp:Label>
-                            <asp:TextBox ID="TextBoxNome" runat="server"></asp:TextBox>
-                            <asp:Label ID="Label3" runat="server" Text="Label">Inserisci Password:</asp:Label>
-                            <asp:TextBox ID="TextBoxPassword" runat="server"></asp:TextBox>
                         </div>
-                        
-                    </div>
-
-                    <%-- scegli se cambiare immagineprofilo o nome utente --%>
-                    <div id="scegliCosaCambiare" class="vh-100 d-flex justify-content-center align-items-center gap-3 flex-column"  runat="server">                     
-                            <asp:Button CssClass="btn btn-outline-warning fs-3" OnClick="Cambia_ImmagineProfilo" Text="Cambia Immagine di profilo" runat="server" />
-                            <asp:Button Text="Cambia nome utente" runat="server" class="btn btn-outline-warning fs-3" />                                            
-                    </div>
-
-                    <div runat="server" id="divCambiaURL">
-                        <asp:Label ID="Label4" runat="server" Text="Label">Inserisci URL nuova immagine:</asp:Label>
-                        <asp:TextBox ID="TextBoxURLImmagine" runat="server"></asp:TextBox>
+                        <div runat="server" id="divCambiaURL" class="d-flex flex-column  mt-4 text-center">
+                            <asp:Label ID="Label4" runat="server" Text="Label">Inserisci URL nuova immagine:</asp:Label>
+                            <asp:TextBox CssClass="w-100" ID="TextBoxURLImmagine" runat="server"></asp:TextBox>
+                        </div>
+                       <button id="buttonApriModale" runat="server" type="button" class="btn btn-outline-warning fs-3 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifica Immagine</button>
+                        <div class="mt-3 fs-3" id="messaggio_Errore" runat="server">
+                            <p runat="server" id="urlNonValido"></p>
+                        </div>
                     </div>
                     
 
+                    <div class="vh-100 justify-content-center align-items-center d-flex gap-3" id="sceglicosaCambiare" runat="server">
+                        <asp:Button CssClass="btn btn-outline-warning fs-3" Text="cambia foto profilo" runat="server" OnClick="makeDivChangeImgVisible_Click" />
+                        <asp:Button CssClass="btn btn-outline-warning fs-3" Text="cambia nome Utente" runat="server"  OnClick="makeDivChangeNomeVisible"/>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-black" id="staticBackdropLabel">Vuoi davvero cambiare l'ìmmagine del profilo?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <p class="text-black"> Queste modifiche non potranno essere annullate</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                    <asp:Button OnClick="Cambia_ImmagineProfilo" class="btn btn-primary" ID="Button1" runat="server" Text="Si" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div runat="server" id="divInsertNomePassword" class="d-flex flex-column vh-100 align-items-center justify-content-center">
+
+                        <asp:Label CssClass="fs-5 mt-3" ID="Label1" runat="server" Text="Label">inserisci vecchio nome Utente</asp:Label>
+                        <asp:TextBox CssClass="w-50" ID="textBoxVecchioNomeUtente" runat="server"></asp:TextBox>
+                        <asp:Label CssClass="fs-5 mt-3" ID="Label2" runat="server" Text="Label">inserisci Password </asp:Label>
+                        <asp:TextBox CssClass="w-50" ID="textBoxPassword" runat="server"></asp:TextBox>
+
+                        <asp:Button ID="btnconfermaNomePassword" runat="server" Text="Invia" CssClass="btn btn-outline-warning mt-2" OnClick="btnconfermaNomePassword_Click" />
+
+                        <div id="alertInserisciDati" runat="server">
+                            <p runat="server" id="feedbackalert"></p>
+                        </div>
+                    </div>
+
+                    <div id="divFinaleCambioNome" class="d-flex flex-column vh-100 justify-content-center align-items-center" runat="server" >
+                         <asp:Label CssClass="fs-5 mt-3" ID="Label3" runat="server" Text="Label">inserisci Nuovo nome utente </asp:Label>                      
+                        <asp:TextBox CssClass="w-50" ID="TxtNuovoNome" runat="server"></asp:TextBox>
+                        <asp:Button CssClass="btn btn-warning mt-2" ID="Button2" runat="server" Text="Modifica"  OnClick="FinalNameChange_click" />
+                    </div>
+                    
                 </div>
             </div>
         </div>
