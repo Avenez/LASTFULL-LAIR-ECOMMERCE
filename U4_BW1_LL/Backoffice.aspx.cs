@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -13,13 +9,14 @@ namespace U4_BW1_LL
 {
     public partial class Backoffice : System.Web.UI.Page
     {
-       
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             string admin = Request.Cookies["LOGIN_COOKIEUTENTE"]["Admin"];
 
-            if ( admin == "True") {
+            if (admin == "True")
+            {
 
                 if (!IsPostBack)
                 {
@@ -30,13 +27,14 @@ namespace U4_BW1_LL
 
 
             }
-            else {
+            else
+            {
 
                 Response.Redirect("Default");
-            
+
             }
 
-          
+
 
         }
 
@@ -54,63 +52,66 @@ namespace U4_BW1_LL
         }
 
 
-        protected void SearchButton_Click(object sender, EventArgs e) { 
-        
+        protected void SearchButton_Click(object sender, EventArgs e)
+        {
 
-            
-             string typeSerch = SearchType.Value;
-             string key = SearchKey.Value;
 
-                string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
 
-                SqlConnection conn = new SqlConnection(connectionString);
+            string typeSerch = SearchType.Value;
+            string key = SearchKey.Value;
 
-                try
-                {
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            {
                 string query;
-                    conn.Open();
+                conn.Open();
 
-                if (typeSerch == "Nome") {
-                     query = $"SELECT * FROM Prodotti WHERE {typeSerch} LIKE '{key}%' ORDER BY {typeSerch} ASC ";
+                if (typeSerch == "Nome")
+                {
+                    query = $"SELECT * FROM Prodotti WHERE {typeSerch} LIKE '{key}%' ORDER BY {typeSerch} ASC ";
 
                 }
-                 else if (typeSerch == "Prezzo")
+                else if (typeSerch == "Prezzo")
                 {
                     query = $"SELECT * FROM Prodotti WHERE {typeSerch} BETWEEN 0 AND {key} ORDER BY {typeSerch} DESC ";
 
                 }
 
-                else 
-                
-                
-                {  query = $"SELECT * FROM Prodotti WHERE {typeSerch} = {key} "; }
-   
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                   
-                    SqlDataReader reader = cmd.ExecuteReader();
+                else
 
-                    DataTable dt = new DataTable();
-                    dt.Load(reader);
 
-                    BackOfficeProductsRepaeter.DataSource = dt;
-                    BackOfficeProductsRepaeter.DataBind();
+                { query = $"SELECT * FROM Prodotti WHERE {typeSerch} = {key} "; }
 
-                }
-                catch (Exception ex)
-                {
-                    Response.Write("Errore ");
-                    Response.Write(ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
-                }
-  
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+
+                BackOfficeProductsRepaeter.DataSource = dt;
+                BackOfficeProductsRepaeter.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Errore ");
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
         }
 
-        
-        protected void SubmitChageButton_Click(object sender, EventArgs e) {
-            
+
+        protected void SubmitChageButton_Click(object sender, EventArgs e)
+        {
+
             string nome = FormName.Value;
             string descrizione = FormDescrizione.Value;
             string imgUrl = FormImg.Value;
@@ -118,7 +119,7 @@ namespace U4_BW1_LL
             string qta = FormQta.Value;
             string idProdotto = FormId.InnerText;
 
-            
+
 
             if (nome != "" && descrizione != "" && imgUrl != "" && prezzo != "" && qta != "" && idProdotto != "")
             {
@@ -154,33 +155,34 @@ namespace U4_BW1_LL
                     Response.Write("Errore ");
                     Response.Write(ex.Message);
                     controllo.InnerText = "Errore nel caricamento dei dati";
-                    
+
                 }
                 finally
                 { conn.Close(); }
 
             }
-            else 
+            else
             {
                 controllo.InnerText = "Per modificare è necessario inserire un prodotto";
-                
+
 
 
             }
 
         }
-        
 
-        protected void PickProducts() {
+
+        protected void PickProducts()
+        {
 
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
 
             SqlConnection conn = new SqlConnection(connectionString);
 
-            try 
-            { 
+            try
+            {
                 conn.Open();
-                
+
                 string query = $"SELECT * FROM Prodotti";
 
 
@@ -192,8 +194,8 @@ namespace U4_BW1_LL
 
                 BackOfficeProductsRepaeter.DataSource = dt;
                 BackOfficeProductsRepaeter.DataBind();
-             
-            
+
+
 
             }
             catch (Exception ex)
@@ -201,8 +203,8 @@ namespace U4_BW1_LL
                 Response.Write("Errore ");
                 Response.Write(ex.Message);
             }
-            finally 
-            { 
+            finally
+            {
                 conn.Close();
             }
 
@@ -246,7 +248,7 @@ namespace U4_BW1_LL
         {
             // Rimuovi gli zeri inutili
             int indiceVirgola = number.IndexOf(',');
-            number = number.Substring(0, indiceVirgola+3);
+            number = number.Substring(0, indiceVirgola + 3);
             //number = number.TrimEnd('0');
 
             // Sostituisci la virgola con il punto
@@ -260,46 +262,46 @@ namespace U4_BW1_LL
         protected void DeleteButton_Click(object sender, EventArgs e)
         {
 
-                string idProdotto = FormId.InnerText;
+            string idProdotto = FormId.InnerText;
 
-                string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
-                SqlConnection conn = new SqlConnection(connectionString);
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
 
-                try
-                {
-                    conn.Open();
+            try
+            {
+                conn.Open();
 
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = conn;
-                    cmd.CommandText = $" DELETE FROM Prodotti  WHERE IDProdotto = @IDProdotto";
-
-
-                    cmd.Parameters.AddWithValue("@IDProdotto", idProdotto);
-
-                    cmd.ExecuteNonQuery();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = $" DELETE FROM Prodotti  WHERE IDProdotto = @IDProdotto";
 
 
-                    controllo.InnerText = "Eliminazione avvenuta con successo";
-                    //ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", "setTimeout(function() { document.getElementById('controllo').innerText = ''; }, 3000);", true);
-                    PickProducts();
+                cmd.Parameters.AddWithValue("@IDProdotto", idProdotto);
 
-                }
-                catch (Exception ex)
-                {
-                    Response.Write("Errore ");
-                    Response.Write(ex.Message);
-                    controllo.InnerText = "Errore nel caricamento dei dati";
+                cmd.ExecuteNonQuery();
 
-                }
-                finally
-                { conn.Close(); }
+
+                controllo.InnerText = "Eliminazione avvenuta con successo";
+                //ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", "setTimeout(function() { document.getElementById('controllo').innerText = ''; }, 3000);", true);
+                PickProducts();
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Errore ");
+                Response.Write(ex.Message);
+                controllo.InnerText = "Errore nel caricamento dei dati";
+
+            }
+            finally
+            { conn.Close(); }
 
         }
 
 
 
 
-        
+
 
         protected void AddButton_Click(object sender, EventArgs e)
         {
@@ -309,7 +311,7 @@ namespace U4_BW1_LL
             string imgUrl = FormImg.Value;
             string prezzo = FormPrezzo.Value;
             string qta = FormQta.Value;
-            
+
 
 
 
@@ -332,7 +334,7 @@ namespace U4_BW1_LL
                     cmd.Parameters.AddWithValue("@ImgUrl", imgUrl);
                     cmd.Parameters.AddWithValue("@Prezzo", prezzo);
                     cmd.Parameters.AddWithValue("@Qta", qta);
-                    
+
 
                     cmd.ExecuteNonQuery();
 
@@ -376,8 +378,6 @@ namespace U4_BW1_LL
             FormPrezzo.Value = "";
             FormQta.Value = "";
             FormId.InnerText = "";
-
-
         }
     }
 }

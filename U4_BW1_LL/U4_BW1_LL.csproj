@@ -105,6 +105,9 @@
     <Content Include="assets\imgs\-1-kxn9tz.svg" />
     <Content Include="About.aspx" />
     <Content Include="assets\css\login.css" />
+    <Content Include="assets\imgs\caros1.jpg" />
+    <Content Include="assets\imgs\caros2.jpg" />
+    <Content Include="assets\imgs\caros3.jpg" />
     <Content Include="assets\imgs\LustLogo.png" />
     <Content Include="assets\imgs\LustLogo2.jpg" />
     <Content Include="assets\imgs\LustLogoOpen.jpg" />

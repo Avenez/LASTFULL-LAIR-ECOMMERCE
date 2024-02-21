@@ -36,7 +36,7 @@
                             <div class="card-body p-0">
                                 <div id="divAccedi" class="colorNotFluo d-flex flex-column p-5 pb-3 position-relative">
                                     <asp:Image ID="heartImg" runat="server" Width="50px" ImageUrl="~/assets/imgs/-1-kxn9tz.svg" CssClass="position-absolute end-0 top-0 m-3 " />
-                                    <asp:Label ID="Label1" runat="server"><p class="fw-bold m-0 my-2">Nome</p></asp:Label>
+                                    <asp:Label ID="Label1" runat="server"><p class="fw-bold m-0 my-2">Username</p></asp:Label>
                                     <asp:TextBox CssClass="sexyAlert rounded rounded-2 mb-3" ID="accediNome" runat="server"></asp:TextBox>
                                     <asp:Label ID="Label2" runat="server"><p class="fw-bold m-0 my-2">Password</p> </asp:Label>
                                     <asp:TextBox CssClass="sexyAlert rounded rounded-2" TextMode="Password" ID="accediPassword" runat="server"></asp:TextBox>

@@ -11,10 +11,10 @@ namespace U4_BW1_LL
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack && Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
-            {
-                Response.Redirect("Login.aspx");
-            }
+            //if (IsPostBack && Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
+            //{
+            //    Response.Redirect("Login.aspx");
+            //}
 
             if (Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
             {
