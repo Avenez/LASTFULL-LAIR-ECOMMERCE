@@ -17,11 +17,26 @@ namespace U4_BW1_LL
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
-                PickProducts();
+            string admin = Request.Cookies["LOGIN_COOKIEUTENTE"]["Admin"];
+
+            if ( admin == "True") {
+
+                if (!IsPostBack)
+                {
+                    PickProducts();
+                }
+
+                RegisterPostBackControl();
+
+
+            }
+            else {
+
+                Response.Redirect("Default");
+            
             }
 
-            RegisterPostBackControl();
+          
 
         }
 

@@ -5,7 +5,7 @@
         <div class="container">
             <div class="d-sm-inline-block d-lg-flex row-cols-sm-1 row-cols-lg-2">
                 <div class="me-5 h-100 col">
-                    <asp:Image ID="imgProdotto" runat="server" CssClass="rounded img-fluid" />
+                    <asp:Image ID="imgProdotto" runat="server" CssClass="rounded img-fluid w-100" />
                 </div>
                 <div class="d-flex flex-column justify-content-between col">
                     <div>
