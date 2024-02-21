@@ -59,8 +59,8 @@ textarea {
 }
 
 .navBarFluo {
-    background-color: #5C0F39 !important;
-    color:black !important;
+    background-color: #5C0F39;
+    color:black;
 }
 
 .scrollPersonalize::-webkit-scrollbar {
@@ -101,16 +101,35 @@ textarea {
 }
 
 .sexyZoom:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
+    z-index:9;
 }
 
+.smaller-main {
+    height: 90vh;
+}
+
+.foto {
+    background-color: ghostwhite;
+border-radius: 10px;
+width:300px;
+height:300px;
+}
+
+.fotoDimensions {
+    width:300px;
+    height:300px;
+    object-fit:cover;
+}
 .sexyFooter {
     background-color: black;
     color: #ed0b91;
 }
+
 .siteMinHeight {
     min-height: calc(100vh - 167px);
 }
+
 .sexyBorderTop {
     border-top: 2px solid #FFACD2;
 }

@@ -55,7 +55,7 @@
                 <div class="d-flex align-items-center">    
                     <a class="nav-link me-2" runat="server" href="~/" ><i class="bi bi-house navSexyLink fs-4"></i></a>
                     <a class="nav-link me-2" runat="server" href="~/Carrello.aspx"><i class="bi bi-cart2 navSexyLink fs-4" ></i></a>
-                    <a class="nav-link" runat="server" href="~/"><i class="bi bi-person navSexyLink fs-4 me-3" ></i></a>
+                    <a class="nav-link" runat="server" href="~/ProfilePage.aspx"><i class="bi bi-person navSexyLink fs-4 me-3" ></i></a>
                     <a runat="server" id="logoutLink" class="nav-link ms-1 stileLink" >
                         <asp:Button ID="logoutBtn" runat="server" CssClass="btn btn-transparent navSexyLink" Text="Log Out" OnClick="LogOut" />
                     </a>
