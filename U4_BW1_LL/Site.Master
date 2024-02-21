@@ -63,14 +63,16 @@
 
             </div>
         </nav>
-        <div class="container body-content">
+        <div class="container body-content siteMinHeight">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Applicazione ASP.NET</p>
-            </footer>
         </div>
+        <footer class="sexyFooter">
+            <div class="container py-3 text-center">
+                <p class="mb-0">&copy; <%: DateTime.Now.Year %> - Lusful Lair</p>
+            </div>
+        </footer>
     </form>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>

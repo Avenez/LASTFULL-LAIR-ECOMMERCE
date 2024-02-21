@@ -103,3 +103,11 @@ textarea {
 .sexyZoom:hover {
     transform: scale(1.1);
 }
+
+.sexyFooter {
+    background-color: black;
+    color: #ed0b91;
+}
+.siteMinHeight {
+    min-height: calc(100vh - 167px);
+}
