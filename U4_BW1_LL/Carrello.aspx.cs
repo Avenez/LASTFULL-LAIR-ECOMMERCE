@@ -37,6 +37,9 @@ namespace U4_BW1_LL
                 // Registra il pulsante "btnEsempio" per la convalida degli eventi
                 RegisterPostBackControl();
             }
+
+
+
         }
 
 
@@ -130,6 +133,50 @@ namespace U4_BW1_LL
 
         protected void ButtonAcquista_Click(object sender, EventArgs e)
         {
+            Dictionary<int, int> cartMap = (Dictionary<int, int>)Session["cart"];
+            DateTime ordineDateTime = DateTime.Now;
+            int IDCliente = int.Parse(Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"]);
+
+
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
+            { 
+            conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+
+                foreach (var item in cartMap)
+                {
+                    cmd.Parameters.Clear(); // Pulisci i parametri prima di aggiungerli di nuovo
+                    cmd.CommandText = $"INSERT INTO Ordini (IDProdotto, IDCliente, Qta, DataOrdine) VALUES (@IDProd, @IDClient, @QtaProd, @DataOrdine)";
+                    cmd.Parameters.AddWithValue("@IDProd", item.Key);
+                    cmd.Parameters.AddWithValue("@IDClient", IDCliente);
+                    cmd.Parameters.AddWithValue("@QtaProd", item.Value);
+                    cmd.Parameters.AddWithValue("@DataOrdine", ordineDateTime);
+
+                    cmd.ExecuteNonQuery();
+
+                    
+                }
+
+                Response.Write("Acquisto avvenuto con successo");
+                Session["cart"] = null;
+                Response.Redirect("Carrello.aspx");
+                
+            
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Errore ");
+                Response.Write(ex);
+            }
+            finally 
+            {
+                conn.Close();
+            }
+
 
         }
 
