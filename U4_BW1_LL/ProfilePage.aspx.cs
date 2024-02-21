@@ -9,7 +9,7 @@ namespace U4_BW1_LL
         protected void Page_Load(object sender, EventArgs e)
         {
             inputConfermaPassword.Visible = false;
-            inputinserisciVecchioNuovoNome.Visible = false;
+            inputinserisciNomeEPassword.Visible = false;
             scegliCosaCambiare.Visible = false;
 
             if (Request.Cookies["LOGIN_COOKIEUTENTE"] != null)
@@ -86,7 +86,7 @@ namespace U4_BW1_LL
         {
             infoAlCaricamento.Visible = false;
             inputConfermaPassword.Visible = false;
-            inputinserisciVecchioNuovoNome.Visible = false;
+            inputinserisciNomeEPassword.Visible = false;
             scegliCosaCambiare.Visible = true;
         }
 

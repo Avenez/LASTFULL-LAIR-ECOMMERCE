@@ -32,10 +32,10 @@
                     </div>
 
                     <%-- div dove cotrolla vecchio nome e se corrisposnde inserisci nuovo nome --%>
-                    <div  id="inputinserisciVecchioNuovoNome" runat="server" class="d-flex flex-column">
-                        <asp:Label ID="Label2" runat="server" Text="Label">Inserisci vecchio nome:</asp:Label>
+                    <div  id="inputinserisciNomeEPassword" runat="server" class="d-flex flex-column">
+                        <asp:Label ID="Label2" runat="server" Text="Label">Inserisci nome:</asp:Label>
                         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                        <asp:Label ID="Label3" runat="server" Text="Label">Inserisci nuovo nome:</asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text="Label">Inserisci Password:</asp:Label>
                         <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                     </div>
 
@@ -45,9 +45,7 @@
                         <div> <button runat="server" class="btn btn-outline-warning fs-3">Cambia nome utente </button></div>
                     </div>
 
-                    <div>
-
-                    </div>
+                    
 
                 </div>
             </div>
