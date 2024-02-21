@@ -10,11 +10,12 @@ namespace U4_BW1_LL
     public partial class Carrello : System.Web.UI.Page
     {
         List<Product> products = new List<Product>();
+        double totalPrice = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             Dictionary<int, int> cartMap = (Dictionary<int, int>)Session["cart"];
-            double totalPrice = 0;
+            
 
             if (Session["cart"] != null && cartMap.Keys.Count > 0)
             {
@@ -129,7 +130,7 @@ namespace U4_BW1_LL
             int key = int.Parse(button.CommandArgument);
 
             cartMap.Remove(key);
-
+            Session["cart"] = cartMap;
             Response.Redirect("Carrello");
 
         }
@@ -144,20 +145,40 @@ namespace U4_BW1_LL
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
             SqlConnection conn = new SqlConnection(connectionString);
 
+            int idOrdine = CreateOrder(IDCliente, totalPrice, ordineDateTime);
+
+            Response.Write(idOrdine);
+
+            
             try
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
 
+                
+
                 foreach (var item in cartMap)
                 {
+                    double selectedPrice = 0;
+
+                    foreach (var product in products)
+                    {
+
+
+                        if (item.Key == product.Id) { 
+                        
+                         selectedPrice = product.Prezzo;
+                        }
+                        
+                    }
+
                     cmd.Parameters.Clear(); // Pulisci i parametri prima di aggiungerli di nuovo
-                    cmd.CommandText = $"INSERT INTO Ordini (IDProdotto, IDCliente, Qta, DataOrdine) VALUES (@IDProd, @IDClient, @QtaProd, @DataOrdine)";
-                    cmd.Parameters.AddWithValue("@IDProd", item.Key);
-                    cmd.Parameters.AddWithValue("@IDClient", IDCliente);
-                    cmd.Parameters.AddWithValue("@QtaProd", item.Value);
-                    cmd.Parameters.AddWithValue("@DataOrdine", ordineDateTime);
+                    cmd.CommandText = $"INSERT INTO DettagliOrdine (IDOrdine, IDProdotto, Qta, PrezzoQta) VALUES (@IDOrdine, @IDProdotto, @Qta, @PrezzoQta)";
+                    cmd.Parameters.AddWithValue("@IDOrdine", idOrdine);
+                    cmd.Parameters.AddWithValue("@IDProdotto", item.Key);
+                    cmd.Parameters.AddWithValue("@Qta", item.Value);
+                    cmd.Parameters.AddWithValue("@PrezzoQta", selectedPrice);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -177,9 +198,59 @@ namespace U4_BW1_LL
             {
                 conn.Close();
             }
-
+            
 
         }
+
+
+        public int CreateOrder(int idUtente, double PrezzoTotale, DateTime DataOrdine)
+        {
+            int id = -1; 
+
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            
+                
+                    
+
+                    try
+                    {
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand("CreateOrder", conn);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@IDUtente", idUtente); // Correct parameter name
+                        cmd.Parameters.AddWithValue("@PrezzoTotale", PrezzoTotale);
+                        cmd.Parameters.AddWithValue("@DataOrdine", DataOrdine);
+
+                        // Adding output parameter for IDOrdine
+                        SqlParameter outputParameter = new SqlParameter();
+                        outputParameter.ParameterName = "@IDOrdine";
+                        outputParameter.SqlDbType = System.Data.SqlDbType.Int;
+                        outputParameter.Direction = System.Data.ParameterDirection.Output;
+                        cmd.Parameters.Add(outputParameter);
+
+                        cmd.ExecuteNonQuery();
+
+                        // Retrieving the value of the output parameter
+                        id = Convert.ToInt32(outputParameter.Value);
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write(ex); // Use appropriate logging mechanism
+                    }
+                    finally 
+                    { 
+                    conn.Close();
+                    }
+                
+            
+
+            return id;
+        }
+
+
 
         protected void ButtonChange_Click(object sender, EventArgs e)
         {
@@ -215,7 +286,7 @@ namespace U4_BW1_LL
                     }
                 }
             }
-
+            Session["cart"] = cartMap;
             Response.Redirect("Carrello");
         }
     }
