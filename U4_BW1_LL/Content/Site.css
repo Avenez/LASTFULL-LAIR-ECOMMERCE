@@ -111,3 +111,6 @@ textarea {
 .siteMinHeight {
     min-height: calc(100vh - 167px);
 }
+.sexyBorderTop {
+    border-top: 2px solid #FFACD2;
+}
