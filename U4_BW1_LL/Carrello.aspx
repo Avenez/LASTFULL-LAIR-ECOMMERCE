@@ -12,12 +12,12 @@
                             <img src='<%# Eval("ImgUrl") %>' class="h-100" alt='<%# Eval("Nome") %>'>
                         </div>
                         <div class="py-2">
-                            <h5><%# Eval("Nome") %></h5>
-                            <p class="mb-0"><%# Eval("Prezzo", "{0:c2}") %></p>
+                            <h5 class="mb-0"><%# Eval("Nome") %></h5>
+                            <p class="font-monospace">Prezzo: <%# Eval("Prezzo", "{0:c2}") %></p>
                             <div class="d-flex mt-2 align-items-baseline">
-                                <asp:Button CssClass="btn btn-dark p-1 me-2" ID="ButtonSum" runat="server" Text=" - " CommandArgument='<%# "Sub" + "*" + Eval("Id") %> ' OnClick="ButtonChange_Click" style="height:40px; width:30px" />
-                                 <p class=""> Qta: <%# Eval("Qta") %></p> 
-                                <asp:Button CssClass="btn btn-dark p-1 ms-2" ID="ButtonSub" runat="server" Text=" + " CommandArgument='<%# "Sum" + "*" +  Eval("Id") %> ' OnClick="ButtonChange_Click" style="height:40px; width:30px"/>
+                                <asp:Button CssClass="btn btn-dark h-25 p-1 me-2" ID="ButtonSum" runat="server" Text=" - " CommandArgument='<%# "Sub" + "*" + Eval("Id") %> ' OnClick="ButtonChange_Click" style="height:40px; width:30px" />
+                                 <p class="mb-0"> Qta: <%# Eval("Qta") %></p> 
+                                <asp:Button CssClass="btn btn-dark h-25 p-1 ms-2" ID="ButtonSub" runat="server" Text=" + " CommandArgument='<%# "Sum" + "*" +  Eval("Id") %> ' OnClick="ButtonChange_Click" style="height:40px; width:30px"/>
                             </div>
                            
                         </div>
@@ -31,7 +31,7 @@
     </asp:Repeater>
     <div class="d-flex justify-content-between align-items-center mt-3">
         <div>
-            <p id="totalPrice" class="sexyPink2 mb-0" runat="server"></p>
+            <p id="totalPriceP" class="sexyPink2 font-monospace mb-0" runat="server"></p>
             <asp:Button class="btn sexyBtn" ID="ButtonAcquista" runat="server" Text="Acquista" onClick="ButtonAcquista_Click"/>
         </div>
         <asp:Button CssClass="btn btn-danger" ID="RemoveAllBtn" runat="server" Text="Rimuovi tutto" OnClick="btnSvuotaCarrello_Click"/>

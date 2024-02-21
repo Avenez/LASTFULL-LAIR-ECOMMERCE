@@ -11,21 +11,24 @@ namespace U4_BW1_LL
     {
         List<Product> products = new List<Product>();
 
-        
         protected void Page_Load(object sender, EventArgs e)
         {
             Dictionary<int, int> cartMap = (Dictionary<int, int>)Session["cart"];
+            double totalPrice = 0;
+
             if (Session["cart"] != null && cartMap.Keys.Count > 0)
             {
                 foreach (int id in cartMap.Keys)
                 {
                     Product prodotto = SelectProductById(id, cartMap[id]);
                     products.Add(prodotto);
+                    totalPrice += prodotto.Prezzo;
                 }
 
                 cartRow.Attributes.Remove("style");
                 CartRepeater.DataSource = products;
                 CartRepeater.DataBind();
+                totalPriceP.InnerText = "Prezzo totale: " + totalPrice + "€";
             }
             else
             {
@@ -142,8 +145,8 @@ namespace U4_BW1_LL
             SqlConnection conn = new SqlConnection(connectionString);
 
             try
-            { 
-            conn.Open();
+            {
+                conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
 
@@ -157,22 +160,20 @@ namespace U4_BW1_LL
                     cmd.Parameters.AddWithValue("@DataOrdine", ordineDateTime);
 
                     cmd.ExecuteNonQuery();
-
-                    
                 }
 
                 Response.Write("Acquisto avvenuto con successo");
                 Session["cart"] = null;
                 Response.Redirect("Carrello.aspx");
-                
-            
+
+
             }
             catch (Exception ex)
             {
                 Response.Write("Errore ");
                 Response.Write(ex);
             }
-            finally 
+            finally
             {
                 conn.Close();
             }
@@ -210,8 +211,8 @@ namespace U4_BW1_LL
                             cartMap.Remove(idProdotto);
                         }
                         Response.Write("Feed minus");
-                    
-                }
+
+                    }
                 }
             }
 
