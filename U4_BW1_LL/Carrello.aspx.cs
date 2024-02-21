@@ -173,6 +173,15 @@ namespace U4_BW1_LL
                         
                     }
 
+                    /*
+                    cmd.CommandText = $"UPDATE Prodotti SET Qta = Qta - @Qta WHERE IDProdotto = @IDProdotto";
+                    cmd.Parameters.Clear(); // Pulisci i parametri prima di aggiungerli di nuovo
+                    cmd.Parameters.AddWithValue("@Qta", item.Value);
+                    cmd.Parameters.AddWithValue("@IDProdotto", item.Key);
+                    cmd.ExecuteNonQuery();
+                    */
+                    
+
                     cmd.Parameters.Clear(); // Pulisci i parametri prima di aggiungerli di nuovo
                     cmd.CommandText = $"INSERT INTO DettagliOrdine (IDOrdine, IDProdotto, Qta, PrezzoQta) VALUES (@IDOrdine, @IDProdotto, @Qta, @PrezzoQta)";
                     cmd.Parameters.AddWithValue("@IDOrdine", idOrdine);
@@ -181,6 +190,9 @@ namespace U4_BW1_LL
                     cmd.Parameters.AddWithValue("@PrezzoQta", selectedPrice);
 
                     cmd.ExecuteNonQuery();
+
+                    
+
                 }
 
                 Response.Write("Acquisto avvenuto con successo");
