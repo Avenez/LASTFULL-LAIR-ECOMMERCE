@@ -21,7 +21,7 @@
 
                         <div class="d-flex flex-column align-items-center mb-5">
                             <asp:Image ID="ImmagineProfilo" runat="server" CssClass="profilePic mb-2" />
-                            <asp:LinkButton ID="changePropic" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClick="showChangeImg"><i class="bi bi-pencil sexyPink2"></i></asp:LinkButton>
+                            <asp:LinkButton ID="changePropic" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClick="showChangeImg" OnClientClick="switchBUttons();"><i class="bi bi-pencil sexyPink2"></i></asp:LinkButton>
                             <div runat="server" id="divCambiaURL" class="d-flex flex-column text-center">
                                 <div>
                                     <div class="mb-2">
@@ -41,7 +41,7 @@
                             <div class="d-flex align-items-center">
                                 <p runat="server" id="nomeProfilo" class="display-5 sexyPink2 me-2 mb-0"></p>
                                 <small>
-                                    <asp:LinkButton ID="changeName" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClick="btnconfermaNomePassword_Click">
+                                    <asp:LinkButton ID="changeName" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClientClick="switchBUttons();" OnClick="btnconfermaNomePassword_Click">
                                          <i class="bi bi-pencil sexyPink2"></i></asp:LinkButton>
                                 </small>
                             </div>
@@ -67,7 +67,7 @@
                         <div class="d-flex align-items-center mb-3">
                             <p runat="server" class="display-5 sexyPink2 me-2 mb-0">Cambio Password</p>
                             <small>
-                                <asp:LinkButton ID="changePassword" runat="server" class="btn sexyBtnOutline" title="modificaImmagine"  OnClick="cambiaPassword_Click">
+                                <asp:LinkButton ID="changePassword" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClientClick="switchBUttons();"  OnClick="cambiaPassword_Click">
                                       <i class="bi bi-pencil sexyPink2"></i></asp:LinkButton>
                             </small>
                         </div>
@@ -92,7 +92,7 @@
                     <div id="divFinaleCambioNome" class="d-flex flex-column justify-content-center align-items-start" runat="server">
                         <asp:Label CssClass="fs-5 mt-3" ID="Label3" runat="server" Text="Label">inserisci Nuovo nome utente </asp:Label>
                         <asp:TextBox CssClass="w-50" ID="TxtNuovoNome" runat="server"></asp:TextBox>
-                        <asp:Button CssClass="btn btn-warning mt-2" ID="Button2" runat="server" Text="Modifica" OnClick="FinalNameChange_click" />
+                        <asp:Button CssClass="btn sexyBtnOutline2 mt-2" ID="Button2" runat="server" Text="Modifica" OnClick="FinalNameChange_click" />
                     </div>
 
                     <div id="riepilogoOrdini" runat="server">
