@@ -24,6 +24,15 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Benvenuto;
 
         /// <summary>
+        /// Controllo cartBadge.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cartBadge;
+
+        /// <summary>
         /// Controllo logoutLink.
         /// </summary>
         /// <remarks>

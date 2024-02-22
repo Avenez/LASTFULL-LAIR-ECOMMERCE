@@ -16,6 +16,7 @@ namespace U4_BW1_LL
             {
                 Response.Redirect("Default.aspx");
             }
+
             if (!IsPostBack)
             {
                 // Recupera l'ID del prodotto dalla query string
@@ -28,9 +29,20 @@ namespace U4_BW1_LL
                         CaricaDettagliProdotto(IDProdotto);
                     }
                 }
-            }
 
+                // Controlla se la pagina è stata caricata almeno una volta
+                if (Session["PageLoadedBefore"] != null && (bool)Session["PageLoadedBefore"] == true)
+                {
+                    InjectSetTimeout("MainContent_sectionalertAddTocart");
+                }
+                else
+                {
+                    // Imposta il flag nella sessione per indicare che la pagina è stata caricata
+                    Session["PageLoadedBefore"] = true;
+                }
+            }
         }
+
 
         //Metodo che cerca il prodotto sul database tramite l'id e stampa a schermo i dettagli
         private void CaricaDettagliProdotto(int IDProdotto)
@@ -104,7 +116,9 @@ namespace U4_BW1_LL
                 }
 
                 Session["cart"] = cartMap;
-                InjectSetTimeout("MainContent_sectionalertAddTocart");
+                //InjectSetTimeout("MainContent_sectionalertAddTocart");
+                Response.Redirect($"Dettagli.aspx?IDProdotto={idProduct}");
+
 
             }
         }

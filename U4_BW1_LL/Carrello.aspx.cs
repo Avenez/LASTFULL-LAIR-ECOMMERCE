@@ -15,7 +15,6 @@ namespace U4_BW1_LL
         protected void Page_Load(object sender, EventArgs e)
         {
             Dictionary<int, int> cartMap = (Dictionary<int, int>)Session["cart"];
-            
 
             if (Session["cart"] != null && cartMap.Keys.Count > 0)
             {
@@ -40,7 +39,50 @@ namespace U4_BW1_LL
             {
                 // Registra il pulsante "btnEsempio" per la convalida degli eventi
                 RegisterPostBackControl();
+                
             }
+
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["Buy"] == "true")
+                {
+                    /*
+                    feedCarrello.InnerText = "Perfetto, grazie per il tuo acquisto Biscottino!";
+
+                    // Imposta il testo e avvia l'animazione dopo 3 secondi
+                    string script = "setTimeout(() => { " +
+                                    "document.getElementById('MainContent_feedCarrello').innerText = 'Il carrello è vuoto'; " + "document.getElementById('MainContent_feedCarrello').classList.remove('bounce-in-top');" +
+                                    "document.getElementById('MainContent_feedCarrello').classList.add('bounce-in-top'); }, 3000);";
+
+                    // Registra lo script
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed", script, true);
+                    */
+
+                    string script = "(() => { " 
+                        + "document.getElementById('MainContent_feedCarrelloVuoto').classList.add('d-none'); " 
+                        + "document.getElementById('MainContent_feedCarrelloAcquisto').classList.remove('d-none');" 
+                        + "})();";
+
+
+
+                    
+                    string script2 = "setTimeout(() => { "
+
+                                        + "document.getElementById('MainContent_feedCarrelloVuoto').classList.remove('d-none'); "
+                                        + "document.getElementById('MainContent_feedCarrelloAcquisto').classList.add('d-none');"
+                                        + "}, 4000);";
+                    
+
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed", script, true);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed2", script2, true);
+
+                }
+                
+
+
+            }
+
+
 
 
 
@@ -197,7 +239,7 @@ namespace U4_BW1_LL
 
                 Response.Write("Acquisto avvenuto con successo");
                 Session["cart"] = null;
-                Response.Redirect("Carrello.aspx");
+                Response.Redirect("Carrello?Buy=true");
 
 
             }
