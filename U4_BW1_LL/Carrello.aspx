@@ -38,7 +38,7 @@
            <asp:Button CssClass="btn btn-danger" ID="RemoveAllBtn" runat="server" Text="Rimuovi tutto" OnClick="btnSvuotaCarrello_Click" />
        </div>
    </div>
-    <div class="d-flex justify-content-end">
-        <asp:Button class="btn sexyBtn mt-2 me-2" ID="btnTornaIndietro" runat="server" Text="Indietro" OnClick="btnTornaIndietro_Click" />
+    <div class="d-flex">
+        <asp:Button class="btn sexyBtnOutline2 mt-5" ID="btnTornaIndietro" runat="server" Text="Indietro" OnClick="btnTornaIndietro_Click" />
     </div>
 </asp:Content>
