@@ -33,6 +33,15 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl boh;
 
         /// <summary>
+        /// Controllo btnTornaIndietro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTornaIndietro;
+
+        /// <summary>
         /// Controllo cartRow.
         /// </summary>
         /// <remarks>
@@ -76,14 +85,5 @@ namespace U4_BW1_LL
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button RemoveAllBtn;
-
-        /// <summary>
-        /// Controllo btnTornaIndietro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTornaIndietro;
     }
 }

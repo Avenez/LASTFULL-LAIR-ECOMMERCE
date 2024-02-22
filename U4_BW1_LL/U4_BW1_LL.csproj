@@ -155,6 +155,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
+    <Content Include="PreSite.aspx" />
     <Content Include="ProfilePage.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -255,6 +256,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="OrderDetails.cs" />
+    <Compile Include="PreSite.aspx.cs">
+      <DependentUpon>PreSite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PreSite.aspx.designer.cs">
+      <DependentUpon>PreSite.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

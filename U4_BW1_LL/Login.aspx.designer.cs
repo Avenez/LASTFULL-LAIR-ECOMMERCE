@@ -157,23 +157,5 @@ namespace U4_BW1_LL
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl registrationSuccessTxt;
-
-        /// <summary>
-        /// Controllo imgTop.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgTop;
-
-        /// <summary>
-        /// Controllo EnterTheLair.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button EnterTheLair;
     }
 }

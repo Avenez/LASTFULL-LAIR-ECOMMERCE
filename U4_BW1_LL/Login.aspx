@@ -21,7 +21,7 @@
             </div>
         </nav>
         <main>
-            <div id="mainLoginContent" runat="server" class="container d-none">
+            <div id="mainLoginContent" runat="server" class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <div class="card mt-5">
@@ -80,15 +80,6 @@
                     </div>
                 </div>             
             </div>
-
-            <%-- Disclaimer iniziale --%>
-            <div id="disclaimer" class="disclaimerSettings d-flex flex-column justify-content-center align-items-center">
-                <div class="position-relative mb-2">
-                    <img src="assets/imgs/LustLogoOpen.jpg" style="width: 600px" />
-                    <img src="assets/imgs/LustLogo.png" id="imgTop" runat="server"/>
-                </div>
-                <asp:Button ID="EnterTheLair" runat="server" Text="Ho più di 18 anni." CssClass="btn sexyBtn fs-4 px-4" OnClick="EnterTheLair_Click"/>
-            </div>
         </main>
     </form>
 
@@ -99,11 +90,6 @@
         var divAccedi = document.getElementById("divAccedi");
         var BtnPerAccedere = document.getElementById("BtnPerAccedere");
         var BtnPerRegistrarti = document.getElementById("BtnPerRegistrarti");
-
-        //btnEnter.addEventListener("click", function () {
-        //    //document.getElementById("imgTop").style.transition = "opacity 1s ease";
-            
-        //});
 
         btnAccedi.addEventListener("click", function () {
 
