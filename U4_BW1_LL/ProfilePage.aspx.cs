@@ -15,9 +15,11 @@ namespace U4_BW1_LL
         {
 
             messaggio_Errore.Visible = false;
-            sceglicosaCambiare.Visible = false;
+
+
             divCambiaURL.Visible = false;
-            buttonApriModale.Visible = false;
+            changePropic.Visible = true;
+
             divInsertNomePassword.Visible = false;
             alertInserisciDati.Visible = false;
             divFinaleCambioNome.Visible = false;
@@ -84,15 +86,17 @@ namespace U4_BW1_LL
 
         protected void SettingsClick(object sender, EventArgs e)
         {
-            infoAlCaricamento.Visible = false;
-            sceglicosaCambiare.Visible = true;
+            infoAlCaricamento.Visible = true;
+        }
+
+        protected void showChangeImg(object sender, EventArgs e)
+        {
+            changePropic.Visible = false;
+            divCambiaURL.Visible = true;
         }
 
         protected void Cambia_ImmagineProfilo(object sender, EventArgs e)
         {
-            divCambiaURL.Visible = true;
-            buttonApriModale.Visible = true;
-
             string IdUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"];
 
             if (string.IsNullOrEmpty(TextBoxURLImmagine.Text) || !TextBoxURLImmagine.Text.StartsWith("https://"))
@@ -134,12 +138,6 @@ namespace U4_BW1_LL
             }
         }
 
-        protected void makeDivChangeImgVisible_Click(object sender, EventArgs e)
-        {
-            infoAlCaricamento.Visible = true;
-            divCambiaURL.Visible = true;
-            buttonApriModale.Visible = true;
-        }
 
         protected void btnconfermaNomePassword_Click(object sender, EventArgs e)
         {
@@ -147,7 +145,6 @@ namespace U4_BW1_LL
 
             if (string.IsNullOrEmpty(textBoxVecchioNomeUtente.Text) || string.IsNullOrEmpty(textBoxPassword.Text))
             {
-
                 alertInserisciDati.Visible = true;
                 feedbackalert.InnerText = "inserisci un nome e una password valide.";
                 InjectSetTimeout("MainContent_alertInserisciDati");
@@ -262,10 +259,6 @@ namespace U4_BW1_LL
             }
         }
 
-        protected void makeDivChangeNomeVisible(object sender, EventArgs e)
-        {
-            divInsertNomePassword.Visible = true;
-        }
         protected void InjectSetTimeout(string IdDiv)
         {
             ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", $"setTimeout(function() {{ document.getElementById('{IdDiv}').style.display = 'none'; }}, 3000);", true);

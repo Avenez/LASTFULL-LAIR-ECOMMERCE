@@ -18,10 +18,22 @@
                 <div class="col">
                     <%-- div mostrato al caricamento della pagina con nome immagine dell utente  --%>
                     <div id="infoAlCaricamento" runat="server" class="d-flex flex-column px-3">
-                        <div class="d-flex">
-                            <div class="d-flex align-items-start me-4 mb-5">
-                                <asp:Image ID="ImmagineProfilo" runat="server" CssClass="profilePic me-1" />
-                                <button id="Button3" runat="server" class="btn sexyBtnOutline" title="modifica"><i class="bi bi-pencil sexyPink2"></i></button>
+                        <div>
+                            <div class="d-flex flex-column align-items-center mb-5">
+                                <asp:Image ID="ImmagineProfilo" runat="server" CssClass="profilePic mb-2" />
+                                <asp:LinkButton ID="changePropic" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClick="showChangeImg"><i class="bi bi-pencil sexyPink2"></i></asp:LinkButton>
+                                <div runat="server" id="divCambiaURL" class="d-flex flex-column text-center">
+                                    <div>
+                                        <div class="mb-2">
+                                            <asp:Label ID="Label4" runat="server" Text="Label">Inserisci URL nuova immagine:</asp:Label>
+                                            <asp:TextBox CssClass="w-100" ID="TextBoxURLImmagine" runat="server"></asp:TextBox>
+                                        </div>
+                                        <asp:Button ID="Button3" runat="server" Text="Modifica immagine" CssClass="btn sexyBtnOutline2" OnClick="Cambia_ImmagineProfilo" />
+                                    </div>
+                                </div>
+                                <div class="sexyPinkBg2 rounded px-3 py-2 mt-3" id="messaggio_Errore" runat="server">
+                                    <p class="mb-0" runat="server" id="urlNonValido"></p>
+                                </div>
                             </div>
                             <div class="d-flex align-items-center mb-3">
                                 <p runat="server" id="nomeProfilo" class="display-5 sexyPink2 me-2 mb-0"></p>
@@ -40,23 +52,9 @@
                                 <asp:TextBox ID="confirmPassword" runat="server"></asp:TextBox>
                             </div>
                         </div>
-                        <div runat="server" id="divCambiaURL" class="d-flex flex-column  mt-4 text-center">
-                            <div>
-                                <asp:Label ID="Label4" runat="server" Text="Label">Inserisci URL nuova immagine:</asp:Label>
-                                    <button id="buttonApriModale" runat="server" type="button" class="btn btn-outline-warning fs-3 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifica Immagine</button>
-                                    <asp:TextBox CssClass="w-100" ID="TextBoxURLImmagine" runat="server"></asp:TextBox>
-                                </div>
-                        </div>
-
-                        <div class="mt-3 fs-3" id="messaggio_Errore" runat="server">
-                            <p runat="server" id="urlNonValido"></p>
-                        </div>
-                    </div>
 
 
-                    <div id="sceglicosaCambiare" class="justify-content-center align-items-center d-flex gap-3" runat="server">
-                        <asp:Button CssClass="btn btn-outline-warning fs-3" Text="cambia foto profilo" runat="server" OnClick="makeDivChangeImgVisible_Click" />
-                        <asp:Button CssClass="btn btn-outline-warning fs-3" Text="cambia nome Utente" runat="server" OnClick="makeDivChangeNomeVisible" />
+
                     </div>
 
                     <!-- Modal -->
