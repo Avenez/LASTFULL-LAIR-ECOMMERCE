@@ -63,7 +63,7 @@
                         <asp:Label CssClass="fs-5 mt-3" ID="Label1" runat="server" Text="Label">inserisci vecchio nome Utente</asp:Label>
                         <asp:TextBox CssClass="w-50" ID="textBoxVecchioNomeUtente" runat="server"></asp:TextBox>
                         <asp:Label CssClass="fs-5 mt-3" ID="Label2" runat="server" Text="Label">inserisci Password </asp:Label>
-                        <asp:TextBox CssClass="w-50" ID="textBoxPassword" runat="server"></asp:TextBox>
+                        <asp:TextBox CssClass="w-50" TextMode="Password" ID="textBoxPassword" runat="server"></asp:TextBox>
 
                         <asp:Button ID="btnconfermaNomePassword" runat="server" Text="Invia" CssClass="btn btn-outline-warning mt-2" OnClick="btnconfermaNomePassword_Click" />
 

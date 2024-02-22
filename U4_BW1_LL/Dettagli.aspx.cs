@@ -112,7 +112,7 @@ namespace U4_BW1_LL
         protected void InjectSetTimeout(string IdDiv)
         {
             sectionalertAddTocart.Visible = true;
-            ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", $"setTimeout(function() {{ document.getElementById('{IdDiv}').style.display = 'none'; }}, 3000);", true);
+            ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", $"setTimeout(function() {{ document.getElementById('{IdDiv}').style.display = 'none'; }}, 2000);", true);
         }
     }
 }

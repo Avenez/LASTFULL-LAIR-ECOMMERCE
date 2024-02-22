@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web;
 using System.Web.UI.WebControls;
 
 namespace U4_BW1_LL
@@ -211,14 +212,53 @@ namespace U4_BW1_LL
             divFinaleCambioNome.Visible = true;
             string nuovoNome = TxtNuovoNome.Text;
 
+            string IdUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"];
+            string nomeUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["username"];
 
             if (string.IsNullOrEmpty(nuovoNome))
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "showAlert", $"window.alert('inserisci un nuovo nome utente');", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "showAlert", $"window.alert(' Hai lasciato il campo vuoto. Inserisci un nuovo nome utente');", true);
+            }
+            else if (nuovoNome != nomeUtente)
+            {   // chiama il DB cambia il nome utente di chi ha fatto la richiesta e aggiorna anche il nome presente nel cookie 
+                string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+                SqlConnection conn = new SqlConnection(connectionString);
+
+                try
+                {
+
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = $"UPDATE Utenti SET username = @nuovoNome WHERE IDUtente = @IdUtente";
+
+                    cmd.Parameters.AddWithValue("@nuovoNome", nuovoNome);
+                    cmd.Parameters.AddWithValue("@IdUtente", IdUtente);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("Errore ");
+                    Response.Write(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+
+                    HttpCookie cookie = new HttpCookie("LOGIN_COOKIEUTENTE");
+                    cookie.Expires = DateTime.Now.AddDays(-1);
+                    Response.Cookies.Add(cookie);
+
+                    Response.Redirect("Login.aspx");
+                }
             }
             else
             {
-                Response.Write("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                ClientScript.RegisterStartupScript(this.GetType(), "showAlert", $"window.alert(' Hai inserito lo stesso nome utente. Scegline uno diverso.');", true);
+
             }
         }
 
