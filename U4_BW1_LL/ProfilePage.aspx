@@ -17,24 +17,44 @@
                 <%-- aside con dettagli dell utente loggato  --%>
                 <div class="col">
                     <%-- div mostrato al caricamento della pagina con nome immagine dell utente  --%>
-                    <div id="infoAlCaricamento" runat="server" class="d-flex justify-content-center align-items-center flex-column d-block">
-
-                        <asp:Image ID="ImmagineProfilo" runat="server" CssClass="fotoDimensions" />
-                        <div class="mt-3">
-                            <h3 runat="server" id="nomeProfilo" class="fw-normal"></h3>
+                    <div id="infoAlCaricamento" runat="server" class="d-flex flex-column px-3">
+                        <div class="d-flex">
+                            <div class="d-flex align-items-start me-4 mb-5">
+                                <asp:Image ID="ImmagineProfilo" runat="server" CssClass="profilePic me-1" />
+                                <button id="Button3" runat="server" class="btn sexyBtnOutline" title="modifica"><i class="bi bi-pencil sexyPink2"></i></button>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <p runat="server" id="nomeProfilo" class="display-5 sexyPink2 me-2 mb-0"></p>
+                                <small>
+                                    <button id="changeName" runat="server" class="btn sexyBtnOutline" title="modifica"><i class="bi bi-pencil sexyPink2"></i></button>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex flex-column mb-2">
+                                <asp:Label ID="labelInsertPassword" runat="server" Text="Label" CssClass="mb-1">Nuova password</asp:Label>
+                                <asp:TextBox ID="insertPassword" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <asp:Label ID="label5" runat="server" Text="Label" CssClass="mb-1">Conferma nuova password</asp:Label>
+                                <asp:TextBox ID="confirmPassword" runat="server"></asp:TextBox>
+                            </div>
                         </div>
                         <div runat="server" id="divCambiaURL" class="d-flex flex-column  mt-4 text-center">
-                            <asp:Label ID="Label4" runat="server" Text="Label">Inserisci URL nuova immagine:</asp:Label>
-                            <asp:TextBox CssClass="w-100" ID="TextBoxURLImmagine" runat="server"></asp:TextBox>
+                            <div>
+                                <asp:Label ID="Label4" runat="server" Text="Label">Inserisci URL nuova immagine:</asp:Label>
+                                    <button id="buttonApriModale" runat="server" type="button" class="btn btn-outline-warning fs-3 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifica Immagine</button>
+                                    <asp:TextBox CssClass="w-100" ID="TextBoxURLImmagine" runat="server"></asp:TextBox>
+                                </div>
                         </div>
-                        <button id="buttonApriModale" runat="server" type="button" class="btn btn-outline-warning fs-3 mt-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Modifica Immagine</button>
+
                         <div class="mt-3 fs-3" id="messaggio_Errore" runat="server">
                             <p runat="server" id="urlNonValido"></p>
                         </div>
                     </div>
 
 
-                    <div class="justify-content-center align-items-center d-flex gap-3" id="sceglicosaCambiare" runat="server">
+                    <div id="sceglicosaCambiare" class="justify-content-center align-items-center d-flex gap-3" runat="server">
                         <asp:Button CssClass="btn btn-outline-warning fs-3" Text="cambia foto profilo" runat="server" OnClick="makeDivChangeImgVisible_Click" />
                         <asp:Button CssClass="btn btn-outline-warning fs-3" Text="cambia nome Utente" runat="server" OnClick="makeDivChangeNomeVisible" />
                     </div>
@@ -106,8 +126,8 @@
                                                 </ItemTemplate>
                                             </asp:Repeater>
                                             <div class="d-flex justify-content-between">
-                                            <p class="mb-0">Ordine effettuato in data: <%# Eval("OrderDate") %></p>
-                                            <p class="font-monospace mb-0">Prezzo totale: <%# Eval("TotalPrice", "{0:c2}") %></p>
+                                                <p class="mb-0">Ordine effettuato in data: <%# Eval("OrderDate") %></p>
+                                                <p class="font-monospace mb-0">Prezzo totale: <%# Eval("TotalPrice", "{0:c2}") %></p>
                                             </div>
                                         </div>
                                     </div>

@@ -8,7 +8,8 @@ namespace U4_BW1_LL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Benvenuto.InnerHtml = $"Benvenuto, {Request.Cookies["LOGIN_COOKIEUTENTE"]["Username"]}";
+            if (Request.Cookies["LOGIN_COOKIEUTENTE"] != null)
+                Benvenuto.InnerHtml = $"Benvenuto, {Request.Cookies["LOGIN_COOKIEUTENTE"]["Username"]}";
         }
 
         protected void LogOut(object sender, EventArgs e)

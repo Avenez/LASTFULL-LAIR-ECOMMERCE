@@ -60,6 +60,15 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.WebControls.Image ImmagineProfilo;
 
         /// <summary>
+        /// Controllo Button3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton Button3;
+
+        /// <summary>
         /// Controllo nomeProfilo.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,51 @@ namespace U4_BW1_LL
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl nomeProfilo;
+
+        /// <summary>
+        /// Controllo changeName.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton changeName;
+
+        /// <summary>
+        /// Controllo labelInsertPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelInsertPassword;
+
+        /// <summary>
+        /// Controllo insertPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox insertPassword;
+
+        /// <summary>
+        /// Controllo label5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label5;
+
+        /// <summary>
+        /// Controllo confirmPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox confirmPassword;
 
         /// <summary>
         /// Controllo divCambiaURL.
@@ -87,15 +141,6 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
-        /// Controllo TextBoxURLImmagine.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxURLImmagine;
-
-        /// <summary>
         /// Controllo buttonApriModale.
         /// </summary>
         /// <remarks>
@@ -103,6 +148,15 @@ namespace U4_BW1_LL
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton buttonApriModale;
+
+        /// <summary>
+        /// Controllo TextBoxURLImmagine.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxURLImmagine;
 
         /// <summary>
         /// Controllo messaggio_Errore.
