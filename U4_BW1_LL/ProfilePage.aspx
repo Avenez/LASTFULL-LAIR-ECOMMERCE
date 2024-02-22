@@ -36,12 +36,32 @@
                             </div>
                         </div>
 
-                        <div class="d-flex align-items-center mb-3">
-                            <p runat="server" id="nomeProfilo" class="display-5 sexyPink2 me-2 mb-0"></p>
-                            <small>
-                                <asp:LinkButton ID="changeName" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClick="btnconfermaNomePassword_Click">
+
+                        <div class="d-flex flex-column">
+                            <div class="d-flex align-items-center">
+                                <p runat="server" id="nomeProfilo" class="display-5 sexyPink2 me-2 mb-0"></p>
+                                <small>
+                                    <asp:LinkButton ID="changeName" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClick="btnconfermaNomePassword_Click">
                                          <i class="bi bi-pencil sexyPink2"></i></asp:LinkButton>
-                            </small>
+                                </small>
+                            </div>
+                            <div class="d-flex  align-items-start mb-3 w-100">
+
+
+                                <div runat="server" id="divInsertNomePassword" class="d-flex flex-column align-items-start justify-content-center">
+
+                                    <asp:Label CssClass="fs-5 mt-3" ID="Label1" runat="server" Text="Label">inserisci vecchio nome Utente</asp:Label>
+                                    <asp:TextBox CssClass="w-100" ID="textBoxVecchioNomeUtente" runat="server"></asp:TextBox>
+                                    <asp:Label CssClass="fs-5 mt-3" ID="Label2" runat="server" Text="Label">inserisci Password </asp:Label>
+                                    <asp:TextBox CssClass="w-100" TextMode="Password" ID="textBoxPassword" runat="server"></asp:TextBox>
+
+                                    <asp:Button ID="btnconfermaNomePassword" runat="server" Text="Invia" CssClass="btn sexyBtnOutline2 mt-2" OnClick="btnconfermaNomePassword_Click" />
+
+                                    <div id="alertInserisciDati" runat="server">
+                                        <p runat="server" id="feedbackalert"></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="d-flex align-items-center mb-3">
@@ -67,23 +87,7 @@
                             </div>
                         </div>
 
-                    </div>
-
-         
-
-                    <div runat="server" id="divInsertNomePassword" class="d-flex flex-column align-items-start justify-content-center">
-
-                        <asp:Label CssClass="fs-5 mt-3" ID="Label1" runat="server" Text="Label">inserisci vecchio nome Utente</asp:Label>
-                        <asp:TextBox CssClass="w-50" ID="textBoxVecchioNomeUtente" runat="server"></asp:TextBox>
-                        <asp:Label CssClass="fs-5 mt-3" ID="Label2" runat="server" Text="Label">inserisci Password </asp:Label>
-                        <asp:TextBox CssClass="w-50" TextMode="Password" ID="textBoxPassword" runat="server"></asp:TextBox>
-
-                        <asp:Button ID="btnconfermaNomePassword" runat="server" Text="Invia" CssClass="btn btn-outline-warning mt-2" OnClick="btnconfermaNomePassword_Click" />
-
-                        <div id="alertInserisciDati" runat="server">
-                            <p runat="server" id="feedbackalert"></p>
-                        </div>
-                    </div>
+                    </div>                   
 
                     <div id="divFinaleCambioNome" class="d-flex flex-column justify-content-center align-items-start" runat="server">
                         <asp:Label CssClass="fs-5 mt-3" ID="Label3" runat="server" Text="Label">inserisci Nuovo nome utente </asp:Label>
