@@ -102,7 +102,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\css\profile.css" />
     <Content Include="assets\imgs\-1-kxn9tz.svg" />
     <Content Include="About.aspx" />
     <Content Include="assets\css\login.css" />

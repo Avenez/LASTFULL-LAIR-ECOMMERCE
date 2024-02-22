@@ -99,3 +99,59 @@
 .sexyAlert {
     background-color: #FFACD2; 
 }
+
+.disclaimerSettings {
+    height: calc(100vh - 106px);
+    background: linear-gradient(#0A0A0A 50%,#121212 100%);
+}
+#imgTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    opacity: 1;
+}
+
+.sexyBtn {
+    border: 2px solid #ed0b91;
+    background-color: transparent;
+    color: #ed0b91;
+}
+
+    .sexyBtn:hover {
+        border: 2px solid #ed0b91;
+        background-color: #f586c966;
+        color: #ed0b91;
+    }
+.fadeOut {
+    animation: fadeOut 1s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.d-none {
+    display: none !important;
+}
+
+.fadeIn {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

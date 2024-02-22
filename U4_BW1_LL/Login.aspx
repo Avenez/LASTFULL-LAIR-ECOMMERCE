@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="U4_BW1_LL.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="U4_BW1_LL.Login" Async="true"  %>
 
 <!DOCTYPE html>
 
@@ -21,7 +21,7 @@
             </div>
         </nav>
         <main>
-            <div class="container">
+            <div id="mainLoginContent" runat="server" class="container d-none">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <div class="card mt-5">
@@ -78,18 +78,32 @@
                             </div>
                         </div>
                     </div>
-
                 </div>             
+            </div>
+
+            <%-- Disclaimer iniziale --%>
+            <div id="disclaimer" class="disclaimerSettings d-flex flex-column justify-content-center align-items-center">
+                <div class="position-relative mb-2">
+                    <img src="assets/imgs/LustLogoOpen.jpg" style="width: 600px" />
+                    <img src="assets/imgs/LustLogo.png" id="imgTop" runat="server"/>
+                </div>
+                <asp:Button ID="EnterTheLair" runat="server" Text="Ho più di 18 anni." CssClass="btn sexyBtn fs-4 px-4" OnClick="EnterTheLair_Click"/>
             </div>
         </main>
     </form>
 
     <script>
+        var btnEnter = document.getElementById("EnterTheLair");
         var btnAccedi = document.getElementById("btnAccedi");
         var btnRegistrati = document.getElementById("btnRegistrati");
         var divAccedi = document.getElementById("divAccedi");
         var BtnPerAccedere = document.getElementById("BtnPerAccedere");
         var BtnPerRegistrarti = document.getElementById("BtnPerRegistrarti");
+
+        //btnEnter.addEventListener("click", function () {
+        //    //document.getElementById("imgTop").style.transition = "opacity 1s ease";
+            
+        //});
 
         btnAccedi.addEventListener("click", function () {
 

@@ -20,6 +20,20 @@ namespace U4_BW1_LL
             }
         }
 
+        protected void EnterTheLair_Click(object sender, EventArgs e)
+        {
+            string script1 = "document.getElementById('imgTop').style.transition = 'opacity 2s ease'; " +
+                "setTimeout(() => {document.getElementById('imgTop').style.opacity = 0;}, 200);";
+            string script2 = "setTimeout(() => {document.getElementById('disclaimer').classList.add('fadeOut');}, 2000);" +
+                "setTimeout(() => {document.getElementById('disclaimer').classList.add('d-none');}, 4000);";
+            string script3 = "setTimeout(() => {document.getElementById('mainLoginContent').classList.add('fadeIn');" +
+                "document.getElementById('mainLoginContent').classList.remove('d-none');}, 4000);";
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "unlock", script1, true);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "fadeDisclaimer", script2, true);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "fadeInMain", script3, true);
+        }
+
         protected void accediBtn_Click(object sender, EventArgs e)
         {
             bool userFounded = false;
