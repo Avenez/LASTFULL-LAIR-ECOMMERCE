@@ -169,6 +169,13 @@ namespace U4_BW1_LL
 
             }
 
+            string script2 = "setTimeout(() => { "
+                                                    + "document.getElementById('MainContent_controllo').innerText = '';"
+                                                    + "}, 4000);";
+
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed2", script2, true);
+
         }
 
 
@@ -296,6 +303,13 @@ namespace U4_BW1_LL
             finally
             { conn.Close(); }
 
+            string script2 = "setTimeout(() => { "
+                                                    + "document.getElementById('MainContent_controllo').innerText = '';"
+                                                    + "}, 4000);";
+
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed3", script2, true);
+
         }
 
 
@@ -363,6 +377,12 @@ namespace U4_BW1_LL
 
             }
 
+            string script2 = "setTimeout(() => { "
+                                                    + "document.getElementById('MainContent_controllo').innerText = '';"
+                                                    + "}, 4000);";
+
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed4", script2, true);
         }
 
         protected void ReturnButton_Click(object sender, EventArgs e)
