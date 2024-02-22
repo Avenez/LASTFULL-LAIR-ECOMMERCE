@@ -100,6 +100,12 @@ namespace U4_BW1_LL
             Response.Redirect("Carrello.aspx");
         }
 
+        protected void btnTornaIndietro_Click(object sender, EventArgs e)
+        {
+            // Reindirizza alla pagina principale
+            Response.Redirect("Default.aspx");
+        }
+
         protected void ButtonRemove_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;

@@ -26,8 +26,7 @@
                             <asp:Label ID="lblPrezzoProdotto" runat="server" CssClass="sexyPink" />
                         </p>
                         <div class="d-flex align-items-center">
-                            <div>
-                            </div>
+                            
                             <asp:Button ID="ButtonAddToCart" runat="server" Text="Aggiungi" class="btn btn-outline-dark sexyPinkBg me-2" OnClick="AddToCart" />
                             <asp:TextBox runat="server" TextMode="Number" ID="selectedQuantity" value="1" min="1" class="quantityInput me-5" />
                             <div runat="server" id="sectionalertAddTocart">
@@ -35,7 +34,11 @@
                                     <p class="m-auto" runat="server" id="alertProdottoAggiunto">Aggiunto al carrello</p>
                                 </div>
                             </div>
+                            <div class="ms-auto">
+                                <asp:Button ID="btnTornaIndietro" runat="server" Text="Indietro" class="btn btn-outline-dark sexyPinkBg me-2" Onclick="btnTornaIndietro_Click"/>
+                            </div>
                         </div>
+                       
                     </div>
                 </div>
             </div>

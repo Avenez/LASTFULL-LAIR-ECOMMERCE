@@ -30,12 +30,15 @@
             </div>
         </ItemTemplate>
     </asp:Repeater>
-    <div class="d-flex justify-content-between align-items-center mt-3">
-        <div>
-            <p id="totalPriceP" class="sexyPink2 font-monospace mb-0" runat="server"></p>
-            <asp:Button class="btn sexyBtn" ID="ButtonAcquista" runat="server" Text="Acquista" onClick="ButtonAcquista_Click"/>
-        </div>
-        <asp:Button CssClass="btn btn-danger" ID="RemoveAllBtn" runat="server" Text="Rimuovi tutto" OnClick="btnSvuotaCarrello_Click"/>
+       <div class="d-flex justify-content-between align-items-center mt-3">
+           <div>
+               <p id="totalPriceP" class="sexyPink2 font-monospace mb-0" runat="server"></p>
+               <asp:Button class="btn sexyBtn" ID="ButtonAcquista" runat="server" Text="Acquista" OnClick="ButtonAcquista_Click" />
+           </div>
+           <asp:Button CssClass="btn btn-danger" ID="RemoveAllBtn" runat="server" Text="Rimuovi tutto" OnClick="btnSvuotaCarrello_Click" />
+       </div>
+   </div>
+    <div class="d-flex justify-content-end">
+        <asp:Button class="btn sexyBtn mt-2 me-2" ID="btnTornaIndietro" runat="server" Text="Indietro" OnClick="btnTornaIndietro_Click" />
     </div>
-</div>
 </asp:Content>
