@@ -24,6 +24,8 @@ namespace U4_BW1_LL
             alertInserisciDati.Visible = false;
             divFinaleCambioNome.Visible = false;
             riepilogoOrdini.Visible = false;
+            divCambiaPassword.Visible = false;
+            alertErroreCambiaPassword.Visible = false;
 
             if (Request.Cookies["LOGIN_COOKIEUTENTE"] != null)
             {
@@ -86,13 +88,16 @@ namespace U4_BW1_LL
 
         protected void SettingsClick(object sender, EventArgs e)
         {
+            changeName.Visible = true;
             infoAlCaricamento.Visible = true;
+            changePassword.Visible = true;
         }
 
         protected void showChangeImg(object sender, EventArgs e)
         {
             changePropic.Visible = false;
             divCambiaURL.Visible = true;
+
         }
 
         protected void Cambia_ImmagineProfilo(object sender, EventArgs e)
@@ -142,6 +147,8 @@ namespace U4_BW1_LL
         protected void btnconfermaNomePassword_Click(object sender, EventArgs e)
         {
             divInsertNomePassword.Visible = true;
+            changeName.Visible = false;
+
 
             if (string.IsNullOrEmpty(textBoxVecchioNomeUtente.Text) || string.IsNullOrEmpty(textBoxPassword.Text))
             {
@@ -199,6 +206,7 @@ namespace U4_BW1_LL
                 finally
                 {
                     conn.Close();
+
                 }
             }
 
@@ -263,6 +271,80 @@ namespace U4_BW1_LL
         {
             ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", $"setTimeout(function() {{ document.getElementById('{IdDiv}').style.display = 'none'; }}, 3000);", true);
         }
+
+        protected void cambiaPassword_Click(object sender, EventArgs e)
+        {
+            changePassword.Visible = false;
+            divCambiaPassword.Visible = true;
+
+        }
+
+        protected void ModificaPassword(object sender, EventArgs e)
+        {
+            divCambiaPassword.Visible = true;
+
+            if (string.IsNullOrEmpty(insertPassword.Text) || string.IsNullOrEmpty(confirmPassword.Text))
+            {
+                alertErroreCambiaPassword.Visible = true;
+                P1alertCambiaPassword.InnerText = " Riempi correttamente i campi.";
+                InjectSetTimeout("MainContent_P1alertCambiaPassword");
+            }
+            else
+            {
+                if (insertPassword.Text == confirmPassword.Text)
+                {
+                    string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+                    SqlConnection conn = new SqlConnection(connectionString);
+
+                    try
+                    {
+                        string idUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"];
+
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandText = $"UPDATE Utenti SET password = @nuovaPassword WHERE IDUtente = @IdUtente";
+
+                        cmd.Parameters.AddWithValue("@nuovaPassword", confirmPassword.Text);
+                        cmd.Parameters.AddWithValue("@IdUtente", idUtente);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Response.Write("Errore ");
+                        Response.Write(ex.Message);
+                    }
+                    finally
+                    {
+                        conn.Close();
+                        HttpCookie cookie = new HttpCookie("LOGIN_COOKIEUTENTE");
+                        cookie.Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies.Add(cookie);
+
+                        Response.Redirect("Login.aspx");
+                    }
+                }
+                else
+                {
+                    // password non coincidono
+                    alertErroreCambiaPassword.Visible = true;
+                    P1alertCambiaPassword.InnerText = "Le password non coincidono.";
+                    InjectSetTimeout("MainContent_P1alertCambiaPassword");
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
 
         protected void ShowOrders(object sender, EventArgs e)
         {
@@ -396,6 +478,7 @@ namespace U4_BW1_LL
                 orderDetailsRepeater.DataBind();
             }
         }
+
 
     }
 }

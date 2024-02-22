@@ -138,7 +138,25 @@ namespace U4_BW1_LL
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton changeName;
+        protected global::System.Web.UI.WebControls.LinkButton changeName;
+
+        /// <summary>
+        /// Controllo changePassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton changePassword;
+
+        /// <summary>
+        /// Controllo divCambiaPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCambiaPassword;
 
         /// <summary>
         /// Controllo labelInsertPassword.
@@ -177,13 +195,31 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.WebControls.TextBox confirmPassword;
 
         /// <summary>
-        /// Controllo Button1.
+        /// Controllo btnmodificaPassword.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnmodificaPassword;
+
+        /// <summary>
+        /// Controllo alertErroreCambiaPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertErroreCambiaPassword;
+
+        /// <summary>
+        /// Controllo P1alertCambiaPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl P1alertCambiaPassword;
 
         /// <summary>
         /// Controllo divInsertNomePassword.

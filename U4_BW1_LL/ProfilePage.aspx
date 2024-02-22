@@ -18,31 +18,41 @@
                 <div class="col">
                     <%-- div mostrato al caricamento della pagina con nome immagine dell utente  --%>
                     <div id="infoAlCaricamento" runat="server" class="d-flex flex-column px-3">
-                        <div>
-                            <div class="d-flex flex-column align-items-center mb-5">
-                                <asp:Image ID="ImmagineProfilo" runat="server" CssClass="profilePic mb-2" />
-                                <asp:LinkButton ID="changePropic" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClick="showChangeImg"><i class="bi bi-pencil sexyPink2"></i></asp:LinkButton>
-                                <div runat="server" id="divCambiaURL" class="d-flex flex-column text-center">
-                                    <div>
-                                        <div class="mb-2">
-                                            <asp:Label ID="Label4" runat="server" Text="Label">Inserisci URL nuova immagine:</asp:Label>
-                                            <asp:TextBox CssClass="w-100" ID="TextBoxURLImmagine" runat="server"></asp:TextBox>
-                                        </div>
-                                        <asp:Button ID="Button3" runat="server" Text="Modifica immagine" CssClass="btn sexyBtnOutline2" OnClick="Cambia_ImmagineProfilo" />
+
+                        <div class="d-flex flex-column align-items-center mb-5">
+                            <asp:Image ID="ImmagineProfilo" runat="server" CssClass="profilePic mb-2" />
+                            <asp:LinkButton ID="changePropic" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClick="showChangeImg"><i class="bi bi-pencil sexyPink2"></i></asp:LinkButton>
+                            <div runat="server" id="divCambiaURL" class="d-flex flex-column text-center">
+                                <div>
+                                    <div class="mb-2">
+                                        <asp:Label ID="Label4" runat="server" Text="Label">Inserisci URL nuova immagine:</asp:Label>
+                                        <asp:TextBox CssClass="w-100" ID="TextBoxURLImmagine" runat="server"></asp:TextBox>
                                     </div>
-                                </div>
-                                <div class="sexyPinkBg2 rounded px-3 py-2 mt-3" id="messaggio_Errore" runat="server">
-                                    <p class="mb-0" runat="server" id="urlNonValido"></p>
+                                    <asp:Button ID="Button3" runat="server" Text="Modifica immagine" CssClass="btn sexyBtnOutline2" OnClick="Cambia_ImmagineProfilo" />
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center mb-3">
-                                <p runat="server" id="nomeProfilo" class="display-5 sexyPink2 me-2 mb-0"></p>
-                                <small>
-                                    <button id="changeName" runat="server" class="btn sexyBtnOutline" title="modifica"><i class="bi bi-pencil sexyPink2"></i></button>
-                                </small>
+                            <div class="sexyPinkBg2 rounded px-3 py-2 mt-3" id="messaggio_Errore" runat="server">
+                                <p class="mb-0" runat="server" id="urlNonValido"></p>
                             </div>
                         </div>
-                        <div class="d-flex flex-column">
+
+                        <div class="d-flex align-items-center mb-3">
+                            <p runat="server" id="nomeProfilo" class="display-5 sexyPink2 me-2 mb-0"></p>
+                            <small>
+                                <asp:LinkButton ID="changeName" runat="server" class="btn sexyBtnOutline" title="modificaImmagine" OnClick="btnconfermaNomePassword_Click">
+                                         <i class="bi bi-pencil sexyPink2"></i></asp:LinkButton>
+                            </small>
+                        </div>
+
+                        <div class="d-flex align-items-center mb-3">
+                            <p runat="server" class="display-5 sexyPink2 me-2 mb-0">Cambio Password</p>
+                            <small>
+                                <asp:LinkButton ID="changePassword" runat="server" class="btn sexyBtnOutline" title="modificaImmagine"  OnClick="cambiaPassword_Click">
+                                      <i class="bi bi-pencil sexyPink2"></i></asp:LinkButton>
+                            </small>
+                        </div>
+
+                        <div id="divCambiaPassword" runat="server" class="d-flex flex-column">
                             <div class="d-flex flex-column mb-2">
                                 <asp:Label ID="labelInsertPassword" runat="server" Text="Label" CssClass="mb-1">Nuova password</asp:Label>
                                 <asp:TextBox ID="insertPassword" runat="server"></asp:TextBox>
@@ -51,32 +61,17 @@
                                 <asp:Label ID="label5" runat="server" Text="Label" CssClass="mb-1">Conferma nuova password</asp:Label>
                                 <asp:TextBox ID="confirmPassword" runat="server"></asp:TextBox>
                             </div>
-                        </div>
-
-
-
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5 text-black" id="staticBackdropLabel">Vuoi davvero cambiare l'ìmmagine del profilo?</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p class="text-black">Queste modifiche non potranno essere annullate</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                    <asp:Button OnClick="Cambia_ImmagineProfilo" class="btn btn-primary" ID="Button1" runat="server" Text="Si" />
-                                </div>
+                            <asp:Button ID="btnmodificaPassword" runat="server" Text="Modifica Password" class="btn sexyBtnOutline2 mt-2"  OnClick="ModificaPassword"/>
+                            <div id="alertErroreCambiaPassword" runat="server">
+                                <p runat="server" id="P1alertCambiaPassword"></p>
                             </div>
                         </div>
+
                     </div>
 
-                    <div runat="server" id="divInsertNomePassword" class="d-flex flex-column align-items-center justify-content-center">
+         
+
+                    <div runat="server" id="divInsertNomePassword" class="d-flex flex-column align-items-start justify-content-center">
 
                         <asp:Label CssClass="fs-5 mt-3" ID="Label1" runat="server" Text="Label">inserisci vecchio nome Utente</asp:Label>
                         <asp:TextBox CssClass="w-50" ID="textBoxVecchioNomeUtente" runat="server"></asp:TextBox>
@@ -90,7 +85,7 @@
                         </div>
                     </div>
 
-                    <div id="divFinaleCambioNome" class="d-flex flex-column justify-content-center align-items-center" runat="server">
+                    <div id="divFinaleCambioNome" class="d-flex flex-column justify-content-center align-items-start" runat="server">
                         <asp:Label CssClass="fs-5 mt-3" ID="Label3" runat="server" Text="Label">inserisci Nuovo nome utente </asp:Label>
                         <asp:TextBox CssClass="w-50" ID="TxtNuovoNome" runat="server"></asp:TextBox>
                         <asp:Button CssClass="btn btn-warning mt-2" ID="Button2" runat="server" Text="Modifica" OnClick="FinalNameChange_click" />
