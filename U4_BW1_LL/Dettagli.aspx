@@ -21,11 +21,11 @@
                     <div class="mt-2">
                         
 
-                        <p class="sexyPink font-monospace mb-0">
+                        <p class="sexyPink font-monospace mb-0 mt-4">
                             <strong>Prezzo (1pz):</strong>
                             <asp:Label ID="lblPrezzoProdotto" runat="server" CssClass="sexyPink" />
                         </p>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center mt-3">
                             
                             <asp:Button ID="ButtonAddToCart" runat="server" Text="Aggiungi" class="btn btn-outline-dark sexyPinkBg me-2" OnClick="AddToCart" />
                             <asp:TextBox runat="server" TextMode="Number" ID="selectedQuantity" value="1" min="1" class="quantityInput me-5" />
