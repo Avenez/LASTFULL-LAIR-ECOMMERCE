@@ -19,13 +19,10 @@ namespace U4_BW1_LL
 
             divCambiaURL.Visible = false;
             changePropic.Visible = true;
-
-            divInsertNomePassword.Visible = false;
-            alertInserisciDati.Visible = false;
-            divFinaleCambioNome.Visible = false;
             riepilogoOrdini.Visible = false;
-            divCambiaPassword.Visible = false;
+            alertInserisciDati.Visible = false;
             alertErroreCambiaPassword.Visible = false;
+
 
             if (Request.Cookies["LOGIN_COOKIEUTENTE"] != null)
             {
@@ -43,7 +40,14 @@ namespace U4_BW1_LL
 
                 TakeProfileImage(name, idutente);
             }
-
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
+                {
+                    Response.Redirect("PreSite.aspx");
+                }
+                nomeProfilo.Text = Request.Cookies["LOGIN_COOKIEUTENTE"]["Username"];
+            }
 
         }
 
@@ -67,7 +71,6 @@ namespace U4_BW1_LL
                 if (reader.Read())
                 {
                     ImmagineProfilo.ImageUrl = reader.GetString(0);
-                    nomeProfilo.InnerText = name;
                 }
             }
             catch (Exception ex)
@@ -88,9 +91,7 @@ namespace U4_BW1_LL
 
         protected void SettingsClick(object sender, EventArgs e)
         {
-            changeName.Visible = true;
             infoAlCaricamento.Visible = true;
-            changePassword.Visible = true;
         }
 
         protected void showChangeImg(object sender, EventArgs e)
@@ -144,125 +145,111 @@ namespace U4_BW1_LL
         }
 
 
-        protected void btnconfermaNomePassword_Click(object sender, EventArgs e)
+        protected void ChangeUsername(object sender, EventArgs e)
         {
-            divInsertNomePassword.Visible = true;
-            changeName.Visible = false;
 
+            int resp = CheckExistingUsername(nomeProfilo.Text);
 
-            if (string.IsNullOrEmpty(textBoxVecchioNomeUtente.Text) || string.IsNullOrEmpty(textBoxPassword.Text))
+            if (resp > 0)
             {
-                alertInserisciDati.Visible = true;
-                feedbackalert.InnerText = "inserisci un nome e una password valide.";
-                InjectSetTimeout("MainContent_alertInserisciDati");
+                UpdateName();
             }
-
-            else
-            {
-                string vecchioNomeUtente = textBoxVecchioNomeUtente.Text;
-                string password = textBoxPassword.Text;
-
-                string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
-                SqlConnection conn = new SqlConnection(connectionString);
-
-                string query;
-                try
-                {
-
-                    string IdUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"];
-
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = conn;
-
-                    query = $"SELECT username , password FROM Utenti WHERE IDUtente = '{IdUtente}' ";
-                    cmd.CommandText = query;
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        string nomeEstrattoDB = reader.GetString(0);
-                        string passwordEstrattaDB = reader.GetString(1);
-
-                        if (vecchioNomeUtente == nomeEstrattoDB && password == passwordEstrattaDB)
-                        {
-                            divInsertNomePassword.Visible = false;
-                            divFinaleCambioNome.Visible = true;
-
-                        }
-                        else if (vecchioNomeUtente != nomeEstrattoDB || password != passwordEstrattaDB)
-                        {
-                            alertInserisciDati.Visible = true;
-                            feedbackalert.InnerText = "nome o password non coincidono. Riprova";
-                            InjectSetTimeout("MainContent_alertInserisciDati");
-                        }
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Response.Write("Errore ");
-                    Response.Write(ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
-
-                }
-            }
-
         }
 
-        protected void FinalNameChange_click(object sender, EventArgs e)
+        protected int CheckExistingUsername(string username)
         {
-            divFinaleCambioNome.Visible = true;
-            string nuovoNome = TxtNuovoNome.Text;
+            if (username == Request.Cookies["LOGIN_COOKIEUTENTE"]["Username"])
+            {
+                alertInserisciDati.Visible = true;
+                feedbackalert.InnerText = "Stai già usando questo nickname.";
+                InjectSetTimeout("MainContent_alertInserisciDati");
+                return -1;
+            }
 
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            string query;
+            try
+            {
+
+                string IdUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"];
+
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+
+                query = $"SELECT username FROM Utenti";
+                cmd.CommandText = query;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string nomeEstrattoDB = reader["Username"].ToString();
+
+                    if (username == nomeEstrattoDB)
+                    {
+                        alertInserisciDati.Visible = true;
+                        feedbackalert.InnerText = "Nickname già in uso.";
+                        InjectSetTimeout("MainContent_alertInserisciDati");
+                        conn.Close();
+                        return -1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Errore ");
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+            return 1;
+        }
+
+        protected void UpdateName()
+        {
             string IdUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"];
             string nomeUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["username"];
+            string newName = nomeProfilo.Text;
 
-            if (string.IsNullOrEmpty(nuovoNome))
+            // chiama il DB cambia il nome utente di chi ha fatto la richiesta e aggiorna anche il nome presente nel cookie 
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+            SqlConnection conn = new SqlConnection(connectionString);
+
+            try
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "showAlert", $"window.alert(' Hai lasciato il campo vuoto. Inserisci un nuovo nome utente');", true);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = $"UPDATE Utenti SET username = @nuovoNome WHERE IDUtente = @IdUtente";
+
+                cmd.Parameters.AddWithValue("@nuovoNome", newName);
+                cmd.Parameters.AddWithValue("@IdUtente", IdUtente);
+
+                cmd.ExecuteNonQuery();
+
             }
-            else if (nuovoNome != nomeUtente)
-            {   // chiama il DB cambia il nome utente di chi ha fatto la richiesta e aggiorna anche il nome presente nel cookie 
-                string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
-                SqlConnection conn = new SqlConnection(connectionString);
-
-                try
-                {
-
-                    conn.Open();
-
-                    SqlCommand cmd = new SqlCommand();
-                    cmd.Connection = conn;
-                    cmd.CommandText = $"UPDATE Utenti SET username = @nuovoNome WHERE IDUtente = @IdUtente";
-
-                    cmd.Parameters.AddWithValue("@nuovoNome", nuovoNome);
-                    cmd.Parameters.AddWithValue("@IdUtente", IdUtente);
-
-                    cmd.ExecuteNonQuery();
-
-                }
-                catch (Exception ex)
-                {
-                    Response.Write("Errore ");
-                    Response.Write(ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
-
-                    HttpCookie cookie = new HttpCookie("LOGIN_COOKIEUTENTE");
-                    cookie.Expires = DateTime.Now.AddDays(-1);
-                    Response.Cookies.Add(cookie);
-
-                    Response.Redirect("Login.aspx");
-                }
-            }
-            else
+            catch (Exception ex)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "showAlert", $"window.alert(' Hai inserito lo stesso nome utente. Scegline uno diverso.');", true);
+                Response.Write("Errore ");
+                Response.Write(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+
+                HttpCookie cookie = Request.Cookies["LOGIN_COOKIEUTENTE"];
+                cookie["username"] = newName;
+                cookie.Expires = DateTime.Now.AddDays(5);
+                Response.Cookies.Add(cookie);
+
+                alertInserisciDati.Visible = true;
+                feedbackalert.InnerText = "Nickname modificato con successo.";
+                InjectSetTimeout("MainContent_alertInserisciDati");
 
             }
         }
@@ -272,58 +259,65 @@ namespace U4_BW1_LL
             ClientScript.RegisterStartupScript(this.GetType(), "hideAlert", $"setTimeout(function() {{ document.getElementById('{IdDiv}').style.display = 'none'; }}, 3000);", true);
         }
 
-        protected void cambiaPassword_Click(object sender, EventArgs e)
-        {
-            changePassword.Visible = false;
-            divCambiaPassword.Visible = true;
-
-        }
 
         protected void ModificaPassword(object sender, EventArgs e)
         {
-            divCambiaPassword.Visible = true;
 
             if (string.IsNullOrEmpty(insertPassword.Text) || string.IsNullOrEmpty(confirmPassword.Text))
             {
                 alertErroreCambiaPassword.Visible = true;
-                P1alertCambiaPassword.InnerText = " Riempi correttamente i campi.";
-                InjectSetTimeout("MainContent_P1alertCambiaPassword");
+                P1alertCambiaPassword.InnerText = "Riempi correttamente i campi.";
+                InjectSetTimeout("MainContent_alertErroreCambiaPassword");
             }
             else
             {
                 if (insertPassword.Text == confirmPassword.Text)
                 {
-                    string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
-                    SqlConnection conn = new SqlConnection(connectionString);
-
-                    try
+                    if (insertPassword.Text == Request.Cookies["LOGIN_COOKIEUTENTE"]["Password"])
                     {
-                        string idUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"];
-
-                        conn.Open();
-
-                        SqlCommand cmd = new SqlCommand();
-                        cmd.Connection = conn;
-                        cmd.CommandText = $"UPDATE Utenti SET password = @nuovaPassword WHERE IDUtente = @IdUtente";
-
-                        cmd.Parameters.AddWithValue("@nuovaPassword", confirmPassword.Text);
-                        cmd.Parameters.AddWithValue("@IdUtente", idUtente);
-
-                        cmd.ExecuteNonQuery();
+                        alertErroreCambiaPassword.Visible = true;
+                        P1alertCambiaPassword.InnerText = "Prova con una password diversa.";
+                        InjectSetTimeout("MainContent_alertErroreCambiaPassword");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Response.Write("Errore ");
-                        Response.Write(ex.Message);
-                    }
-                    finally
-                    {
-                        conn.Close();
-                        HttpCookie cookie = new HttpCookie("LOGIN_COOKIEUTENTE");
-                        cookie.Expires = DateTime.Now.AddDays(-1);
-                        Response.Cookies.Add(cookie);
 
-                        Response.Redirect("Login.aspx");
+                        string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
+                        SqlConnection conn = new SqlConnection(connectionString);
+
+                        try
+                        {
+                            string idUtente = Request.Cookies["LOGIN_COOKIEUTENTE"]["IDUtente"];
+
+                            conn.Open();
+
+                            SqlCommand cmd = new SqlCommand();
+                            cmd.Connection = conn;
+                            cmd.CommandText = $"UPDATE Utenti SET password = @nuovaPassword WHERE IDUtente = @IdUtente";
+
+                            cmd.Parameters.AddWithValue("@nuovaPassword", confirmPassword.Text);
+                            cmd.Parameters.AddWithValue("@IdUtente", idUtente);
+
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            Response.Write("Errore ");
+                            Response.Write(ex.Message);
+                        }
+                        finally
+                        {
+                            conn.Close();
+
+                            HttpCookie cookie = Request.Cookies["LOGIN_COOKIEUTENTE"];
+                            cookie["Password"] = confirmPassword.Text;
+                            cookie.Expires = DateTime.Now.AddDays(5);
+                            Response.Cookies.Add(cookie);
+
+                            alertErroreCambiaPassword.Visible = true;
+                            P1alertCambiaPassword.InnerText = "Password modificata con successo.";
+                            InjectSetTimeout("MainContent_alertErroreCambiaPassword");
+                        }
                     }
                 }
                 else
@@ -331,17 +325,10 @@ namespace U4_BW1_LL
                     // password non coincidono
                     alertErroreCambiaPassword.Visible = true;
                     P1alertCambiaPassword.InnerText = "Le password non coincidono.";
-                    InjectSetTimeout("MainContent_P1alertCambiaPassword");
+                    InjectSetTimeout("MainContent_alertErroreCambiaPassword");
                 }
             }
         }
-
-
-
-
-
-
-
 
 
 
