@@ -25,12 +25,13 @@ namespace U4_BW1_LL
 
                 RegisterPostBackControl();
 
-
+                BTNControlloOrdini.Visible = true;
             }
             else
             {
 
                 Response.Redirect("Default");
+                BTNControlloOrdini.Visible = false;
 
             }
 

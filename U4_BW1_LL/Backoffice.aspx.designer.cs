@@ -60,6 +60,15 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
+        /// Controllo BTNControlloOrdini.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTNControlloOrdini;
+
+        /// <summary>
         /// Controllo FormName.
         /// </summary>
         /// <remarks>
