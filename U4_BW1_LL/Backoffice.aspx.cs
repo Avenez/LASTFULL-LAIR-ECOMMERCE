@@ -26,6 +26,7 @@ namespace U4_BW1_LL
                     PickProducts();
                 }
                 RegisterPostBackControl();
+
             }
             else
             {
@@ -65,10 +66,10 @@ namespace U4_BW1_LL
                 conn.Open();
 
                 if (typeSerch == "Nome")
-                {query = $"SELECT * FROM Prodotti WHERE {typeSerch} LIKE '{key}%' ORDER BY {typeSerch} ASC ";}
+                { query = $"SELECT * FROM Prodotti WHERE {typeSerch} LIKE '{key}%' ORDER BY {typeSerch} ASC "; }
 
                 else if (typeSerch == "Prezzo")
-                {query = $"SELECT * FROM Prodotti WHERE {typeSerch} BETWEEN 0 AND {key} ORDER BY {typeSerch} DESC ";}
+                { query = $"SELECT * FROM Prodotti WHERE {typeSerch} BETWEEN 0 AND {key} ORDER BY {typeSerch} DESC "; }
 
                 else
                 { query = $"SELECT * FROM Prodotti WHERE {typeSerch} = {key} "; }
@@ -98,7 +99,7 @@ namespace U4_BW1_LL
 
         //Questa funzione si occupa dell'invio dei dati al DB per la modifica dei campi di un prodotto
         //assicurandosi che i campi siano tutti compilati e svuotando il campo feedback dopo 4s
-        
+
         protected void SubmitChageButton_Click(object sender, EventArgs e)
         {
             string nome = FormName.Value;
@@ -275,7 +276,7 @@ namespace U4_BW1_LL
             finally
             { conn.Close(); }
 
-            string script2 = "setTimeout(() => { "  + "document.getElementById('MainContent_controllo').innerText = '';"
+            string script2 = "setTimeout(() => { " + "document.getElementById('MainContent_controllo').innerText = '';"
                                                     + "}, 4000);";
 
             Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed3", script2, true);
@@ -332,7 +333,7 @@ namespace U4_BW1_LL
                 controllo.InnerText = "Per Aggiungere un prodotto è necessario inserire tutti i campi";
             }
 
-            string script2 = "setTimeout(() => { "  + "document.getElementById('MainContent_controllo').innerText = '';"
+            string script2 = "setTimeout(() => { " + "document.getElementById('MainContent_controllo').innerText = '';"
                                                     + "}, 4000);";
 
             Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed4", script2, true);
@@ -352,6 +353,11 @@ namespace U4_BW1_LL
             FormPrezzo.Value = "";
             FormQta.Value = "";
             FormId.InnerText = "";
+        }
+
+        protected void BTNvaiAOrdiniUtente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RiepilogoOrdiniUtenti.aspx");
         }
     }
 }
