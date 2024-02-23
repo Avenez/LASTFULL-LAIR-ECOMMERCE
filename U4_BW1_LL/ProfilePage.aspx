@@ -14,9 +14,11 @@
                         <asp:Button OnClick="BtnBackOffice_Click" ID="BtnBackOffice" Text="BackOffice" runat="server" CssClass="btn btn-transparent sexyPink2 fs-5" />
                     </div>
                 </div>
+
                 <%-- aside con dettagli dell utente loggato  --%>
                 <div class="col">
-                    <%-- div mostrato al caricamento della pagina con nome immagine dell utente  --%>
+                  
+
                     <div id="infoAlCaricamento" runat="server" class="d-flex flex-column px-3">
 
                         <div class="d-flex flex-column align-items-center mb-5">
@@ -94,6 +96,9 @@
                         <asp:TextBox CssClass="w-50" ID="TxtNuovoNome" runat="server"></asp:TextBox>
                         <asp:Button CssClass="btn sexyBtnOutline2 mt-2" ID="Button2" runat="server" Text="Modifica" OnClick="FinalNameChange_click" />
                     </div>
+
+
+                    <%-- riepilogo ordini  --%>
 
                     <div id="riepilogoOrdini" runat="server">
                         <div id="noOrder" runat="server" class="text-center sexyPink2 py-3" style="display: none">
