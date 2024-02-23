@@ -10,6 +10,7 @@ namespace U4_BW1_LL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            noStock.Visible = false;
             sectionalertAddTocart.Visible = false;
 
             if (Request.QueryString["IDProdotto"] == null)
@@ -67,6 +68,15 @@ namespace U4_BW1_LL
                         lblDescrizioneProdotto.InnerText = reader["Descrizione"].ToString();
                         imgProdotto.ImageUrl = reader["ImgUrl"].ToString();
                         selectedQuantity.Attributes["max"] = reader["Qta"].ToString();
+
+                        if (reader["Qta"].ToString() == "0") { 
+                        
+                            noStock.Visible = true;
+                            dettagliAquisto.Visible = false;
+                        
+                        }
+
+
                     }
                     else
                     {

@@ -11,7 +11,7 @@
             <div class="col-12">
                 <div style="height: 120px" class="d-flex justify-content-between align-items-center border border-dark sexyCardBg rounded">
                     <div class="h-100 d-flex">
-                        <div class="h-100 p-2 me-4" style="width: 90px">
+                        <div class="d-flex justify-content-center h-100 p-2 me-3" style="width: 90px">
                             <img src='<%# Eval("ImgUrl") %>' class="h-100" alt='<%# Eval("Nome") %>'>
                         </div>
                         <div class="py-2">

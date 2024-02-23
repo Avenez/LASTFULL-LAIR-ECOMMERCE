@@ -203,7 +203,7 @@ namespace U4_BW1_LL
                         }   
                     }
 
-                    //Comando che si occupa di eleiminare le qta ordinate di un prodotto da quelle in stock sul BD.
+                    //Comando che si occupa di eliminare le qta ordinate di un prodotto da quelle in stock sul BD.
                     //Resta commentata per evitare di svuotare il db durante le prove di debug
                     /*
                     cmd.CommandText = $"UPDATE Prodotti SET Qta = Qta - @Qta WHERE IDProdotto = @IDProdotto";
