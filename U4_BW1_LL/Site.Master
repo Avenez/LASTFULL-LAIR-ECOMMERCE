@@ -19,6 +19,9 @@
 
 </head>
 <body>
+    <audio loop autoplay src="./assets/music/spogliarello.mp3" >
+        
+    </audio>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
