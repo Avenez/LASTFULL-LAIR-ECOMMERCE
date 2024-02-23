@@ -16,6 +16,8 @@ namespace U4_BW1_LL
             //    Response.Redirect("Login.aspx");
             //}
 
+            Session["PageLoadedBefore"] = null;
+
             if (Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
             {
                 Response.Redirect("Login.aspx");

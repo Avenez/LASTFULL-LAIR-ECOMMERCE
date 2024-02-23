@@ -8,7 +8,8 @@
             <h3 class="text-white" id="controllo" runat="server" ></h3>
             <div class="col">
                 <div class="input-group mb-3">
-                    <asp:Button CssClass="btn btn-outline-light" ID="Button1" runat="server" Text="Cerca" OnClick="SearchButton_Click" />
+                    <asp:Button CssClass="btn btn-outline-light" ID="Button2" runat="server" Text="All" OnClick="ButtonAll_Click" />
+                
 
                     <select id="SearchType" runat="server" class="form-select">
                         <option selected>Choose...</option>
@@ -17,7 +18,8 @@
                         <option value="Prezzo">Prezzo</option>
                     </select>
                     <input type="text" id="SearchKey" runat="server" class="form-control" placeholder="" aria-label="Example text with two button addons">
-                    <asp:Button CssClass="btn btn-outline-light" ID="Button2" runat="server" Text="All" OnClick="ButtonAll_Click" />
+                    <asp:Button CssClass="btn btn-outline-light" ID="Button1" runat="server" Text="Cerca" OnClick="SearchButton_Click" />
+                   
                 </div>
             </div>
         </div>

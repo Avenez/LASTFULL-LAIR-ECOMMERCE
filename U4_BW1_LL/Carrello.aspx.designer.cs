@@ -24,6 +24,24 @@ namespace U4_BW1_LL
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl emptyCart;
 
         /// <summary>
+        /// Controllo feedCarrelloVuoto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl feedCarrelloVuoto;
+
+        /// <summary>
+        /// Controllo feedCarrelloAcquisto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl feedCarrelloAcquisto;
+
+        /// <summary>
         /// Controllo boh.
         /// </summary>
         /// <remarks>
