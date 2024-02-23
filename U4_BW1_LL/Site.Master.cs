@@ -28,10 +28,10 @@ namespace U4_BW1_LL
                 }
                 cartBadge.InnerText = count.ToString();
                 cartBadge.Visible = true;
-                
+
             }
 
-            
+
         }
 
         protected void LogOut(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace U4_BW1_LL
             HttpCookie userData = Request.Cookies["LOGIN_COOKIEUTENTE"];
             userData.Expires = DateTime.Now.AddDays(-1);
             Response.Cookies.Add(userData);
-            Response.Redirect("Login.aspx");
+            Response.Redirect("PreSite.aspx");
         }
     }
 }

@@ -74,6 +74,8 @@
                             <p>Non ci sono ordini da visualizzare.</p>
                         </div>
                         <div class="row row-cols-1">
+                            <!-- L'attributo OnItemDataBound permette di associare la funzione in code behind che fa associare ad ogni ordine
+                                del repeater esterno la sua lista di dettagliOrdine -->
                             <asp:Repeater ID="OrderRepeater" runat="server" OnItemDataBound="rptOrdini_ItemDataBound">
                                 <ItemTemplate>
                                     <div class="col">

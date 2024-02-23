@@ -11,19 +11,16 @@ namespace U4_BW1_LL
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (IsPostBack && Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
-            //{
-            //    Response.Redirect("Login.aspx");
-            //}
 
             Session["PageLoadedBefore"] = null;
 
             if (Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
             {
-                Response.Redirect("Login.aspx");
+                Response.Redirect("PreSite.aspx");
             }
             else
             {
+                //Seleziona tutti i prodotti e li manda al repeater
                 string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
                 SqlConnection conn = new SqlConnection(connectionString);
 

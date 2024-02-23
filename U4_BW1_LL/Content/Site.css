@@ -25,7 +25,6 @@ textarea {
         padding: 0;
     }
 }
-
 .sexyPink {
     color: #5C0F39;
 }
@@ -300,7 +299,6 @@ height:300px;
         animation-timing-function: ease-out;
     }
 }
-    }
 
 .sexyBtnOutline {
     border: 1px solid #FFACD2;

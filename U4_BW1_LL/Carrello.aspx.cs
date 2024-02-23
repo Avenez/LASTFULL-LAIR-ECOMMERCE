@@ -48,24 +48,29 @@ namespace U4_BW1_LL
 
             if (!IsPostBack)
             {
+                if (Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
+                {
+                    Response.Redirect("PreSite.aspx");
+                }
+
                 if (Request.QueryString["Buy"] == "true")
                 {
-                    string script = "(() => { " 
-                        + "document.getElementById('MainContent_feedCarrelloVuoto').classList.add('d-none'); " 
-                        + "document.getElementById('MainContent_feedCarrelloAcquisto').classList.remove('d-none');" 
+                    string script = "(() => { "
+                        + "document.getElementById('MainContent_feedCarrelloVuoto').classList.add('d-none'); "
+                        + "document.getElementById('MainContent_feedCarrelloAcquisto').classList.remove('d-none');"
                         + "})();";
 
                     string script2 = "setTimeout(() => { "
                         + "document.getElementById('MainContent_feedCarrelloVuoto').classList.remove('d-none'); "
                         + "document.getElementById('MainContent_feedCarrelloAcquisto').classList.add('d-none');"
                         + "}, 4000);";
-                    
+
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed", script, true);
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed2", script2, true);
 
                 }
-                
+
             }
 
         }
@@ -190,35 +195,36 @@ namespace U4_BW1_LL
             int idOrdine = CreateOrder(IDCliente, totalPrice, ordineDateTime);
 
             Response.Write(idOrdine);
- 
+
             try
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
-               
+
                 foreach (var item in cartMap)
                 {
                     double selectedPrice = 0;
 
                     foreach (var product in products)
                     {
-                        if (item.Key == product.Id) { 
-                        
-                         selectedPrice = product.Prezzo;
-                        }   
+                        if (item.Key == product.Id)
+                        {
+
+                            selectedPrice = product.Prezzo;
+                        }
                     }
 
                     //Comando che si occupa di eleiminare le qta ordinate di un prodotto da quelle in stock sul BD.
                     //Resta commentata per evitare di svuotare il db durante le prove di debug
-                    /*
+
                     cmd.CommandText = $"UPDATE Prodotti SET Qta = Qta - @Qta WHERE IDProdotto = @IDProdotto";
                     cmd.Parameters.Clear(); // Pulisci i parametri prima di aggiungerli di nuovo
                     cmd.Parameters.AddWithValue("@Qta", item.Value);
                     cmd.Parameters.AddWithValue("@IDProdotto", item.Key);
                     cmd.ExecuteNonQuery();
-                    */
-                    
+
+
 
                     cmd.Parameters.Clear(); // Pulisci i parametri prima di aggiungerli di nuovo
                     cmd.CommandText = $"INSERT INTO DettagliOrdine (IDOrdine, IDProdotto, Qta, PrezzoQta) VALUES (@IDOrdine, @IDProdotto, @Qta, @PrezzoQta)";
@@ -249,40 +255,40 @@ namespace U4_BW1_LL
         //Funzione che crea un record Ordine all'acquisto
         public int CreateOrder(int idUtente, double PrezzoTotale, DateTime DataOrdine)
         {
-            int id = -1; 
+            int id = -1;
 
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
             SqlConnection conn = new SqlConnection(connectionString);
-                    try
-                    {
-                        conn.Open();
-                        SqlCommand cmd = new SqlCommand("CreateOrder", conn);
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("CreateOrder", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        cmd.Parameters.AddWithValue("@IDUtente", idUtente); // Correct parameter name
-                        cmd.Parameters.AddWithValue("@PrezzoTotale", PrezzoTotale);
-                        cmd.Parameters.AddWithValue("@DataOrdine", DataOrdine);
+                cmd.Parameters.AddWithValue("@IDUtente", idUtente); // Correct parameter name
+                cmd.Parameters.AddWithValue("@PrezzoTotale", PrezzoTotale);
+                cmd.Parameters.AddWithValue("@DataOrdine", DataOrdine);
 
-                        // Adding output parameter for IDOrdine
-                        SqlParameter outputParameter = new SqlParameter();
-                        outputParameter.ParameterName = "@IDOrdine";
-                        outputParameter.SqlDbType = System.Data.SqlDbType.Int;
-                        outputParameter.Direction = System.Data.ParameterDirection.Output;
-                        cmd.Parameters.Add(outputParameter);
+                // Adding output parameter for IDOrdine
+                SqlParameter outputParameter = new SqlParameter();
+                outputParameter.ParameterName = "@IDOrdine";
+                outputParameter.SqlDbType = System.Data.SqlDbType.Int;
+                outputParameter.Direction = System.Data.ParameterDirection.Output;
+                cmd.Parameters.Add(outputParameter);
 
-                        cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
-                        // Retrieving the value of the output parameter
-                        id = Convert.ToInt32(outputParameter.Value);
-                    }
-                    catch (Exception ex)
-                    {
-                        Response.Write(ex); // Use appropriate logging mechanism
-                    }
-                    finally 
-                    { 
-                    conn.Close();
-                    }
+                // Retrieving the value of the output parameter
+                id = Convert.ToInt32(outputParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex); // Use appropriate logging mechanism
+            }
+            finally
+            {
+                conn.Close();
+            }
             return id;
         }
 
