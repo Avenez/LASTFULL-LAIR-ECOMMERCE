@@ -371,5 +371,10 @@ namespace U4_BW1_LL
             FormQta.Value = "";
             FormId.InnerText = "";
         }
+
+        protected void BTNvaiAOrdiniUtente_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RiepilogoOrdiniUtenti.aspx");
+        }
     }
 }

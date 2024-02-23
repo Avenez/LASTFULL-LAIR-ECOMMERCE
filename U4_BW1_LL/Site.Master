@@ -19,6 +19,8 @@
 
 </head>
 <body>
+  <%-- <audio loop autoplay src="./assets/music/spogliarello.mp3"></audio>--%>
+          
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -39,7 +41,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark position-sticky top-0" style="background-color: #0A0A0A; z-index:999;">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark position-sticky top-0" style="background-color: #0A0A0A; z-index:999;">       
             <div class="container">
                 <div class="collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1 align-items-center">
@@ -77,5 +79,6 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
+
 </body>
 </html>

@@ -9,6 +9,7 @@ namespace U4_BW1_LL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             cartBadge.Visible = false;
             if (Request.Cookies["LOGIN_COOKIEUTENTE"] != null)
                 Benvenuto.InnerHtml = $"Benvenuto, {Request.Cookies["LOGIN_COOKIEUTENTE"]["Username"]}";
