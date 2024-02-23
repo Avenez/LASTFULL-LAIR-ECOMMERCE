@@ -9,11 +9,11 @@ namespace U4_BW1_LL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["LOGIN_COOKIESUTENTE"] == null)
+            if (Request.Cookies["LOGIN_COOKIEUTENTE"] == null)
             {
                 Response.Redirect("PreSite.aspx");
             }
-            if (Request.Cookies["LOGIN_COOKIESUTENTE"]["Admin"] != "true")
+            if (Request.Cookies["LOGIN_COOKIEUTENTE"]["Admin"] != "True")
             {
                 Response.Redirect("Default.aspx");
             }
