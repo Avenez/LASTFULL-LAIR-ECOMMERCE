@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <div>
-                    <asp:Button CssClass="btn sexyBtnOutline2" ID="tornaIndietro" runat="server" Text="Torna Indietro " OnClick="tornaIndietro_Click" />
+                    <asp:Button CssClass="btn sexyBtnOutline2" ID="tornaIndietro" runat="server" Text="Indietro " OnClick="tornaIndietro_Click" />
                 </div>
             </div>
         </div>

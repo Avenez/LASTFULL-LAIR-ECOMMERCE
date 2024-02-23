@@ -111,8 +111,6 @@
     <Content Include="assets\imgs\LustLogo.png" />
     <Content Include="assets\imgs\LustLogo2.jpg" />
     <Content Include="assets\imgs\LustLogoOpen.jpg" />
-    <Content Include="assets\music\phSound.mp3" />
-    <Content Include="assets\music\spogliarello.mp3" />
     <Content Include="assets\prodImgs\anello-fallico-ritardante-di-calexotics.png" />
     <Content Include="assets\prodImgs\babydoll-amanta-obsessive-con-perizoma.png" />
     <Content Include="assets\prodImgs\bavaglio-bocca-saffron-ball-gag-di-sportsheets.png" />
@@ -299,7 +297,6 @@
       <DependentUpon>ProfilePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RiepilogoOrdine.cs" />
     <Compile Include="RiepilogoOrdiniUtenti.aspx.cs">
       <DependentUpon>RiepilogoOrdiniUtenti.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -40,6 +40,12 @@ namespace U4_BW1_LL
             HttpCookie userData = Request.Cookies["LOGIN_COOKIEUTENTE"];
             userData.Expires = DateTime.Now.AddDays(-1);
             Response.Cookies.Add(userData);
+
+            if (Session["cart"] != null)
+            {
+                Session["cart"] = null;
+            }
+
             Response.Redirect("PreSite.aspx");
         }
     }

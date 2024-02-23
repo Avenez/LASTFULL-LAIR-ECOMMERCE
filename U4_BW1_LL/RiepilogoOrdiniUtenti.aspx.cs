@@ -9,6 +9,15 @@ namespace U4_BW1_LL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Cookies["LOGIN_COOKIESUTENTE"] == null)
+            {
+                Response.Redirect("PreSite.aspx");
+            }
+            if (Request.Cookies["LOGIN_COOKIESUTENTE"]["Admin"] != "true")
+            {
+                Response.Redirect("Default.aspx");
+            }
+
             string connectionString = ConfigurationManager.ConnectionStrings["connectionStringDb"].ToString();
             SqlConnection conn = new SqlConnection(connectionString);
 
