@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Carrello.aspx.cs" Inherits="U4_BW1_LL.Carrello" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <audio src="./assets/music/phSound.mp3"></audio>
+
     <div class="text-center py-2" style="display: none" runat="server" id="emptyCart">
         <p class="display-6 sexyPink2 bounce-in-top" id="feedCarrelloVuoto"  runat="server" >Il carrello è vuoto</p>
         <p class="display-6 sexyPink2 bounce-in-top d-none" id="feedCarrelloAcquisto"  runat="server" >Grazie per il tuo acquisto, Biscottino</p>

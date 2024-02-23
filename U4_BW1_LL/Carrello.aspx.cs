@@ -14,7 +14,7 @@ namespace U4_BW1_LL
 
 
         //Al caricamento della pagina creaiamo un Dictionary  "cart map" per creare il carrello nel Repeater
-        //e calcoliamo il prezzo totale per ogni artivolo*le sue qta ordinate.
+        //e calcoliamo il prezzo totale per ogni articolo*le sue qta ordinate.
         //In aggiunta attiviamo il feed se il carrello è vuoto o se è stato fatto un acquisto in base ad una query string che viene inviata quando
         //si preme su "Acquista"
         protected void Page_Load(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace U4_BW1_LL
 
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed", script, true);
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "changeFeed2", script2, true);
-
+                    ClientScript.RegisterStartupScript(this.GetType(), "playMusic", $" const music = document.querySelector('audio');  music.play();", true);
                 }
 
             }
