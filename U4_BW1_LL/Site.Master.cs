@@ -46,7 +46,7 @@ namespace U4_BW1_LL
                 Session["cart"] = null;
             }
 
-            Response.Redirect("PreSite.aspx");
+            Response.Redirect("Login.aspx");
         }
     }
 }
