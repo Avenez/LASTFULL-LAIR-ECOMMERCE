@@ -13,10 +13,12 @@ namespace U4_BW1_LL
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                nomeProfilo.Text = Request.Cookies["LOGIN_COOKIEUTENTE"]["Username"];
+            }
 
             messaggio_Errore.Visible = false;
-
-
             divCambiaURL.Visible = false;
             changePropic.Visible = true;
             riepilogoOrdini.Visible = false;
@@ -45,8 +47,6 @@ namespace U4_BW1_LL
             {
                 Response.Redirect("PreSite.aspx");
             }
-
-            nomeProfilo.Text = Request.Cookies["LOGIN_COOKIEUTENTE"]["Username"];
         }
 
         //Metodo che prende l'immagine di profilo dell'utente e la mostra in pagina

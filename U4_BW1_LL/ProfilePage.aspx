@@ -53,11 +53,11 @@
                         <div id="divCambiaPassword" runat="server" class="d-flex">
                             <div class="d-flex flex-column me-3">
                                 <asp:Label ID="labelInsertPassword" runat="server" Text="Label" CssClass="mb-1">Nuova password</asp:Label>
-                                <asp:TextBox ID="insertPassword" runat="server"></asp:TextBox>
+                                <asp:TextBox TextMode="Password" ID="insertPassword" runat="server"></asp:TextBox>
                             </div>
                             <div class="d-flex flex-column me-3">
                                 <asp:Label ID="label5" runat="server" Text="Label" CssClass="mb-1">Conferma nuova password</asp:Label>
-                                <asp:TextBox ID="confirmPassword" runat="server"></asp:TextBox>
+                                <asp:TextBox TextMode="Password" ID="confirmPassword" runat="server"></asp:TextBox>
                             </div>
                             <asp:Button ID="btnmodificaPassword" runat="server" Text="Modifica Password" class="btn btn-sm sexyBtnOutline2 mt-2" OnClick="ModificaPassword" />
                         </div>
